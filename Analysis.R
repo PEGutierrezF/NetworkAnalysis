@@ -28,35 +28,37 @@ plot(network2000, edge.arrow.size=.2, edge.color="black", #line color
      vertex.label=V(network2000)$media, vertex.label.color="black") # letters
 
 
-E(nw2000)
-V(nw2000)
-nw2000[]
+E(network2000)
+V(network2000)
+network2000[]
 
-centr_degree(nw2000)$centralization
-graph.density(nw2000)
+centr_degree(network2000)$centralization
+graph.density(network2000)
 
 
 ###########################################################################
-# 2015 --------------------------------------------------------------------
+# 2020 --------------------------------------------------------------------
 ###########################################################################
 
 
 
-df2015<- read.csv("autor2015.csv")
-df2015a <- df2015 %>% select(V1, V2)
+df2020<- read.csv("autor2020.csv")
+df2020a <- df2020 %>% select(V1, V2)
 
-df2015nodes<- read.csv("autor2015nodes.csv")
+df2020nodes<- read.csv("autor2020nodes.csv")
 
 
-network2015 <- graph_from_data_frame(d=df2015a, vertices=df2015nodes, directed=F) # covert in a igraph
+network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020nodes, directed=F) # covert in a igraph
 
-plot(network2015)
+plot(network2020)
 
-plot(network2015, edge.arrow.size=.2, edge.color="black", #line color
+plot(network2020, edge.arrow.size=.2, edge.color="black", #line color
      vertex.color="lightblue", vertex.frame.color="lightblue", # bubble color
-     vertex.label=V(network2015)$media, vertex.label.color="black") # letters
+     vertex.label=V(network2020)$media, vertex.label.color="black") # letters
 
 
+centr_degree(network2020)$centralization
+graph.density(network2020)
 
 
 # By country --------------------------------------------------------------
@@ -66,15 +68,15 @@ library(RColorBrewer)
 coul  <- brewer.pal(9, "Set1") 
 
 # Create a vector of color
-my_color <- coul[as.numeric(as.factor(V(network2000)$Country))]
+my_color <- coul[as.numeric(as.factor(V(network2020)$Country))]
 
 # Make the plot
-plot(network2000, vertex.color=my_color,
+plot(network2020, vertex.color=my_color,
      vertex.label=NA, # Letters
      vertex.shape="circle", #shape
      edge.color="black")  # line color
 
-legend(x=-1.9, y=0.5, legend=levels(as.factor(V(network2000)$Country)), 
+legend(x=-1.9, y=0.5, legend=levels(as.factor(V(network2020)$Country)), 
        col = coul , bty = "n", pch=16, pt.cex = 1, cex = 1, text.col=, 
        horiz = F, inset = c(0.05, 0.05),
        title = "Country")
