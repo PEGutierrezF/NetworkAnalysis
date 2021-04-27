@@ -46,9 +46,9 @@ df2020<- read.csv("autor2020.csv")
 df2020a <- df2020 %>% select(V1, V2)
 
 df2020nodes<- read.csv("autor2020nodes.csv")
+df2020b <- df2020nodes %>% select(Authors, Country )
 
-
-network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020nodes, directed=F) # covert in a igraph
+network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020b, directed=F) # covert in a igraph
 
 plot(network2020)
 
