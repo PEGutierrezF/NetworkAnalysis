@@ -40,13 +40,15 @@ graph.density(network2000)
 # 2020 --------------------------------------------------------------------
 ###########################################################################
 
-
+# MC, LJ, AR 20, LJ 29
 
 df2020<- read.csv("autor2020.csv")
 df2020a <- df2020 %>% select(V1, V2)
+df2020a
 
 df2020nodes<- read.csv("autor2020nodes.csv")
-df2020b <- df2020nodes %>% select(Authors, Country )
+df2020b <- df2020nodes %>% select(Authors, Country)
+df2020b
 
 network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020b, directed=F) # covert in a igraph
 
