@@ -6,10 +6,13 @@
 # https://kateto.net/wp-content/uploads/2016/06/Polnet%202016%20R%20Network%20Visualization%20Workshop.pdf
 # https://www.r-graph-gallery.com/249-igraph-network-map-a-color.html
 
-install.packages("ggraph")
+install.packages("intergraph")
 library(igraph)
 library(dplyr)
 library(ggraph)
+library(ggnetwork)
+library(ITNr)
+library(intergraph)
 
 rm(list=ls())
 source_file = read.csv(file.choose(), sep = ";", header = F)
@@ -43,7 +46,7 @@ graph.density(network2000)
 # MC, AR 20, LJ 29-39, LFL 34, VCP 36, DJ 40, ED 44, TS 45 53, JH 45 49, VSS 45, DKP 53
 
 df2020<- read.csv("autor2020.csv")
-df2020a <- df2020 %>% select(V1, V2)
+df2020a <- df2020 %>% select(main, coauthor)
 df2020a
 
 df2020nodes<- read.csv("autor2020nodes.csv")
@@ -54,6 +57,29 @@ network2020 <- graph_from_data_frame(df2020a, vertices=df2020b, directed=F) # co
 network2020[]
 plot.igraph(network2020)
 
+
+head(highschool)
+head(df2020a)
+
+g <- graph_from_data_frame(highschool)
+
+graph <- graph_from_data_frame(df2020a)
+
+colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
+cols <- colfunc(234)
+
+ggraph(graph)+
+        geom_edge_fan(aes(color = from)) +
+        scale_edge_colour_gradient(low = "#00008B", high = "#63B8FF") + 
+        geom_node_point(color = cols, show.legend = F, size = 3)
+
+
+ggraph(graph) + 
+        geom_edge_fan(alpha=0.5) + 
+        geom_node_point(
+                aes(color=cols,size=2),
+                show.legend = FALSE)+
+        theme_graph()
 
 
 
@@ -107,11 +133,11 @@ graph.density(network2020)
 # By country --------------------------------------------------------------
 
 # Make a palette of 3 colors
-library(RColorBrewer)
-coul  <- brewer.pal(9, "Set1") 
+colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
+cols <- colfunc(25) 
 
 # Create a vector of color
-my_color <- coul[as.numeric(as.factor(V(network2020)$Country))]
+my_color <- cols[as.numeric(as.factor(V(network2020)$Country))]
 
 # Make the plot
 plot(network2020, vertex.color=my_color,
@@ -119,8 +145,8 @@ plot(network2020, vertex.color=my_color,
      vertex.shape="circle", #shape
      edge.color="black")  # line color
 
-legend(x=-1.9, y=0.5, legend=levels(as.factor(V(network2020)$Country)), 
-       col = coul , bty = "n", pch=16, pt.cex = 1, cex = 1, text.col=, 
+legend(x=-1.9, y=1.5, legend=levels(as.factor(V(network2020)$Country)), 
+       col = cols , bty = "n", pch=16, pt.cex = 1, cex = 1, text.col=, 
        horiz = F, inset = c(0.05, 0.05),
        title = "Country")
 
