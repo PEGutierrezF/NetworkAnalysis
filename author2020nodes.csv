@@ -1,0 +1,318 @@
+Authors,Country,PubID,Affiliation
+FPR,Colombia,1,Latin America
+JDB,Brazil,1,Latin America
+LBC,Brazil,1,Latin America
+ASG,Colombia,1,Latin America
+LJ,Brazil,1,Latin America
+RC,France,2,Europe
+LF,France,2,Europe
+CB,Brazil,2,Latin America
+JFC,France,2,Europe
+AC,France,2,Europe
+BC,France,2,Europe
+VJ,France,2,Europe
+JL,France,2,Europe
+TR,France,2,Europe
+VF,Brazil,2,Latin America
+CL,France,2,Europe
+JM,Brazil,3,Latin America
+DPA,Brazil,3,Latin America
+WAS,Brazil,3,Latin America
+MRW,USA,3,North America
+WKD,USA,3,North America
+CCG,USA,3,North America
+VNL,Brazil,3,Latin America
+DC,Brazil,3,Latin America
+JJC,Brazil,3,Latin America
+TDR,Brazil,4,Latin America
+HBF,Brazil,4,Latin America
+LFS,Brazil,4,Latin America
+CYM,Brazil,4,Latin America
+MMC,Brazil,4,Latin America
+KRF,Brazil,5,Latin America
+MCA,Spain,5,Europe
+CGC,Spain,5,Europe
+DRM,Brazil,5,Latin America
+MSL,Brazil,5,Latin America
+NB,Spain,5,Europe
+MC,Brazil,5,Latin America
+AAS,USA,6,North America
+HAW,USA,6,North America
+JCH,USA,6,North America
+ACE,Ecuador,6,Latin America
+ASF,USA,6,North America
+WCF,USA,6,North America
+JMG,Ecuador,6,Latin America
+BCK,USA,6,North America
+NLP,USA,6,North America
+SAT,USA,6,North America
+KRZ,USA,6,North America
+CKG,USA,6,North America
+DCMP,Brazil,8,Latin America
+PS,Brazil,8,Latin America
+RS,Brazil,8,Latin America
+TPM,Brazil,9,Latin America
+LLA,Brazil,9,Latin America
+WZS,Ecuador,10,Latin America
+FPG,Ecuador,10,Latin America
+VRC,Ecuador,10,Latin America
+CIA,Ecuador,10,Latin America
+JDGT,Colombia,11,Latin America
+VSS,Brazil,11,Latin America
+DKP,Brazil,11,Latin America
+IM,Spain,11,Europe
+SS,Spain,11,Europe
+MGT,Mexico,12,Latin America
+GRV,Mexico,12,Latin America
+TMRP,Mexico,12,Latin America
+LFMC,Mexico,12,Latin America
+CTC,Mexico,12,Latin America
+SL,Mexico,12,Latin America
+EJIP,Argentina,13,Latin America
+SMG,Argentina,13,Latin America
+MLG,Argentina,13,Latin America
+FR,Argentina,13,Latin America
+GFH,Argentina,13,Latin America
+ED,Argentina,13,Latin America
+CF,Argentina,15,Latin America
+KJM,Scotland,15,Europe
+MPK,England,15,Europe
+FSM,Argentina,15,Latin America
+FW,Zambia,15,Africa
+HS,Zambia,15,Africa
+AR,USA,16,North America
+NMB,USA,16,North America
+AMR,USA,16,North America
+JFS,USA,16,North America
+AMMS,Colombia,18,Latin America
+GG,Colombia,18,Latin America
+LGD,Colombia,18,Latin America
+CACM,Mexico,18,Latin America
+CARF,Brazil,19,Latin America
+JH,Finland,19,Europe
+JOZ,Brazil,19,Latin America
+SF,Brazil,19,Latin America
+MVC,Brazil,19,Latin America
+LC,Brazil,19,Latin America
+PEGF,Costa Rica,20,Latin America
+RE,Ecuador,21,Latin America
+PA,Ecuador,21,Latin America
+SCF,France,21,Europe
+OD,France,21,Europe
+DJ,Denmark,21,Europe
+VCP,Ecuador,21,Latin America
+APR,Colombia,22,Latin America
+CETT,Colombia,22,Latin America
+NAR,Colombia,22,Latin America
+ASGP,Argentina,23,Latin America
+JJN,Argentina,23,Latin America
+SLC,Argentina,23,Latin America
+LIG,Argentina,23,Latin America
+FQA,Costa Rica,24,Latin America
+DSU,Costa Rica,24,Latin America
+RNGG,Colombia,25,Latin America
+KSJT,Colombia,25,Latin America
+EMOP,Colombia,25,Latin America
+VSR,Brazil,25,Latin America
+PAOS,Colombia,25,Latin America
+FARP,Colombia,25,Latin America
+AMC,Panama,26,Latin America
+KS,Panama,26,Latin America
+CFA,Panama,26,Latin America
+KAC,Panama,26,Latin America
+LARC,Panama,26,Latin America
+LCM,Panama,26,Latin America
+LFL,Panama,26,Latin America
+RCGL,Brazil,28,Latin America
+LMP,Brazil,28,Latin America
+LAVB,Brazil,28,Latin America
+JISB,Brazil,28,Latin America
+LSB,Brazil,29,Latin America
+ELL,Brazil,29,Latin America
+ZAS,Brazil,29,Latin America
+DRGRB,Brazil,29,Latin America
+LASM,Brazil,33,Latin America
+GRD,Brazil,33,Latin America
+WRMS,Brazil,33,Latin America
+LRCL,Brazil,33,Latin America
+AYC,Panama,34,Latin America
+RGG,Panama,34,Latin America
+CA,Panama,34,Latin America
+EPS,Brazil,35,Latin America
+HHW,Canada,35,North America
+SFBF,Brazil,35,Latin America
+TS,Brazil,35,Latin America
+EK,France,36,Europe
+DWR,Panama,36,Latin America
+REC,Ecuador,36,Latin America
+ALLS,Brazil,37,Latin America
+PWL,Brazil,37,Latin America
+JA,Brazil,37,Latin America
+MMP,Brazil,37,Latin America
+MJF,Portugal,37,Europe
+JSS,Brazil,38,Latin America
+LLW,Brazil,38,Latin America
+LTB,Brazil,38,Latin America
+ATBG,Brazil,38,Latin America
+LPM,Brazil,39,Latin America
+SRMC,Brazil,39,Latin America
+DSV,Brazil,39,Latin America
+MSK,USA,40,North America
+CLZ,Ecuador,40,Latin America
+MLGA,Ecuador,40,Latin America
+GCA,Colombia,41,Latin America
+KRP,Colombia,41,Latin America
+JD,Colombia,41,Latin America
+TJDG,Colombia,41,Latin America
+RAB,Brazil,42,Latin America
+JF,Australia,42,Oceania
+BEL,Brazil,42,Latin America
+VMS,Brazil,42,Latin America
+BDV,Brazil,42,Latin America
+CY,USA,43,North America
+SJW,USA,43,North America
+ATR,USA,43,North America
+ISW,Costa Rica,43,Latin America
+SC,USA,43,North America
+MCF,USA,43,North America
+CM,Argentina,44,Latin America
+CN,Argentina,44,Latin America
+DADS,Argentina,44,Latin America
+DE,Argentina,44,Latin America
+MCZ,Colombia,44,Latin America
+PF,Chile,44,Latin America
+PP,Argentina,44,Latin America
+DG,Argentina,44,Latin America
+JAM,Argentina,44,Latin America
+REP,Argentina,44,Latin America
+CVZ,Chile,44,Latin America
+LMB,Brazil,45,Latin America
+DSM,Brazil,45,Latin America
+VLL,Brazil,45,Latin America
+KTT,Finland,45,Europe
+JJM,Finland,45,Europe
+JS,Finland,45,Europe
+NF,Chile,46,Latin America
+LGDZ,Chile,46,Latin America
+HV,Chile,46,Latin America
+JRR,Chile,46,Latin America
+RJC,USA,47,North America
+TD,USA,47,North America
+CP,USA,47,North America
+GD,Colombia,48,Latin America
+DEGG,Colombia,48,Latin America
+AM,Colombia,48,Latin America
+PC,Colombia,48,Latin America
+SSR,India,49,Asia
+FOR,Brazil,49,Latin America
+JPS,Netherlands,49,Europe
+ASM,Brazil,49,Latin America
+JDT,New Zealand,49,Oceania
+DGN,Australia,49,Oceania
+DPS,Brazil,49,Latin America
+DAZG,Brazil,50,Latin America
+LHT,Brazil,50,Latin America
+GHZA,Brazil,50,Latin America
+APVM,Brazil,50,Latin America
+EB,Brazil,50,Latin America
+JRB,England,50,Europe
+MLO,Brazil,50,Latin America
+MSKO,Argentina,51,Latin America
+MMPE,Argentina,51,Latin America
+LM,Argentina,51,Latin America
+KVS,Brazil,52,Latin America
+WPK,Brazil,52,Latin America
+MFB,Brazil,52,Latin America
+MAF,Brazil,52,Latin America
+MSM,Brazil,52,Latin America
+HL,Brazil,53,Latin America
+NRT,Brazil,53,Latin America
+LFM,Brazil,53,Latin America
+APB,Brazil,54,Latin America
+CGA,Brazil,54,Latin America
+AF,Brazil,54,Latin America
+JDG,Spain,54,Europe
+DGP,Brazil,54,Latin America
+RSR,Brazil,55,Latin America
+NK,Brazil,55,Latin America
+BMC,Brazil,55,Latin America
+CALR,Brazil,55,Latin America
+ASC,Brazil,55,Latin America
+GDC,Brazil,55,Latin America
+RB,Brazil,55,Latin America
+JAB,Brazil,55,Latin America
+DAS,Brazil,55,Latin America
+CI,Ecuador,57,Latin America
+RLD,Brazil,58,Latin America
+MPN,Brazil,58,Latin America
+PPS,Chile,59,Latin America
+MGM,Costa Rica,59,Latin America
+AS,Chile,59,Latin America
+AA,Chile,59,Latin America
+RU,Chile,59,Latin America
+BWS,USA,60,North America
+JMB,USA,60,North America
+DHF,USA,60,North America
+WRF,USA,60,North America
+TGO,Peru,60,Latin America
+AH,Peru,60,Latin America
+JKJ,USA,60,North America
+MA,USA,60,North America
+DSS,Canada,61,North America
+MKT,France,61,Europe
+AAMM,Canada,61,North America
+NAM,Brazil,61,Latin America
+DAM,USA,61,North America
+BCA,France,61,Europe
+GQR,Brazil,61,Latin America
+VFF,Brazil,61,Latin America
+IMB,Argentina,61,Latin America
+ODD,France,61,Europe
+EH,Canada,61,North America
+TBA,Canada,61,North America
+GCOP,Brazil,61,Latin America
+FOB,Colombia,61,Latin America
+JSL,Brazil,61,Latin America
+GM,Argentina,61,Latin America
+PAPA,Brazil,61,Latin America
+RF,Argentina,61,Latin America
+REE,Colombia,61,Latin America
+ASL,Canada,61,North America
+PMO,Brazil,61,Latin America
+ABC,Brazil,61,Latin America
+EJC,Brazil,62,Latin America
+JCM,Brazil,64,Latin America
+FC,Uruguay,65,Latin America
+SM,Uruguay,65,Latin America
+MV,Uruguay,65,Latin America
+VSU,Brazil,68,Latin America
+SFM,Brazil,68,Latin America
+CV,Ecuador,69,Latin America
+MR,Spain,69,Europe
+NP,Spain,69,Europe
+JFGP,Brazil,70,Latin America
+ES,Brazil,70,Latin America
+CEC,Brazil,70,Latin America
+GAPA,Colombia,71,Latin America
+CJGS,Colombia,71,Latin America
+CEGM,Colombia,71,Latin America
+JGB,Brazil,72,Latin America
+RTM,Brazil,72,Latin America
+JLN,Brazil,72,Latin America
+VCO,Brazil,72,Latin America
+RMH,USA,72,Latin America
+FRP,Brazil,72,Latin America
+NH,Brazil,72,Latin America
+CVS,Brazil,73,Latin America
+RH,Brazil,73,Latin America
+FVN,Brazil,74,Latin America
+FHS,Brazil,74,Latin America
+APC,Brazil,74,Latin America
+RJCO,Belgium,76,Europe
+MAEF,Belgium,76,Europe
+KL,Belgium,76,Europe
+LVB,Belgium,76,Europe
+GP,Ecuador,76,Latin America
+FCS,Ecuador,76,Latin America
+IN,Belgium,76,Europe
+PLMG,Belgium,76,Europe

@@ -13,28 +13,42 @@ library(ggraph)
 library(ggnetwork)
 library(ITNr)
 library(intergraph)
+library(patchwork)
 
 rm(list=ls())
 source_file = read.csv(file.choose(), sep = ";", header = F)
 
 
 
-df2000<- read.csv("autor2000.csv")
-df2000nodes<- read.csv("autor2000nodes.csv")
+df2000<- read.csv("author2000.csv")
+df2000a <- df2020 %>% select(main, coauthor)
+df2000a
+
+df2000nodes<- read.csv("author2000nodes.csv")
+df2000b <- df2020nodes %>% select(Authors, Country, Region)
+df2000b
 
 network2000 <- graph_from_data_frame(d=df2000, vertices=df2000nodes, directed=F) # covert in a igraph
 
-plot(network2000)
+p1 <- ggraph(network2000,layout = "gem")+
+        geom_edge_link0(edge_colour = "black")+
+        geom_node_point(aes(fill = Region),shape = 21,size = 5,
+                        show.legend = FALSE)+
+        #  scale_edge_colour_brewer(palette = "Set1") +
+        scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                                   "Europe" = "#7fc97f", "LA"="#4575b4",
+                                   'North America'= "#d73027", "Oceania"="#c994c7"))+
+        labs(title="Collaborations in papers from 2000") +
+        theme_bw()+
+        theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+        theme(axis.ticks.x = element_blank(),
+              axis.text.x = element_blank()) +
+        theme(axis.ticks.y = element_blank(),
+              axis.text.y = element_blank()) +
+        theme(axis.title.x = element_blank(),
+              axis.title.y = element_blank())
 
-plot(network2000, edge.arrow.size=.2, edge.color="black", #line color
-     vertex.color="lightblue", vertex.frame.color="lightblue", # bubble color
-     vertex.label=V(network2000)$media, vertex.label.color="black") # letters
-
-
-E(network2000)
-V(network2000)
-network2000[]
-
+p1
 centr_degree(network2000)$centralization
 graph.density(network2000)
 
@@ -43,30 +57,51 @@ graph.density(network2000)
 # 2020 --------------------------------------------------------------------
 ###########################################################################
 
-# MC, AR 20, LJ 29-39, LFL 34, VCP 36, DJ 40, ED 44, TS 45 53, JH 45 49, VSS 45, DKP 53
+# MC 64, AR 20, LJ 29-39, LFL 34, VCP 36, DJ 40 57, ED 44, TS 45 53, JH 45 49, VSS 45, DKP 53
+# VCP 57, RE 57, PA 57, SCF 57, OD 57, RC 61, CL 61, JFC 61, MSL 64, CETT 71
+# FOR 72, SFBF 72
 
-df2020<- read.csv("autor2020.csv")
+df2020<- read.csv("author2020.csv")
 df2020a <- df2020 %>% select(main, coauthor)
 df2020a
 
-df2020nodes<- read.csv("autor2020nodes.csv")
-df2020b <- df2020nodes %>% select(Authors, Country)
+df2020nodes<- read.csv("author2020nodes.csv")
+df2020b <- df2020nodes %>% select(Authors, Country, Affiliation)
 df2020b
 
 network2020 <- graph_from_data_frame(df2020a, vertices=df2020b, directed=F) # covert in a igraph
 network2020[]
-plot.igraph(network2020)
 
 
-head(highschool)
-head(df2020a)
+#http://mr.schochastics.net/netVizR.html
+p2 <- ggraph(network2020,"stress", bbox = 15)+
+        geom_edge_link0(edge_colour = "black")+
+        geom_node_point(aes(fill = Affiliation),shape = 21,size = 5)+
+      #  scale_edge_colour_brewer(palette = "Set1") +
+        scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                                   "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                                   'North America'= "#d73027", "Oceania"="#c994c7"))+
+        labs(title="Collaborations in papers from 2020") +
+        theme_bw()+
+        theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+        theme(axis.ticks.x = element_blank(),
+              axis.text.x = element_blank()) +
+        theme(axis.ticks.y = element_blank(),
+              axis.text.y = element_blank()) +
+        theme(axis.title.x = element_blank(),
+              axis.title.y = element_blank())
+        
+        
+p1 + p2
 
-g <- graph_from_data_frame(highschool)
+
+
+
 
 graph <- graph_from_data_frame(df2020a)
 
 colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
-cols <- colfunc(234)
+cols <- colfunc(286)
 
 ggraph(graph)+
         geom_edge_fan(aes(color = from)) +
