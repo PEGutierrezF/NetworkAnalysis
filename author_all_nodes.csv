@@ -1,4 +1,13 @@
-Authors,Country,PubID,Affiliation,year
+Authors,Country,PubID,Region,year
+MLM,Argentina,1,LA,2000
+LAP,Argentina,1,LA,2000
+JLC,Spain,2,Europe,2000
+SB,Spain,2,Europe,2000
+JR,Venezuela,5,LA,2000
+CC,Venezuela,5,LA,2000
+JAP,Colombia,7,LA,2000
+GR,Colombia,7,LA,2000
+JJR,Colombia,7,LA,2000
 JA,Mexico,1,Latin America,2001
 EGE,Mexico,1,Latin America,2001
 AL,Mexico,1,Latin America,2001
