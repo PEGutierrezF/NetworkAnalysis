@@ -15,8 +15,8 @@ library(ITNr)
 library(intergraph)
 library(patchwork)
 
-rm(list=ls())
-source_file = read.csv(file.choose(), sep = ";", header = F)
+#rm(list=ls())
+#source_file = read.csv(file.choose(), sep = ";", header = F)
 
 
 
