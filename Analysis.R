@@ -89,6 +89,45 @@ p2
 centr_degree(network2001)$centralization
 graph.density(network2001)
 
+
+
+
+###########################################################################
+# 2002 --------------------------------------------------------------------
+###########################################################################
+
+df2002<- read.csv("author2002.csv")
+df2002a <- df2002 %>% select(main, coauthor)
+df2002a
+
+df2002nodes<- read.csv("author2002nodes.csv")
+df2002b <- df2002nodes %>% select(Authors, Country, Affiliation)
+df2002b
+
+network2002 <- graph_from_data_frame(d=df2002, vertices=df2002nodes, directed=F) # covert in a igraph
+
+p3 <- ggraph(network2002,layout = "gem")+
+  geom_edge_link0(edge_colour = "black")+
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+                  show.legend = FALSE)+
+  #  scale_edge_colour_brewer(palette = "Set1") +
+  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                             'North America'= "#d73027", "Oceania"="#c994c7"))+
+  labs(title="Collaborations in papers from 2000") +
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+p3
+centr_degree(network2001)$centralization
+graph.density(network2001)
+
 ###########################################################################
 # 2020 --------------------------------------------------------------------
 ###########################################################################
@@ -110,7 +149,7 @@ network2020[]
 
 
 #http://mr.schochastics.net/netVizR.html
-p3 <- ggraph(network2020,"stress", bbox = 15)+
+p4 <- ggraph(network2020,"stress", bbox = 15)+
         geom_edge_link0(edge_colour = "black")+
         geom_node_point(aes(fill = Affiliation),shape = 21,size = 5)+
       #  scale_edge_colour_brewer(palette = "Set1") +
@@ -126,9 +165,9 @@ p3 <- ggraph(network2020,"stress", bbox = 15)+
               axis.text.y = element_blank()) +
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
-p3        
+p4        
         
-p1 + p2 + p3
+p1 + p2 + p3 + p4
 
 centr_degree(network2020)$centralization
 graph.density(network2020)
