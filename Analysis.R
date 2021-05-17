@@ -125,8 +125,8 @@ p3 <- ggraph(network2002,layout = "gem")+
         axis.title.y = element_blank())
 
 p3
-centr_degree(network2001)$centralization
-graph.density(network2001)
+centr_degree(network2002)$centralization
+graph.density(network2002)
 
 
 ###########################################################################
