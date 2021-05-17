@@ -221,6 +221,7 @@ p5
 p4 + p5
 
 
+
 c_2000 <- graph_from_data_frame(df2000a)
 centr_degree(c_2000)$centralization
 graph.density(c_2000)
