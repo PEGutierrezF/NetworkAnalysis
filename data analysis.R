@@ -16,7 +16,7 @@ data<- read.csv("data.csv")
 head(data)
 
 
-     ggplot(data, aes(x = year, y = value)) +
+     ggplot(data, aes(x = year, y = value, colour=variable)) +
   geom_line(size=1.2) +
   geom_point(size=5) +
   theme_classic()

@@ -220,8 +220,29 @@ p5
         
 p4 + p5
 
-graph <- graph_from_data_frame(df2020a)
-centr_degree(graph)$centralization
+
+c_2000 <- graph_from_data_frame(df2000a)
+centr_degree(c_2000)$centralization
+graph.density(c_2000)
+
+c_2001 <- graph_from_data_frame(df2001a)
+centr_degree(c_2001)$centralization
+graph.density(c_2001)
+
+c_2002 <- graph_from_data_frame(df2002a)
+centr_degree(c_2002)$centralization
+graph.density(c_2002)
+
+c_2019 <- graph_from_data_frame(df2019a)
+centr_degree(c_2019)$centralization
+graph.density(c_2019)
+
+c_2020 <- graph_from_data_frame(df2020a)
+centr_degree(c_2020)$centralization
+graph.density(c_2020)
+
+
+
 
 
 
@@ -264,6 +285,12 @@ plot(network2020, layout = lay,
 
 
 
+# Metrics  ----------------------------------------------------------------
+
+c_2000 <- graph_from_data_frame(df2000a)
+centr_degree(c_2000)$centralization
+graph.density(c_2000)
+
 ggraph(network2020, 'igraph', algorithm = 'tree') + 
         geom_edge_link() +
         ggforce::theme_no_axes()
@@ -288,6 +315,8 @@ plot.igraph(network2020, edge.arrow.size=.5, edge.color="black", #line color
 
 centr_degree(network2020)$centralization
 graph.density(network2020)
+
+
 
 
 # By country --------------------------------------------------------------
