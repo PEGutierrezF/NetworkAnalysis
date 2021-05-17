@@ -133,7 +133,8 @@ graph.density(network2001)
 # 2019 --------------------------------------------------------------------
 ###########################################################################
 
-#KDS 3, MC 21, 29, RMH 29, FOR 34,  PEGF 36
+#KDS 3, MC 21 29 40, RMH 29, FOR 34, 38,  PEGF 36, RRCS 40, JDGT 44,
+# JCDR 44, SS 44, RSR 45, AOM 45, KDS 49, LJ 49 50, AR 52
 
 df2019<- read.csv("author2019.csv")
 df2019a <- df2019 %>% select(main, coauthor)
@@ -143,12 +144,12 @@ df2019nodes<- read.csv("author2019nodes.csv")
 df2019b <- df2019nodes %>% select(Authors, Country, Affiliation)
 df2019b
 
-network2020 <- graph_from_data_frame(df2019a, vertices=df2019b, directed=F) # covert in a igraph
-network2020[]
+network2019 <- graph_from_data_frame(df2019a, vertices=df2019b, directed=F) # covert in a igraph
+network2019[]
 
 
 #http://mr.schochastics.net/netVizR.html
-p4 <- ggraph(network2020,"stress", bbox = 15)+
+p4 <- ggraph(network2019,"stress", bbox = 15)+
   geom_edge_link0(edge_colour = "black")+
   geom_node_point(aes(fill = Affiliation),shape = 21,size = 5)+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -167,8 +168,8 @@ p4
 
 p1 + p4
 
-centr_degree(network2020)$centralization
-graph.density(network2020)
+centr_degree(network2019)$centralization
+graph.density(network2019)
 
 
 ###########################################################################
