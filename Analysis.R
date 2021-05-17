@@ -2,9 +2,8 @@
 
 
 
-#https://www.r-graph-gallery.com/248-igraph-plotting-parameters.html
-# https://kateto.net/wp-content/uploads/2016/06/Polnet%202016%20R%20Network%20Visualization%20Workshop.pdf
-# https://www.r-graph-gallery.com/249-igraph-network-map-a-color.html
+
+
 
 install.packages("intergraph")
 library(igraph)
@@ -49,8 +48,10 @@ p1 <- ggraph(network2000,layout = "gem")+
               axis.title.y = element_blank())
 
 p1
-centr_degree(network2000)$centralization
-graph.density(network2000)
+
+c_2000 <- graph_from_data_frame(df2000a)
+centr_degree(c_2000)$centralization
+graph.density(c_2000)
 
 
 ###########################################################################
@@ -86,8 +87,10 @@ p2 <- ggraph(network2001,layout = "gem")+
         axis.title.y = element_blank())
 
 p2
-centr_degree(network2001)$centralization
-graph.density(network2001)
+
+c_2001 <- graph_from_data_frame(df2001a)
+centr_degree(c_2001)$centralization
+graph.density(c_2001)
 
 
 
@@ -125,8 +128,11 @@ p3 <- ggraph(network2002,layout = "gem")+
         axis.title.y = element_blank())
 
 p3
-centr_degree(network2002)$centralization
-graph.density(network2002)
+
+
+c_2002 <- graph_from_data_frame(df2002a)
+centr_degree(c_2002)$centralization
+graph.density(c_2002)
 
 
 ###########################################################################
@@ -169,8 +175,9 @@ p4
 
 p1 + p4
 
-centr_degree(network2019)$centralization
-graph.density(network2019)
+c_2019 <- graph_from_data_frame(df2019a)
+centr_degree(c_2019)$centralization
+graph.density(c_2019)
 
 
 ###########################################################################
@@ -213,12 +220,10 @@ p5
         
 p4 + p5
 
-centr_degree(network2020)$centralization
-graph.density(network2020)
-
-
-
 graph <- graph_from_data_frame(df2020a)
+centr_degree(graph)$centralization
+
+
 
 colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
 cols <- colfunc(286)

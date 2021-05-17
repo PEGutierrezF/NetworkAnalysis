@@ -9,6 +9,9 @@
 # ---------------------------------------------
 #  
 
+#https://rpubs.com/MarkusLoew/226759
+
+
 data<- read.csv("data.csv")
 head(data)
 
