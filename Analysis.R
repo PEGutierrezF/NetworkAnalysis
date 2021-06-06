@@ -5,7 +5,7 @@
 
 
 
-install.packages("intergraph")
+
 library(igraph)
 library(dplyr)
 library(ggraph)
@@ -37,7 +37,7 @@ p2000 <- ggraph(network2000,layout = "gem")+
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                                    "Europe" = "#7fc97f", "Latin America"="#4575b4",
                                    'North America'= "#d73027", "Oceania"="#c994c7"))+
-        labs(title="Collaborations in papers from 2000") +
+        labs(title="2000") +
         theme_bw()+
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
         theme(axis.ticks.x = element_blank(),
@@ -76,7 +76,7 @@ p2001 <- ggraph(network2001,layout = "gem")+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="Collaborations in papers from 2001") +
+  labs(title="2001") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
   theme(axis.ticks.x = element_blank(),
@@ -117,7 +117,7 @@ p2002 <- ggraph(network2002,layout = "gem")+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="Collaborations in papers from 2002") +
+  labs(title="2002") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
   theme(axis.ticks.x = element_blank(),
@@ -140,7 +140,7 @@ graph.density(c_2002)
 ###########################################################################
 
 df2003<- read.csv("author2003.csv")
-df2003a <- df2002 %>% select(main, coauthor)
+df2003a <- df2003 %>% select(main, coauthor)
 df2003a
 
 df2003nodes<- read.csv("author2003nodes.csv")
@@ -157,7 +157,7 @@ p2003 <- ggraph(network2003,layout = "gem")+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="Collaborations in papers from 2002") +
+  labs(title="2003") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
   theme(axis.ticks.x = element_blank(),
@@ -177,15 +177,15 @@ graph.density(c_2003)
 
 
 ###########################################################################
-# 2003 --------------------------------------------------------------------
+# 2004 --------------------------------------------------------------------
 ###########################################################################
 
 df2004<- read.csv("author2004.csv")
-df2004a <- df2002 %>% select(main, coauthor)
+df2004a <- df2004 %>% select(main, coauthor)
 df2004a
 
 df2004nodes<- read.csv("author2004nodes.csv")
-df2004b <- df2003nodes %>% select(Authors, Country, Affiliation)
+df2004b <- df2004nodes %>% select(Authors, Country, Affiliation)
 df2004b
 
 network2004 <- graph_from_data_frame(d=df2004, vertices=df2004nodes, directed=F) # covert in a igraph
@@ -198,7 +198,7 @@ p2004 <- ggraph(network2004,layout = "gem")+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="Collaborations in papers from 2004") +
+  labs(title="2004") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
   theme(axis.ticks.x = element_blank(),
@@ -243,7 +243,7 @@ p2019 <- ggraph(network2019,"stress", bbox = 15)+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="Collaborations in papers from 2019") +
+  labs(title="2019") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
   theme(axis.ticks.x = element_blank(),
@@ -254,7 +254,7 @@ p2019 <- ggraph(network2019,"stress", bbox = 15)+
         axis.title.y = element_blank())
 p2019        
 
-p1 + p4
+
 
 c_2019 <- graph_from_data_frame(df2019a)
 centr_degree(c_2019)$centralization
@@ -284,11 +284,12 @@ network2020[]
 #http://mr.schochastics.net/netVizR.html
 p2020 <- ggraph(network2020,"stress", bbox = 15)+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation),shape = 21,size = 1)+
+        geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+                        show.legend = FALSE)+                         #Para poner la leyenda
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                                    "Europe" = "#7fc97f", "Latin America"="#4575b4",
                                    'North America'= "#d73027", "Oceania"="#c994c7"))+
-        labs(title="Collaborations in papers from 2020") +
+        labs(title="2020") +
         theme_bw()+
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
         theme(axis.ticks.x = element_blank(),
@@ -301,7 +302,7 @@ p2020
        
 
  
-(p2000 + p2001 + p2002) / (p2003 + p2019 + p2020)
+(p2000 + p2001 + p2002) / (p2003 + p2004 + p2019 + p2020)
 
 
 
