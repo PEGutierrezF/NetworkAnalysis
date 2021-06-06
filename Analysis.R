@@ -136,6 +136,46 @@ graph.density(c_2002)
 
 
 ###########################################################################
+# 2003 --------------------------------------------------------------------
+###########################################################################
+
+df2003<- read.csv("author2003.csv")
+df2003a <- df2002 %>% select(main, coauthor)
+df2003a
+
+df2003nodes<- read.csv("author2003nodes.csv")
+df2003b <- df2003nodes %>% select(Authors, Country, Affiliation)
+df2003b
+
+network2003 <- graph_from_data_frame(d=df2003, vertices=df2003nodes, directed=F) # covert in a igraph
+
+p2003 <- ggraph(network2003,layout = "gem")+
+  geom_edge_link0(edge_colour = "black")+
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+                  show.legend = FALSE)+
+  #  scale_edge_colour_brewer(palette = "Set1") +
+  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                             'North America'= "#d73027", "Oceania"="#c994c7"))+
+  labs(title="Collaborations in papers from 2002") +
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+p2003
+
+
+c_2003 <- graph_from_data_frame(df2003a)
+centr_degree(c_2003)$centralization
+graph.density(c_2003)
+
+
+###########################################################################
 # 2019 --------------------------------------------------------------------
 ###########################################################################
 
