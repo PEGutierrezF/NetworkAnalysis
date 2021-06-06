@@ -29,9 +29,9 @@ df2000b
 
 network2000 <- graph_from_data_frame(d=df2000, vertices=df2000nodes, directed=F) # covert in a igraph
 
-p1 <- ggraph(network2000,layout = "gem")+
+p2000 <- ggraph(network2000,layout = "gem")+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+        geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
                         show.legend = FALSE)+
         #  scale_edge_colour_brewer(palette = "Set1") +
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -47,7 +47,7 @@ p1 <- ggraph(network2000,layout = "gem")+
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
 
-p1
+p2000
 
 c_2000 <- graph_from_data_frame(df2000a)
 centr_degree(c_2000)$centralization
@@ -68,9 +68,9 @@ df2001b
 
 network2001 <- graph_from_data_frame(d=df2001, vertices=df2001nodes, directed=F) # covert in a igraph
 
-p2 <- ggraph(network2001,layout = "gem")+
+p2001 <- ggraph(network2001,layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -86,7 +86,7 @@ p2 <- ggraph(network2001,layout = "gem")+
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank())
 
-p2
+p2001
 
 c_2001 <- graph_from_data_frame(df2001a)
 centr_degree(c_2001)$centralization
@@ -109,9 +109,9 @@ df2002b
 
 network2002 <- graph_from_data_frame(d=df2002, vertices=df2002nodes, directed=F) # covert in a igraph
 
-p3 <- ggraph(network2002,layout = "gem")+
+p2002 <- ggraph(network2002,layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -127,7 +127,7 @@ p3 <- ggraph(network2002,layout = "gem")+
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank())
 
-p3
+p2002
 
 
 c_2002 <- graph_from_data_frame(df2002a)
@@ -151,7 +151,7 @@ network2003 <- graph_from_data_frame(d=df2003, vertices=df2003nodes, directed=F)
 
 p2003 <- ggraph(network2003,layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -175,6 +175,47 @@ centr_degree(c_2003)$centralization
 graph.density(c_2003)
 
 
+
+###########################################################################
+# 2003 --------------------------------------------------------------------
+###########################################################################
+
+df2004<- read.csv("author2004.csv")
+df2004a <- df2002 %>% select(main, coauthor)
+df2004a
+
+df2004nodes<- read.csv("author2004nodes.csv")
+df2004b <- df2003nodes %>% select(Authors, Country, Affiliation)
+df2004b
+
+network2004 <- graph_from_data_frame(d=df2004, vertices=df2004nodes, directed=F) # covert in a igraph
+
+p2004 <- ggraph(network2004,layout = "gem")+
+  geom_edge_link0(edge_colour = "black")+
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+                  show.legend = FALSE)+
+  #  scale_edge_colour_brewer(palette = "Set1") +
+  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                             'North America'= "#d73027", "Oceania"="#c994c7"))+
+  labs(title="Collaborations in papers from 2004") +
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+p2004
+
+
+c_2004 <- graph_from_data_frame(df2004a)
+centr_degree(c_2004)$centralization
+graph.density(c_2004)
+
+
 ###########################################################################
 # 2019 --------------------------------------------------------------------
 ###########################################################################
@@ -195,9 +236,9 @@ network2019[]
 
 
 #http://mr.schochastics.net/netVizR.html
-p4 <- ggraph(network2019,"stress", bbox = 15)+
+p2019 <- ggraph(network2019,"stress", bbox = 15)+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 5,
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
                   show.legend = FALSE)+
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
@@ -211,7 +252,7 @@ p4 <- ggraph(network2019,"stress", bbox = 15)+
         axis.text.y = element_blank()) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank())
-p4        
+p2019        
 
 p1 + p4
 
@@ -241,9 +282,9 @@ network2020[]
 
 
 #http://mr.schochastics.net/netVizR.html
-p5 <- ggraph(network2020,"stress", bbox = 15)+
+p2020 <- ggraph(network2020,"stress", bbox = 15)+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation),shape = 21,size = 5)+
+        geom_node_point(aes(fill = Affiliation),shape = 21,size = 1)+
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                                    "Europe" = "#7fc97f", "Latin America"="#4575b4",
                                    'North America'= "#d73027", "Oceania"="#c994c7"))+
@@ -256,9 +297,13 @@ p5 <- ggraph(network2020,"stress", bbox = 15)+
               axis.text.y = element_blank()) +
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
-p5        
-        
-p4 + p5
+p2020        
+       
+
+ 
+(p2000 + p2001 + p2002) / (p2003 + p2019 + p2020)
+
+
 
 
 
