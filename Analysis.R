@@ -216,6 +216,46 @@ centr_degree(c_2004)$centralization
 graph.density(c_2004)
 
 
+
+###########################################################################
+# 2005 --------------------------------------------------------------------
+###########################################################################
+
+df2005<- read.csv("author2005.csv")
+df2005a <- df2005 %>% select(main, coauthor)
+df2005a
+
+df2005nodes<- read.csv("author2005nodes.csv")
+df2005b <- df2005nodes %>% select(Authors, Country, Affiliation)
+df2005b
+
+network2005 <- graph_from_data_frame(d=df2005, vertices=df2005nodes, directed=F) # covert in a igraph
+
+p2005 <- ggraph(network2005,layout = "gem")+
+  geom_edge_link0(edge_colour = "black")+
+  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+                  show.legend = FALSE)+
+  #  scale_edge_colour_brewer(palette = "Set1") +
+  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                             'North America'= "#d73027", "Oceania"="#c994c7"))+
+  labs(title="2005") +
+  theme_bw()+
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+  theme(axis.ticks.x = element_blank(),
+        axis.text.x = element_blank()) +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank()) +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank())
+
+p2005
+
+
+c_2005 <- graph_from_data_frame(df2005a)
+centr_degree(c_2005)$centralization
+graph.density(c_2005)
+
 ###########################################################################
 # 2019 --------------------------------------------------------------------
 ###########################################################################
