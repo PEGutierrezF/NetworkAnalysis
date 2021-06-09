@@ -342,7 +342,11 @@ p2020
        
 
  
-p2000 + p2001 + p2002 + p2003 + p2004 + p2005 + p2019 + p2020
+Figure <- p2000 + p2001 + p2002 + p2003 + p2004 + p2005 + p2019 + p2020
+Figure
+
+
+Figure + ggsave("Figure 1.jpeg",width = 210, height = 297, units = "mm")
 
 
 
