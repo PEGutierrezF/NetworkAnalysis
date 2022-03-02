@@ -2,17 +2,17 @@
 
 
 
+# ---------------------------------------------
+# Network Analysis
+# 01 Mar 2022
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+#  
 
 
 
 
-library(igraph)
-library(dplyr)
-library(ggraph)
-library(ggnetwork)
-library(ITNr)
-library(intergraph)
-library(patchwork)
 
 #rm(list=ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
