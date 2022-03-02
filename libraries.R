@@ -12,13 +12,13 @@
 
 
 
-
 # cleans global environment
 rm(list = ls())
 
 
-libraries <- c("ggplot2","igraph", "dplyr", "ggraph", 
-               "ggnetwork","ITNr", "intergraph","patchwork")
+libraries <- c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
+               "ggnetwork","ITNr", "intergraph","patchwork",
+               "xts","emmeans", 'quantmod', "ggpubr")
 lapply(libraries, require, character.only = TRUE)
 
 

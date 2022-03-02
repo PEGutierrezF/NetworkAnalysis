@@ -11,8 +11,11 @@
 
 #https://rpubs.com/MarkusLoew/226759
 
-libraries <- c("tidyverse", "ggplot2", "xts","emmeans", 'quantmod', "ggpubr")
-lapply(libraries, require, character.only = TRUE)
+
+# cleans global environment
+rm(list = ls())
+
+
 
 data <- tribble(~year, ~Centralization, 
                 '2000-12-31', 0.0625,

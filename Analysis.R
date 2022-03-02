@@ -12,10 +12,15 @@
 
 
 
-
-
-#rm(list=ls())
+# cleans global environment
+rm(list = ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
+
+
+data.per.category <- "D:/Curriculum/13_ Documentos/DEI LTER/data/per.category.xlsx"
+excel_sheets(path = data.per.category)
+
+role <- read_excel(path = data.per.category, sheet = "role")
 
 
 
