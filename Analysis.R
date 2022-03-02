@@ -24,13 +24,13 @@ a.2000 <- read_excel(path = network.data, sheet = "2000authors")
 n.2000 <- read_excel(path = network.data, sheet = "2000nodes")
 
 df2000a <- a.2000 %>% select(main, coauthor)
-df2000b <- n.2000 %>% select(Authors, Country, Affiliation)
+df2000b <- n.2000 %>% select(abrev, country, affiliation)
 
-network2000 <- graph_from_data_frame(d=df2000a, vertices=n.2000, directed=F) # covert in a igraph
+network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=F) # covert in a igraph
 
 p2000 <- ggraph(network2000,layout = "gem")+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation),shape = 21,size = 3,
+        geom_node_point(aes(fill = affiliation),shape = 21,size = 3,
                         show.legend = FALSE)+
         #  scale_edge_colour_brewer(palette = "Set1") +
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
