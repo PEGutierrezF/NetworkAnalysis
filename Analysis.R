@@ -11,8 +11,9 @@
 #  
 
 
-https://www.r-bloggers.com/2017/05/network-analysis-of-game-of-thrones-family-ties/
-  https://www.jstor.org/stable/pdf/26447831.pdf?refreqid=excelsior%3A5e716af69759e46e51fc7561026d4596&ab_segments=&origin=
+# https://www.r-bloggers.com/2017/05/network-analysis-of-game-of-thrones-family-ties/
+# https://www.jstor.org/stable/pdf/26447831.pdf?refreqid=excelsior%3A5e716af69759e46e51fc7561026d4596&ab_segments=&origin=
+
 # cleans global environment
 rm(list = ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
