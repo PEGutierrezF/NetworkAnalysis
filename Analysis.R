@@ -35,7 +35,8 @@ df2000b <- n.2000 %>% select(abrev, country, affiliation)
 
 network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=T) # covert in a igraph
 
-
+{
+set.seed(14)
 p2000 <- ggraph(network2000,layout = "gem")+
         geom_edge_link0(edge_colour = "black")+
         geom_node_point(aes(fill = affiliation),shape = 21,size = 3,
@@ -53,7 +54,7 @@ p2000 <- ggraph(network2000,layout = "gem")+
               axis.text.y = element_blank()) +
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
-
+}
 p2000
 
 c_2000 <- graph_from_data_frame(df2000a)
