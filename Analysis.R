@@ -11,7 +11,8 @@
 #  
 
 
-
+https://www.r-bloggers.com/2017/05/network-analysis-of-game-of-thrones-family-ties/
+  https://www.jstor.org/stable/pdf/26447831.pdf?refreqid=excelsior%3A5e716af69759e46e51fc7561026d4596&ab_segments=&origin=
 # cleans global environment
 rm(list = ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
@@ -20,6 +21,11 @@ rm(list = ls())
 network.data <- "data/data.xlsx"
 excel_sheets(path = network.data)
 
+
+###########################################################################
+# 2000 --------------------------------------------------------------------
+###########################################################################
+
 a.2000 <- read_excel(path = network.data, sheet = "2000authors")
 n.2000 <- read_excel(path = network.data, sheet = "2000nodes")
 
@@ -27,6 +33,7 @@ df2000a <- a.2000 %>% select(main, coauthor)
 df2000b <- n.2000 %>% select(abrev, country, affiliation)
 
 network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=F) # covert in a igraph
+
 
 p2000 <- ggraph(network2000,layout = "gem")+
         geom_edge_link0(edge_colour = "black")+
@@ -49,7 +56,7 @@ p2000 <- ggraph(network2000,layout = "gem")+
 p2000
 
 c_2000 <- graph_from_data_frame(df2000a)
-centr_degree(c_2000)$centralization
+centr_degree(c_2000, mode = "total")$centralization
 graph.density(c_2000)
 
 
