@@ -375,9 +375,7 @@ c_2019 <- graph_from_data_frame(df2019a)
 centr_degree(c_2019)$centralization
 graph.density(c_2019)
 
-c_2020 <- graph_from_data_frame(df2020a)
-centr_degree(c_2020)$centralization
-graph.density(c_2020)
+
 
 
 
