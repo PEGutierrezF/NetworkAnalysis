@@ -39,12 +39,14 @@ network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=T) # 
 set.seed(14)
 p2000 <- ggraph(network2000,layout = "gem")+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = affiliation),shape = 21,size = 3,
+        geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
                         show.legend = FALSE)+
         #  scale_edge_colour_brewer(palette = "Set1") +
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                                    "Europe" = "#7fc97f", "Latin America"="#4575b4",
                                    'North America'= "#d73027", "Oceania"="#c994c7"))+
+        scale_shape_manual(values = c(21, 22,23, 24, 25,7))+
+  
         labs(title="2000") +
         theme_bw()+
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
@@ -57,9 +59,7 @@ p2000 <- ggraph(network2000,layout = "gem")+
 }
 p2000
 
-c_2000 <- graph_from_data_frame(df2000a)
-centr_degree(c_2000, mode = "total")$centralization
-graph.density(c_2000)
+
 
 
 ###########################################################################
@@ -325,18 +325,21 @@ df2020nodes<- read.csv("author2020nodes.csv")
 df2020b <- df2020nodes %>% select(Authors, Country, Affiliation)
 df2020b
 
-network2020 <- graph_from_data_frame(df2020a, vertices=df2020b, directed=F) # covert in a igraph
+network2020 <- graph_from_data_frame(df2020a, vertices=df2020b, directed=TRUE) # covert in a igraph
 network2020[]
 
+df <- as.undirected(network2020, mode = "collapse")
 
 #http://mr.schochastics.net/netVizR.html
+{set.seed(14)
 p2020 <- ggraph(network2020,"stress", bbox = 15)+
         geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+        geom_node_point(aes(fill = Affiliation, shape= Affiliation), size = 5,
                         show.legend = FALSE)+                         #Para poner la leyenda
         scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                                    "Europe" = "#7fc97f", "Latin America"="#4575b4",
                                    'North America'= "#d73027", "Oceania"="#c994c7"))+
+  scale_shape_manual(values = c(21, 22, 23, 24, 25, 10))+ #22 Asia, 24 LA
         labs(title="2020") +
         theme_bw()+
         theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
@@ -346,12 +349,8 @@ p2020 <- ggraph(network2020,"stress", bbox = 15)+
               axis.text.y = element_blank()) +
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
-p2020        
-       
-
- 
-Figure <- p2000 + p2001 + p2002 + p2003 + p2004 + p2005 + p2019 + p2020
-Figure
+}
+p2020
 
 
 Figure + ggsave("Figure 1.jpeg",width = 210, height = 297, units = "mm")
@@ -379,6 +378,9 @@ graph.density(c_2019)
 c_2020 <- graph_from_data_frame(df2020a)
 centr_degree(c_2020)$centralization
 graph.density(c_2020)
+
+
+
 
 
 

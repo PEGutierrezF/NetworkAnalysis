@@ -1,0 +1,10 @@
+---
+title: "Methods"
+author: "Pablo E. Gutiérrez-Fonseca"
+date: '2022-05-08'
+output: pdf_document
+---
+
+## Function graph_from_data_frame()
+We used 'directed = TRUE' since Source (main author) and Target (co-authors) are meaningful.
+# https://www.jessesadler.com/post/network-analysis-with-r/
