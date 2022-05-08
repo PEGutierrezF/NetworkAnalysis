@@ -15,9 +15,9 @@
 # cleans global environment
 rm(list = ls())
 
-install.packages(c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
-                  "ggnetwork","ITNr", "intergraph","patchwork",
-                  "xts","emmeans", 'quantmod', "ggpubr"))
+# install.packages(c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
+#                  "ggnetwork","ITNr", "intergraph","patchwork",
+#                  "xts","emmeans", 'quantmod', "ggpubr"))
 
 libraries <- c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
                "ggnetwork","ITNr", "intergraph","patchwork",

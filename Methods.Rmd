@@ -10,6 +10,10 @@ output: pdf_document
 https://www.jessesadler.com/post/network-analysis-with-r/
 
 
+## Find duplicate in a column 
+duplicated(df$column)
+
+
 ## References
 
 https://www.r-bloggers.com/2017/05/network-analysis-of-game-of-thrones-family-ties/

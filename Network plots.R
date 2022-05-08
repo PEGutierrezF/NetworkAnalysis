@@ -65,24 +65,32 @@ p2000
 # 2001 --------------------------------------------------------------------
 ###########################################################################
 
-df2001<- read.csv("author2001.csv")
-df2001a <- df2001 %>% select(main, coauthor)
-df2001a
+# Upload data from excel
+a.2001 <- read_excel(path = network.data, sheet = "2001authors")
+n.2001 <- read_excel(path = network.data, sheet = "2001nodes")
 
-df2001nodes<- read.csv("author2001nodes.csv")
-df2001b <- df2001nodes %>% select(Authors, Country, Affiliation)
-df2001b
+# Select columns
+df2001.a <- a.2001 %>% select(main, coauthor)
 
-network2001 <- graph_from_data_frame(d=df2001, vertices=df2001nodes, directed=F) # covert in a igraph
+# remove duplicate
+n.2001 <- n.2001[-c(18, 19), ]
+df2001.n <- n.2001 %>% select(abrev, country, affiliation)
 
+## covert in a igraph
+network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=TRUE)
+
+# plot
+{set.seed(14)
 p2001 <- ggraph(network2001,layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+  geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
+  scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+  
   labs(title="2001") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
@@ -92,13 +100,9 @@ p2001 <- ggraph(network2001,layout = "gem")+
         axis.text.y = element_blank()) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank())
+}
 
 p2001
-
-c_2001 <- graph_from_data_frame(df2001a)
-centr_degree(c_2001)$centralization
-graph.density(c_2001)
-
 
 
 
