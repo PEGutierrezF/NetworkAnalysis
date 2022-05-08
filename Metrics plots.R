@@ -37,7 +37,7 @@ ggplot(data, aes(x = year, y = Centralization)) +
 
 
 
-data<- read.csv("data.csv")
+data <- read.csv("data.csv")
 head(data)
 
 centr <- filter(data, variable=="Centralization")

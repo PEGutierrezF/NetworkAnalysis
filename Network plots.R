@@ -55,8 +55,9 @@ p2000 <- ggraph(network2000,layout = "gem")+
         theme(axis.title.x = element_blank(),
               axis.title.y = element_blank())
 }
-p2000
 
+p2000
+#
 
 
 
@@ -354,138 +355,6 @@ p2020
 Figure + ggsave("Figure 1.jpeg",width = 210, height = 297, units = "mm")
 
 
-
-
-
-c_2000 <- graph_from_data_frame(df2000a)
-centr_degree(c_2000)$centralization
-graph.density(c_2000)
-
-c_2001 <- graph_from_data_frame(df2001a)
-centr_degree(c_2001)$centralization
-graph.density(c_2001)
-
-c_2002 <- graph_from_data_frame(df2002a)
-centr_degree(c_2002)$centralization
-graph.density(c_2002)
-
-c_2019 <- graph_from_data_frame(df2019a)
-centr_degree(c_2019)$centralization
-graph.density(c_2019)
-
-
-
-
-
-
-
-
-
-
-
-colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
-cols <- colfunc(286)
-
-ggraph(graph)+
-        geom_edge_fan(aes(color = from)) +
-        scale_edge_colour_gradient(low = "#00008B", high = "#63B8FF") + 
-        geom_node_point(color = cols, show.legend = F, size = 3)
-
-
-ggraph(graph) + 
-        geom_edge_fan(alpha=0.5) + 
-        geom_node_point(
-                aes(color=cols,size=2),
-                show.legend = FALSE)+
-        theme_graph()
-
-
-
-
-ceb <- cluster_edge_betweenness(network2020) 
-
-dendPlot(ceb, mode="hclust")
-plot(ceb, network2020,
-     vertex.label=NA) 
-
-
-
-
-lay <- layout_with_drl(network2020, options=list(simmer.attraction=0))
-
-plot(network2020, layout = lay,
-     vertex.size = 2, vertex.label.cex = 0.9,
-     vertex.label.color = 'black', vertex.label.family = 'arial',
-     vertex.label.dist = 0.2, vertex.frame.color = 'white',
-     edge.arrow.size = 0.2, edge.curved = TRUE)
-
-
-
-
-# Metrics  ----------------------------------------------------------------
-
-c_2000 <- graph_from_data_frame(df2000a)
-centr_degree(c_2000)$centralization
-graph.density(c_2000)
-
-ggraph(network2020, 'igraph', algorithm = 'tree') + 
-        geom_edge_link() +
-        ggforce::theme_no_axes()
-
-ggraph(network2020, 'igraph', algorithm = 'tree', circular = TRUE) + 
-        geom_edge_diagonal(aes(alpha = ..index..)) +
-        coord_fixed() + 
-        scale_edge_alpha('Direction', guide = 'edge_direction') +
-        geom_node_point(aes(filter = degree(network2020, mode = 'out') == 0), 
-                        color = 'steelblue', size = 1) +
-        ggforce::theme_no_axes()
-
-ggraph(network2020, 'igraph', algorithm = 'tree') + 
-        geom_edge_link() + 
-        geom_node_point()
-
-
-plot.igraph(network2020, edge.arrow.size=.5, edge.color="black", #line color
-     vertex.color="lightblue", vertex.frame.color="lightblue", # bubble color
-     vertex.label=V(network2020)$media, vertex.label.color="black") # letters
-
-
-centr_degree(network2020)$centralization
-graph.density(network2020)
-
-
-
-
-# By country --------------------------------------------------------------
-
-# Make a palette of 3 colors
-colfunc <- colorRampPalette(c("#00008B", "#63B8FF"))
-cols <- colfunc(25) 
-
-# Create a vector of color
-my_color <- cols[as.numeric(as.factor(V(network2020)$Country))]
-
-# Make the plot
-plot(network2020, vertex.color=my_color,
-     vertex.label=NA, # Letters
-     vertex.shape="circle", #shape
-     edge.color="black")  # line color
-
-legend(x=-1.9, y=1.5, legend=levels(as.factor(V(network2020)$Country)), 
-       col = cols , bty = "n", pch=16, pt.cex = 1, cex = 1, text.col=, 
-       horiz = F, inset = c(0.05, 0.05),
-       title = "Country")
-
-
-
-centr_degree(network2015)$centralization
-graph.density(network2015)
-
-
-
-#The degree distribution can be visualised with the hist() function.
-hist(degree(nw2000), col="firebrick", xlab="Vertex Degree", 
-     ylab="Frequency", main="")
 
 
 
