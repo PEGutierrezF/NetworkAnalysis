@@ -9,7 +9,7 @@
 # ---------------------------------------------
 #  
 
-#https://rpubs.com/MarkusLoew/226759
+
 
 
 # cleans global environment
