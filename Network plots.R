@@ -110,24 +110,32 @@ p2001
 # 2002 --------------------------------------------------------------------
 ###########################################################################
 
-df2002<- read.csv("author2002.csv")
-df2002a <- df2002 %>% select(main, coauthor)
-df2002a
+# Upload data from excel
+a.2002 <- read_excel(path = network.data, sheet = "2002authors")
+n.2002 <- read_excel(path = network.data, sheet = "2002nodes")
 
-df2002nodes<- read.csv("author2002nodes.csv")
-df2002b <- df2002nodes %>% select(Authors, Country, Affiliation)
-df2002b
+# Select columns
+df2002.a <- a.2002 %>% select(main, coauthor)
 
-network2002 <- graph_from_data_frame(d=df2002, vertices=df2002nodes, directed=F) # covert in a igraph
+# remove duplicate
+df2002.n <- n.2002[c(-8), ]
+df2002.n <- df2002.n %>% select(abrev, country, affiliation)
 
-p2002 <- ggraph(network2002,layout = "gem")+
+## covert in a igraph
+network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+p2002 <- ggraph(network2002, layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
+  geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
                              "Europe" = "#7fc97f", "Latin America"="#4575b4",
                              'North America'= "#d73027", "Oceania"="#c994c7"))+
+  scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+  
   labs(title="2002") +
   theme_bw()+
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
@@ -137,13 +145,9 @@ p2002 <- ggraph(network2002,layout = "gem")+
         axis.text.y = element_blank()) +
   theme(axis.title.x = element_blank(),
         axis.title.y = element_blank())
-
+}
 p2002
 
-
-c_2002 <- graph_from_data_frame(df2002a)
-centr_degree(c_2002)$centralization
-graph.density(c_2002)
 
 
 ###########################################################################
