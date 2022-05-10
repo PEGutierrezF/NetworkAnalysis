@@ -238,40 +238,46 @@ p2004
 # 2005 --------------------------------------------------------------------
 ###########################################################################
 
-df2005<- read.csv("author2005.csv")
-df2005a <- df2005 %>% select(main, coauthor)
-df2005a
 
-df2005nodes<- read.csv("author2005nodes.csv")
-df2005b <- df2005nodes %>% select(Authors, Country, Affiliation)
-df2005b
+# Upload data from excel
+a.2005 <- read_excel(path = network.data, sheet = "2005authors")
+n.2005 <- read_excel(path = network.data, sheet = "2005nodes")
 
-network2005 <- graph_from_data_frame(d=df2005, vertices=df2005nodes, directed=F) # covert in a igraph
+# Select columns
+df2005.a <- a.2005 %>% select(main, coauthor)
 
-p2005 <- ggraph(network2005,layout = "gem")+
-  geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
-                  show.legend = FALSE)+
-  #  scale_edge_colour_brewer(palette = "Set1") +
-  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
-                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
-                             'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="2005") +
-  theme_bw()+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-  theme(axis.ticks.x = element_blank(),
-        axis.text.x = element_blank()) +
-  theme(axis.ticks.y = element_blank(),
-        axis.text.y = element_blank()) +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
+n.2005 <- n.2005[-c(8,9), ]
+df2005.n <- n.2005 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2005 <- graph_from_data_frame(d=df2005.a, vertices=df2005.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2005 <- ggraph(network2005,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2005") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
 
 p2005
 
 
-c_2005 <- graph_from_data_frame(df2005a)
-centr_degree(c_2005)$centralization
-graph.density(c_2005)
 
 ###########################################################################
 # 2019 --------------------------------------------------------------------
