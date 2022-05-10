@@ -17,7 +17,7 @@ rm(list = ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
 
 
-network.data <- "data/data.xlsx"
+network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
 
@@ -154,40 +154,41 @@ p2002
 # 2003 --------------------------------------------------------------------
 ###########################################################################
 
-df2003<- read.csv("author2003.csv")
-df2003a <- df2003 %>% select(main, coauthor)
-df2003a
+# Upload data from excel
+a.2003 <- read_excel(path = network.data, sheet = "2003authors")
+n.2003 <- read_excel(path = network.data, sheet = "2003nodes")
 
-df2003nodes<- read.csv("author2003nodes.csv")
-df2003b <- df2003nodes %>% select(Authors, Country, Affiliation)
-df2003b
+# Select columns
+df2003.a <- a.2003 %>% select(main, coauthor)
+df2003.n <- n.2003 %>% select(abrev, country, affiliation)
 
-network2003 <- graph_from_data_frame(d=df2003, vertices=df2003nodes, directed=F) # covert in a igraph
+## covert in a igraph
+network2003 <- graph_from_data_frame(d=df2003.a, vertices=df2003.n, directed=TRUE)
 
-p2003 <- ggraph(network2003,layout = "gem")+
-  geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
-                  show.legend = FALSE)+
-  #  scale_edge_colour_brewer(palette = "Set1") +
-  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
-                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
-                             'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="2003") +
-  theme_bw()+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-  theme(axis.ticks.x = element_blank(),
-        axis.text.x = element_blank()) +
-  theme(axis.ticks.y = element_blank(),
-        axis.text.y = element_blank()) +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
-
+# plot
+{set.seed(14)
+  p2003 <- ggraph(network2003,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7)) +
+    
+    labs(title="2003") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}
 p2003
 
-
-c_2003 <- graph_from_data_frame(df2003a)
-centr_degree(c_2003)$centralization
-graph.density(c_2003)
 
 
 
@@ -195,41 +196,42 @@ graph.density(c_2003)
 # 2004 --------------------------------------------------------------------
 ###########################################################################
 
-df2004<- read.csv("author2004.csv")
-df2004a <- df2004 %>% select(main, coauthor)
-df2004a
+# Upload data from excel
+a.2004 <- read_excel(path = network.data, sheet = "2004authors")
+n.2004 <- read_excel(path = network.data, sheet = "2004nodes")
 
-df2004nodes<- read.csv("author2004nodes.csv")
-df2004b <- df2004nodes %>% select(Authors, Country, Affiliation)
-df2004b
+# Select columns
+df2004.a <- a.2004 %>% select(main, coauthor)
 
-network2004 <- graph_from_data_frame(d=df2004, vertices=df2004nodes, directed=F) # covert in a igraph
+n.2004 <- n.2004[-c(20, 21), ]
+df2004.n <- n.2004 %>% select(abrev, country, affiliation)
 
-p2004 <- ggraph(network2004,layout = "gem")+
-  geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
-                  show.legend = FALSE)+
-  #  scale_edge_colour_brewer(palette = "Set1") +
-  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
-                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
-                             'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="2004") +
-  theme_bw()+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-  theme(axis.ticks.x = element_blank(),
-        axis.text.x = element_blank()) +
-  theme(axis.ticks.y = element_blank(),
-        axis.text.y = element_blank()) +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
+## covert in a igraph
+network2004 <- graph_from_data_frame(d=df2004.a, vertices=df2004.n, directed=TRUE)
 
+# plot
+{set.seed(14)
+  p2004 <- ggraph(network2004,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2004") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}
 p2004
-
-
-c_2004 <- graph_from_data_frame(df2004a)
-centr_degree(c_2004)$centralization
-graph.density(c_2004)
-
 
 
 ###########################################################################

@@ -32,6 +32,16 @@ network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRU
 centr_degree(network2002, mode = "total")$centralization
 
 
+# Centrality 2003 ---------------------------------------------------------
+network2003 <- graph_from_data_frame(d=df2003.a, vertices=df2003.n, directed=TRUE)
+centr_degree(network2003, mode = "total")$centralization
+
+
+# Centrality 2004 ---------------------------------------------------------
+network2004 <- graph_from_data_frame(d=df2004.a, vertices=df2004.n, directed=TRUE)
+centr_degree(network2004, mode = "total")$centralization
+
+
 # Centrality 2020 ---------------------------------------------------------
 network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020b, directed=T) # covert in a igraph
 centr_degree(network2020, mode = "total")$centralization
