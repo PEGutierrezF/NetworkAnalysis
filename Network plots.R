@@ -280,6 +280,10 @@ p2005
 
 
 
+###########################################################################
+###########################################################################
+###########################################################################
+
 
 network.data <- "data/data2011_2015.xlsx"
 excel_sheets(path = network.data)
@@ -298,15 +302,15 @@ n.2012 <- read_excel(path = network.data, sheet = "2012nodes")
 df2012.a <- a.2012 %>% select(main, coauthor)
 
 duplicated(n.2012$abrev)
-n.2012 <- n.2012[-c(17,18,19,25,69,77,78), ]
+n.2012 <- n.2012[-c(17,18,19,25,69,77,79), ]
 df2012.n <- n.2012 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
-network2005 <- graph_from_data_frame(d=df2012.a, vertices=df2012.n, directed=TRUE)
+network2012 <- graph_from_data_frame(d=df2012.a, vertices=df2012.n, directed=TRUE)
 
 # plot
 {set.seed(14)
-  p2005 <- ggraph(network2005,layout = "gem")+
+  p2012 <- ggraph(network2012,layout = "gem")+
     geom_edge_link0(edge_colour = "black")+
     geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
                     show.legend = FALSE)+
@@ -316,7 +320,7 @@ network2005 <- graph_from_data_frame(d=df2012.a, vertices=df2012.n, directed=TRU
                                'North America'= "#d73027", "Oceania"="#c994c7"))+
     scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
     
-    labs(title="2005") +
+    labs(title="2012") +
     theme_bw()+
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
     theme(axis.ticks.x = element_blank(),
@@ -329,6 +333,52 @@ network2005 <- graph_from_data_frame(d=df2012.a, vertices=df2012.n, directed=TRU
 
 p2012
 
+
+
+###########################################################################
+# 2013 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2013 <- read_excel(path = network.data, sheet = "2013authors")
+n.2013 <- read_excel(path = network.data, sheet = "2013nodes")
+
+# Select columns
+df2013.a <- a.2013 %>% select(main, coauthor)
+
+duplicated(n.2013$abrev)
+n.2013 <- n.2013[-c(29,30,31,32,34,36,39,65,67,
+                    93,94,95,96,97,99,106,107), ]
+df2013.n <- n.2013 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2013 <- graph_from_data_frame(d=df2013.a, vertices=df2013.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2013 <- ggraph(network2013,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2013") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2013
 
 
 ###########################################################################

@@ -24,6 +24,8 @@ data <- tribble(~year, ~Centralization,
                 '2003-12-31', 0.1604938, #0.1020,
                 "2004-12-31", 0.07098765, #0.0741,
                 "2005-12-31", 0.05555556, #0.0578,
+                "2012-12-31", 0.04890928, 
+                "2013-12-31", 0.03610655,
                 '2019-12-31', 0.0247,
                 '2020-12-31', 0.0352)
 data                
@@ -37,26 +39,6 @@ ggplot(data, aes(x = year, y = Centralization)) +
 
 
 
-data <- read.csv("data.csv")
-head(data)
-
-centr <- filter(data, variable=="Centralization")
-ggplot(centr, aes(x = year, y = value)) +
-  geom_line(size=1.2) +
-  geom_point(size=5) +
-  theme_classic()
-
-
-density <- filter(data, variable=="Density")
-ggplot(density, aes(x = year, y = value)) +
-  geom_line(size=1.2) +
-  geom_point(size=5) +
-  theme_classic()
-
-
-
-
-
 
 # Homophily ---------------------------------------------------------------
 
@@ -66,7 +48,9 @@ data <- tribble(~year, ~Centralization,
                 '2002-12-31', -0.7538462,
                 '2003-12-31', -0.5833333, 
                 "2004-12-31", -0.6239316, 
-                "2005-12-31", 0.1666667, 
+                "2005-12-31", 0.1666667,
+                "2012-12-31", -0.1637377,
+                "2013-12-31", 0.3633541,
                # '2019-12-31', 0.0247,
                 #'2020-12-31', 0.0352
                 )
@@ -80,20 +64,4 @@ ggplot(data, aes(x = year, y = Centralization)) +
   theme_classic()
 
 
-
-data <- read.csv("data.csv")
-head(data)
-
-centr <- filter(data, variable=="Centralization")
-ggplot(centr, aes(x = year, y = value)) +
-  geom_line(size=1.2) +
-  geom_point(size=5) +
-  theme_classic()
-
-
-density <- filter(data, variable=="Density")
-ggplot(density, aes(x = year, y = value)) +
-  geom_line(size=1.2) +
-  geom_point(size=5) +
-  theme_classic()
 
