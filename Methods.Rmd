@@ -13,6 +13,11 @@ https://www.jessesadler.com/post/network-analysis-with-r/
 ## Find duplicate in a column 
 duplicated(df$column)
 
+## Centrality
+
+## Homophily
+Values less than 1 indicate stronger subgroup cohesion than would be expected in a random network (i.e., homophily), and values higher than 1 represent higher than expected rates of collaboration (i.e., heterophily).
+
 
 ## References
 
