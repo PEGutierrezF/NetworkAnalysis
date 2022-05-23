@@ -35,7 +35,18 @@ data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
 ggplot(data, aes(x = year, y = Centralization)) +
   geom_line(size=1.2) +
   geom_point(size=5) +
-  theme_classic()
+  
+  theme_bw() + 
+  
+  # Labels
+  labs(x= 'Year', y= 'Centralization') +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+
 
 
 
@@ -60,8 +71,22 @@ data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
 
 ggplot(data, aes(x = year, y = Centralization)) +
   geom_line(size=1.2) +
-  geom_point(size=5) +
-  theme_classic()
+  geom_point(shape=15, size=5) +
+  ylim(-1, 0.5) +
+  geom_hline(yintercept=0, linetype="dashed", color = "gray50", size= 1) +
+  
+  theme_bw() + 
+  
+  # Labels
+  labs(x= 'Year', y= 'Assortativity') +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+  
+  
 
 
 
