@@ -110,6 +110,14 @@ centr_degree(network2013, mode = "total")$centralization
 assortativity_degree(network2013, directed=T)
 
 
+# Centrality 2014 ---------------------------------------------------------
+network2014 <- graph_from_data_frame(d=df2014.a, vertices=df2014.n, directed=TRUE)
+centr_degree(network2014, mode = "total")$centralization
+
+assortativity_degree(network2014, directed=T)
+
+
+
 # Centrality 2020 ---------------------------------------------------------
 network2020 <- graph_from_data_frame(d=df2020a, vertices=df2020b, directed=T) # covert in a igraph
 centr_degree(network2020, mode = "total")$centralization
