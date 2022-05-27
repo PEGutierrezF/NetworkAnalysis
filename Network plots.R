@@ -378,6 +378,142 @@ network2007 <- graph_from_data_frame(d=df2007.a, vertices=df2007.n, directed=TRU
 
 p2007
 
+
+
+###########################################################################
+# 2008 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2008 <- read_excel(path = network.data, sheet = "2008authors")
+n.2008 <- read_excel(path = network.data, sheet = "2008nodes")
+
+# Select columns
+df2008.a <- a.2008 %>% select(main, coauthor)
+df2008.n <- n.2008 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2008 <- graph_from_data_frame(d=df2008.a, vertices=df2008.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2008 <- ggraph(network2008,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2007") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2008
+
+
+
+###########################################################################
+# 2009 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2009 <- read_excel(path = network.data, sheet = "2009authors")
+n.2009 <- read_excel(path = network.data, sheet = "2009nodes")
+
+# Select columns
+df2009.a <- a.2009 %>% select(main, coauthor)
+
+duplicated(df2009.n$abrev) # Find duplicate
+n.2009 <- n.2009[-c(26), ] # Remove duplicate
+df2009.n <- n.2009 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2009 <- graph_from_data_frame(d=df2009.a, vertices=df2009.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2009 <- ggraph(network2009,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2009") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2009
+
+
+
+
+###########################################################################
+# 2009 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2010 <- read_excel(path = network.data, sheet = "2010authors")
+n.2010 <- read_excel(path = network.data, sheet = "2010nodes")
+
+# Select columns
+df2010.a <- a.2010 %>% select(main, coauthor)
+
+duplicated(df2010.n$abrev) # Find duplicate
+n.2010 <- n.2010[-c(16:25,61,71,83), ] # Remove duplicate
+df2010.n <- n.2010 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2010 <- graph_from_data_frame(d=df2010.a, vertices=df2010.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2010 <- ggraph(network2010,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2009") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2010
+
 ###########################################################################
 ###########################################################################
 ###########################################################################
