@@ -88,6 +88,14 @@ centr_degree(network2010, mode = "total")$centralization
 
 assortativity_degree(network2010, directed=T)
 
+
+# Centrality 2011 ---------------------------------------------------------
+network2011 <- graph_from_data_frame(d=df2011.a, vertices=df2011.n, directed=TRUE)
+centr_degree(network2011, mode = "total")$centralization
+
+assortativity_degree(network2011, directed=T)
+
+
 # Centrality 2012 ---------------------------------------------------------
 network2012 <- graph_from_data_frame(d=df2012.a, vertices=df2012.n, directed=TRUE)
 centr_degree(network2012, mode = "total")$centralization
