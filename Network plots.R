@@ -471,7 +471,7 @@ p2009
 
 
 ###########################################################################
-# 2009 --------------------------------------------------------------------
+# 2010 --------------------------------------------------------------------
 ###########################################################################
 
 
@@ -523,7 +523,7 @@ network.data <- "data/data2011_2015.xlsx"
 excel_sheets(path = network.data)
 
 ###########################################################################
-# 2012 --------------------------------------------------------------------
+# 2011 --------------------------------------------------------------------
 ###########################################################################
 
 
@@ -533,9 +533,6 @@ n.2011 <- read_excel(path = network.data, sheet = "2011nodes")
 
 # Select columns
 df2011.a <- a.2011 %>% select(main, coauthor)
-
-
-
 
 duplicated(n.2011$abrev) # Find duplicate
 n.2011 <- n.2011[-c(52,53), ] # Remove duplicate
@@ -569,10 +566,10 @@ network2011 <- graph_from_data_frame(d=df2011.a, vertices=df2011.n, directed=TRU
 
 p2011
 
+
 ###########################################################################
 # 2012 --------------------------------------------------------------------
 ###########################################################################
-
 
 # Upload data from excel
 a.2012 <- read_excel(path = network.data, sheet = "2012authors")
@@ -619,7 +616,6 @@ p2012
 # 2013 --------------------------------------------------------------------
 ###########################################################################
 
-
 # Upload data from excel
 a.2013 <- read_excel(path = network.data, sheet = "2013authors")
 n.2013 <- read_excel(path = network.data, sheet = "2013nodes")
@@ -662,11 +658,9 @@ p2013
 
 
 
-
 ###########################################################################
 # 2014 --------------------------------------------------------------------
 ###########################################################################
-
 
 # Upload data from excel
 a.2014 <- read_excel(path = network.data, sheet = "2014authors")
@@ -706,6 +700,52 @@ network2014 <- graph_from_data_frame(d=df2014.a, vertices=df2014.n, directed=TRU
 }  
 
 p2014
+
+
+
+###########################################################################
+# 2015 --------------------------------------------------------------------
+###########################################################################
+
+# Upload data from excel
+a.2015 <- read_excel(path = network.data, sheet = "2015authors")
+n.2015 <- read_excel(path = network.data, sheet = "2015nodes")
+
+# Select columns
+df2015.a <- a.2015 %>% select(main, coauthor)
+
+duplicated(n.2015$abrev) # Find duplicate
+n.2015 <- n.2015[!duplicated(n.2015$abrev), ] # Remove duplicate automaticaly
+df2015.n <- n.2015 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2015 <- graph_from_data_frame(d=df2015.a, vertices=df2015.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2015 <- ggraph(network2015,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2015") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2015
+
 
 ###########################################################################
 # 2019 --------------------------------------------------------------------
