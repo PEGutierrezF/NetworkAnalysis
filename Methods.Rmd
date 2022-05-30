@@ -27,3 +27,5 @@ https://www.r-bloggers.com/2017/05/network-analysis-of-game-of-thrones-family-ti
 https://www.jstor.org/stable/pdf/26447831.pdf?refreqid=excelsior%3A5e716af69759e46e51fc7561026d4596&ab_segments=&origin=
 
 https://rpubs.com/MarkusLoew/226759
+
+https://rpubs.com/nr2462/845876
