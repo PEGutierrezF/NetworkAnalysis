@@ -29,3 +29,5 @@ https://www.jstor.org/stable/pdf/26447831.pdf?refreqid=excelsior%3A5e716af69759e
 https://rpubs.com/MarkusLoew/226759
 
 https://rpubs.com/nr2462/845876
+
+https://igraph.org/r/html/latest/
