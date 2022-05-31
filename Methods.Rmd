@@ -6,8 +6,22 @@ output: pdf_document
 ---
 
 ## Function setup ->  graph_from_data_frame()
-1) We used 'directed = TRUE' since Source (main author) and Target (co-authors) are meaningful.
+1) We used 'directed = False' (this is Undirected network) since Source (main author) and Target (co-authors) are not meaningful.
 https://www.jessesadler.com/post/network-analysis-with-r/
+
+Directed and Undirected definition:
+https://ona-book.org/working.html
+
+Many papers on coauthorship analysis use Undirected network:
+
+1- Azondekon, R., Harper, Z. J., Agossa, F. R., Welzig, C. M., & McRoy, S. (2018). Scientific authorship and collaboration network analysis on malaria research in Benin: papers indexed in the web of science (1996–2016). Global Health Research and Policy, 3(1), 1-11.
+
+2- Han, S. H., Chae, C., & Passmore, D. L. (2019). Social network analysis and social capital in human resource development research: A practical introduction to R use. Human Resource Development Quarterly, 30(2), 219-243.
+
+3- Ho, T. M., Nguyen, H. V., Vuong, T. T., Dam, Q. M., Pham, H. H., & Vuong, Q. H. (2017). Exploring Vietnamese co-authorship patterns in social sciences with basic network measures of 2008-2017 Scopus data. F1000Research, 6.
+
+4- Medina, A. M. (2018). Why do ecologists search for co-authorships? Patterns of co-authorship networks in ecology (1977–2016). Scientometrics, 116(3), 1853-1865.
+
 
 
 ## Find duplicate in a column 

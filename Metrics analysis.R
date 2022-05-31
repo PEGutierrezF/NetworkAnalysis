@@ -18,7 +18,7 @@ rm(list = ls())
 
 
 # 2000 ---------------------------------------------------------
-network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=T) # covert in a igraph
+network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=F) # covert in a igraph
 centr_degree(network2000, mode = "total")$centralization
 
 assortativity_degree(network2000, directed=F)
