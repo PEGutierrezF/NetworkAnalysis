@@ -18,18 +18,18 @@ rm(list = ls())
 
 
 # 2000 ---------------------------------------------------------
-network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=F) # covert in a igraph
+network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=FALSE) # covert in a igraph
 centr_degree(network2000, mode = "total")$centralization
 
-assortativity_degree(network2000, directed=F)
+assortativity_nominal(network2000, as.factor(V(network2000)$affiliation))
 
 
 # 2001 ---------------------------------------------------------
-network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=TRUE)
+network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=F)
 centr_degree(network2001, mode = "total")$centralization
 
-assortativity_degree(network2001, directed=F)
-assortativity_degree(network2001, directed=T)
+assortativity_nominal(network2001, as.factor(V(network2001)$affiliation))
+
 
 # 2002 ---------------------------------------------------------
 network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRUE)
@@ -45,12 +45,13 @@ centr_degree(network2003, mode = "total")$centralization
 assortativity_degree(network2003, directed=F)
 assortativity_degree(network2003, directed=T)
 
+
 # Centrality 2004 ---------------------------------------------------------
-network2004 <- graph_from_data_frame(d=df2004.a, vertices=df2004.n, directed=TRUE)
+network2004 <- graph_from_data_frame(d=df2004.a, vertices=df2004.n, directed=FALSE)
 centr_degree(network2004, mode = "total")$centralization
 
-assortativity_degree(network2004, directed=F)
-assortativity_degree(network2004, directed=T)
+assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
+
 
 # Centrality 2005 ---------------------------------------------------------
 network2005 <- graph_from_data_frame(d=df2005.a, vertices=df2005.n, directed=TRUE)
@@ -60,10 +61,11 @@ assortativity_degree(network2005, directed=T)
 
 
 # Centrality 2006 ---------------------------------------------------------
-network2006 <- graph_from_data_frame(d=df2006.a, vertices=df2006.n, directed=TRUE)
+network2006 <- graph_from_data_frame(d=df2006.a, vertices=df2006.n, directed=FALSE)
 centr_degree(network2006, mode = "total")$centralization
 
-assortativity_degree(network2006, directed = T)
+assortativity_degree(network2006, directed = F)
+assortativity_nominal(network2006, as.factor(V(network2006)$country))
 
 # Centrality 2007 ---------------------------------------------------------
 network2007 <- graph_from_data_frame(d=df2007.a, vertices=df2007.n, directed=TRUE)

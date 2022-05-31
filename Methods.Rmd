@@ -6,13 +6,15 @@ output: pdf_document
 ---
 
 ## Function setup ->  graph_from_data_frame()
-1) We used 'directed = False' (this is Undirected network) since Source (main author) and Target (co-authors) are not meaningful.
+
+We used 'directed = False' (this is Undirected network) since Source (main author) and Target (co-authors) are not meaningful.
+
 https://www.jessesadler.com/post/network-analysis-with-r/
 
 Directed and Undirected definition:
 https://ona-book.org/working.html
 
-Many papers on coauthorship analysis use Undirected network:
+### Many papers on coauthorship analysis use Undirected network:
 
 1- Azondekon, R., Harper, Z. J., Agossa, F. R., Welzig, C. M., & McRoy, S. (2018). Scientific authorship and collaboration network analysis on malaria research in Benin: papers indexed in the web of science (1996–2016). Global Health Research and Policy, 3(1), 1-11.
 
@@ -25,13 +27,24 @@ Many papers on coauthorship analysis use Undirected network:
 
 
 ## Find duplicate in a column 
+
 duplicated(df$column)
 
 ## Centrality
 
 
-## Homophily
+## Homophily (or assortativity)
 Values less than 1 indicate stronger subgroup cohesion than would be expected in a random network (i.e., homophily), and values higher than 1 represent higher than expected rates of collaboration (i.e., heterophily).
+
+### We used:
+
+assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
+
+1- "as.factor"  Convert Affiliation in numbers
+2- Since continent affiliation is a categorical variable, we should use the corresponding definition of the assortativity coefficient. The assortativity coefficient for categorical properties can be calculated by
+
+assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
+
 
 
 ## References
