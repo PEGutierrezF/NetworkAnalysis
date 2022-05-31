@@ -23,30 +23,34 @@ centr_degree(network2000, mode = "total")$centralization
 
 assortativity_degree(network2000, directed=F)
 
+
 # 2001 ---------------------------------------------------------
 network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=TRUE)
 centr_degree(network2001, mode = "total")$centralization
 
 assortativity_degree(network2001, directed=F)
-
+assortativity_degree(network2001, directed=T)
 
 # 2002 ---------------------------------------------------------
 network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRUE)
 centr_degree(network2002, mode = "total")$centralization
 
 assortativity_degree(network2002, directed=F)
+assortativity_degree(network2002, directed=T)
 
 # Centrality 2003 ---------------------------------------------------------
 network2003 <- graph_from_data_frame(d=df2003.a, vertices=df2003.n, directed=TRUE)
 centr_degree(network2003, mode = "total")$centralization
 
 assortativity_degree(network2003, directed=F)
+assortativity_degree(network2003, directed=T)
 
 # Centrality 2004 ---------------------------------------------------------
 network2004 <- graph_from_data_frame(d=df2004.a, vertices=df2004.n, directed=TRUE)
 centr_degree(network2004, mode = "total")$centralization
 
 assortativity_degree(network2004, directed=F)
+assortativity_degree(network2004, directed=T)
 
 # Centrality 2005 ---------------------------------------------------------
 network2005 <- graph_from_data_frame(d=df2005.a, vertices=df2005.n, directed=TRUE)
@@ -65,13 +69,13 @@ assortativity_degree(network2006, directed = T)
 network2007 <- graph_from_data_frame(d=df2007.a, vertices=df2007.n, directed=TRUE)
 centr_degree(network2007, mode = "total")$centralization
 
-assortativity_degree(network2007, directed=T)
+assortativity_degree(network2007, directed=F)
 
 # Centrality 2008 ---------------------------------------------------------
 network2008 <- graph_from_data_frame(d=df2008.a, vertices=df2008.n, directed=TRUE)
 centr_degree(network2008, mode = "total")$centralization
 
-assortativity_degree(network2008, directed=T)
+assortativity_degree(network2008, directed=F)
 
 
 # Centrality 2009 ---------------------------------------------------------

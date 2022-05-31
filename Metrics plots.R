@@ -67,16 +67,16 @@ data <- tribble(~year, ~Centralization,
                 '2003-12-31', -0.5833333, 
                 "2004-12-31", -0.6239316, 
                 "2005-12-31", 0.1666667,
-                "2006-12-31", 0,   #NAN
+                "2006-12-31", -0.5711462,
                 "2007-12-31", 0.08275481,
-                "2008-12-31", 0, # NAN
+                "2008-12-31", -0.6666667,
                 "2009-12-31", -0.07174447,
                 "2010-12-31", 0.7161614,
                 "2011-12-31", -0.2152791,
                 "2012-12-31", -0.1637377,
                 "2013-12-31", 0.3633541,
                 "2014-12-31", 0.06172443,
-                "2015-12-31", 0.009322454
+                "2015-12-31", 0.009322454,
                 )
 data                
 data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
@@ -85,7 +85,7 @@ data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
 ggplot(data, aes(x = year, y = Centralization)) +
   geom_line(size=1.2) +
   geom_point(shape=15, size=5) +
-  ylim(-1, 0.5) +
+  ylim(-1, 1) +
   geom_hline(yintercept=0, linetype="dashed", color = "gray50", size= 1) +
   
   theme_bw() + 
