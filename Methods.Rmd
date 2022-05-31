@@ -7,8 +7,9 @@ output: pdf_document
 
 ## Glossary
 
-Edges: number of ties.
+**Edges:** number of ties.
 
+**Nodes:** can e.g. be people in a social network, genes in a co-expression network, etc. Nodes are connected via ties/edges.
 
 ## Function setup ->  graph_from_data_frame()
 
@@ -41,8 +42,14 @@ duplicated(df$column)
 
 Central Authors likely wield a disproportionate amount of influence on the network. Therefore, high centralization provides fewer Authors with more power and control.
 
+High centrality networks have few nodes with many connections, low centrality networks have many nodes with similar numbers of edges.
 
-The first variable **$res** provides node-level centrality scores. So for example, the first school leader in our network is connected to 5 other actors in the network. The **$centralization** variable provides our actual centrality score, which is quite small suggesting a very decentralized network. And the final **$theoretical_max** provides the maximum theoretical graph level centralization score for our graph based on the number of vertices.
+
+The first variable  **$res** provides node-level centrality scores.
+
+The  **$centralization** variable provides our actual centrality score, which is quite small suggesting a very decentralized network.
+
+The **$theoretical_max** provides the maximum theoretical graph level centralization score for our graph based on the number of vertices.
 
 
 Example:
