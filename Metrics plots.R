@@ -99,7 +99,65 @@ ggplot(data, aes(x = year, y = Centralization)) +
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
   
+
+
+
+# Number of papers ---------------------------------------------------------------
+
+length(unique(a.2000$PubID))
+length(unique(a.2001$PubID))
+length(unique(a.2002$PubID))
+length(unique(a.2003$PubID))
+length(unique(a.2004$PubID))
+length(unique(a.2005$PubID))
+length(unique(a.2006$PubID))
+length(unique(a.2007$PubID))
+length(unique(a.2008$PubID))
+length(unique(a.2009$PubID))
+length(unique(a.2010$PubID))
+length(unique(a.2011$PubID))
+length(unique(a.2012$PubID))
+length(unique(a.2013$PubID))
+length(unique(a.2014$PubID))
+length(unique(a.2015$PubID))
+length(unique(a.2016$PubID))
+length(unique(a.2017$PubID))
+
+data.n.papers <- tribble(~year, ~papers, 
+                '2000-12-31', 3,  # False
+                '2001-12-31', 7,
+                '2002-12-31', 3,
+                '2003-12-31', 3, 
+                "2004-12-31", 7, 
+                "2005-12-31", 4,
+                "2006-12-31", 6,
+                "2007-12-31", 5,
+                "2008-12-31", 6,
+                "2009-12-31", 11,
+                "2010-12-31", 19,
+                "2011-12-31", 15,
+                "2012-12-31", 20,
+                "2013-12-31", 33,
+                "2014-12-31", 54,
+                "2015-12-31", 41,
+)
+data.n.papers                
+data.n.papers$year <-as.POSIXct(data.n.papers$year,"%Y-%m-%d",tz = "UTC")
+
+
+ggplot(data.n.papers, aes(x=year, y=papers)) +
+  geom_bar(stat="identity") +
+
+theme_bw() + 
   
+  # Labels
+  labs(x= 'Year', y= 'Papers') +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 
 
 
