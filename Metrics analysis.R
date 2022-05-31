@@ -21,6 +21,12 @@ rm(list = ls())
 network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=FALSE) # covert in a igraph
 centr_degree(network2000, mode = "total")$centralization
 
+c.2000 <-  degree(network2000, v = V(network2000), mode = c("all"))
+c.2000 ## node degree of all nodes in the network 
+
+graph.density(network2000)
+edge_density(network2000, loops=FALSE)
+
 assortativity_nominal(network2000, as.factor(V(network2000)$affiliation))
 
 
@@ -63,6 +69,8 @@ assortativity_degree(network2005, directed=T)
 # Centrality 2006 ---------------------------------------------------------
 network2006 <- graph_from_data_frame(d=df2006.a, vertices=df2006.n, directed=FALSE)
 centr_degree(network2006, mode = "total")$centralization
+
+edge_density(network2006, loops=F)
 
 assortativity_degree(network2006, directed = F)
 assortativity_nominal(network2006, as.factor(V(network2006)$country))

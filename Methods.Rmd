@@ -5,9 +5,16 @@ date: '2022-05-08'
 output: pdf_document
 ---
 
+## Glossary
+
+Edges: number of ties.
+
+
 ## Function setup ->  graph_from_data_frame()
 
 We used 'directed = False' (this is Undirected network) since Source (main author) and Target (co-authors) are not meaningful.
+
+It is an undirected network, a graph with bidirectional edges in contrast with a directed graph in which the direction of an edge from one vertex to another is considered
 
 https://www.jessesadler.com/post/network-analysis-with-r/
 
@@ -32,6 +39,27 @@ duplicated(df$column)
 
 ## Centrality
 
+Central Authors likely wield a disproportionate amount of influence on the network. Therefore, high centralization provides fewer Authors with more power and control.
+
+
+The first variable **$res** provides node-level centrality scores. So for example, the first school leader in our network is connected to 5 other actors in the network. The **$centralization** variable provides our actual centrality score, which is quite small suggesting a very decentralized network. And the final **$theoretical_max** provides the maximum theoretical graph level centralization score for our graph based on the number of vertices.
+
+
+Example:
+
+https://rpubs.com/smbrook3/unit-2-case-study
+
+
+## Density
+
+Density refers to the number of ties in the network reported as a fraction of the total possible number of ties… The closer this number is to 1.0, the denser the network.
+
+The igraph packages has two different function for calculating the density of a network, edge_density() and graph.density(), but both yield the exact same result. The edge_density() function is the more recent function and should be used.
+
+Example:
+
+https://rpubs.com/smbrook3/unit-2-case-study
+
 
 ## Homophily (or assortativity)
 Values less than 1 indicate stronger subgroup cohesion than would be expected in a random network (i.e., homophily), and values higher than 1 represent higher than expected rates of collaboration (i.e., heterophily).
@@ -44,6 +72,11 @@ assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
 2- Since continent affiliation is a categorical variable, we should use the corresponding definition of the assortativity coefficient. The assortativity coefficient for categorical properties can be calculated by
 
 assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
+
+Example:
+https://methods.sagepub.com/dataset/howtoguide/assortativity-in-ukfaculty-2008
+
+https://kateto.net/wp-content/uploads/2016/01/NetSciX_2016_Workshop.pdf
 
 
 
