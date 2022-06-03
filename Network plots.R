@@ -747,98 +747,55 @@ network2015 <- graph_from_data_frame(d=df2015.a, vertices=df2015.n, directed=TRU
 p2015
 
 
-###########################################################################
-# 2019 --------------------------------------------------------------------
-###########################################################################
-
-#KDS 3, MC 21 29 40 57, RMH 29, FOR 34, 38,  PEGF 36, RRCS 40, JDGT 44,
-# JCDR 44, SS 44, RSR 45, AOM 45, KDS 49, LJ 49 50, AR 52, RMH 57, DRM 57
-
-df2019<- read.csv("author2019.csv")
-df2019a <- df2019 %>% select(main, coauthor)
-df2019a
-
-df2019nodes<- read.csv("author2019nodes.csv")
-df2019b <- df2019nodes %>% select(Authors, Country, Affiliation)
-df2019b
-
-network2019 <- graph_from_data_frame(df2019a, vertices=df2019b, directed=F) # covert in a igraph
-network2019[]
-
-
-#http://mr.schochastics.net/netVizR.html
-p2019 <- ggraph(network2019,"stress", bbox = 15)+
-  geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = Affiliation),shape = 21,size = 1,
-                  show.legend = FALSE)+
-  scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
-                             "Europe" = "#7fc97f", "Latin America"="#4575b4",
-                             'North America'= "#d73027", "Oceania"="#c994c7"))+
-  labs(title="2019") +
-  theme_bw()+
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-  theme(axis.ticks.x = element_blank(),
-        axis.text.x = element_blank()) +
-  theme(axis.ticks.y = element_blank(),
-        axis.text.y = element_blank()) +
-  theme(axis.title.x = element_blank(),
-        axis.title.y = element_blank())
-p2019        
 
 
 
-c_2019 <- graph_from_data_frame(df2019a)
-centr_degree(c_2019)$centralization
-graph.density(c_2019)
-
+network.data <- "data/data2016_2020.xlsx"
+excel_sheets(path = network.data)
 
 ###########################################################################
-# 2020 --------------------------------------------------------------------
+# 2016 --------------------------------------------------------------------
 ###########################################################################
 
-# MC 64, AR 20, LJ 29-39, LFL 34, VCP 36, DJ 40 57, ED 44, TS 45 53, JH 45 49, VSS 45, DKP 53
-# VCP 57, RE 57, PA 57, SCF 57, OD 57, RC 61, CL 61, JFC 61, MSL 64, CETT 71
-# FOR 72, SFBF 72
 
-df2020<- read.csv("author2020.csv")
-df2020a <- df2020 %>% select(main, coauthor)
-df2020a
+# Upload data from excel
+a.2011 <- read_excel(path = network.data, sheet = "2016authors")
+n.2011 <- read_excel(path = network.data, sheet = "2016nodes")
 
-df2020nodes<- read.csv("author2020nodes.csv")
-df2020b <- df2020nodes %>% select(Authors, Country, Affiliation)
-df2020b
+# Select columns
+df2011.a <- a.2011 %>% select(main, coauthor)
 
-network2020 <- graph_from_data_frame(df2020a, vertices=df2020b, directed=TRUE) # covert in a igraph
-network2020[]
+duplicated(n.2011$abrev) # Find duplicate
+n.2011 <- n.2011[-c(52,53), ] # Remove duplicate
+df2011.n <- n.2011 %>% select(abrev, country, affiliation)
 
-df <- as.undirected(network2020, mode = "collapse")
+## covert in a igraph
+network2011 <- graph_from_data_frame(d=df2011.a, vertices=df2011.n, directed=TRUE)
 
-#http://mr.schochastics.net/netVizR.html
+# plot
 {set.seed(14)
-p2020 <- ggraph(network2020,"stress", bbox = 15)+
-        geom_edge_link0(edge_colour = "black")+
-        geom_node_point(aes(fill = Affiliation, shape= Affiliation), size = 5,
-                        show.legend = FALSE)+                         #Para poner la leyenda
-        scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
-                                   "Europe" = "#7fc97f", "Latin America"="#4575b4",
-                                   'North America'= "#d73027", "Oceania"="#c994c7"))+
-  scale_shape_manual(values = c(21, 22, 23, 24, 25, 10))+ #22 Asia, 24 LA
-        labs(title="2020") +
-        theme_bw()+
-        theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
-        theme(axis.ticks.x = element_blank(),
-              axis.text.x = element_blank()) +
-        theme(axis.ticks.y = element_blank(),
-              axis.text.y = element_blank()) +
-        theme(axis.title.x = element_blank(),
-              axis.title.y = element_blank())
-}
-p2020
+  p2011 <- ggraph(network2011,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2012") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
 
-
-Figure + ggsave("Figure 1.jpeg",width = 210, height = 297, units = "mm")
-
-
+p2011
 
 
 
