@@ -124,7 +124,7 @@ length(unique(a.2016$PubID))
 length(unique(a.2017$PubID))
 
 data.n.papers <- tribble(~year, ~papers, 
-                '2000-12-31', 3,  # False
+                '2000-12-31', 3,  
                 '2001-12-31', 7,
                 '2002-12-31', 3,
                 '2003-12-31', 3, 

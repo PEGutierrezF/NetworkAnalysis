@@ -58,7 +58,6 @@ edge_density(network2002, loops=FALSE)
 assortativity_nominal(network2002, as.factor(V(network2002)$affiliation))
 
 
-
 # Centrality 2003 ---------------------------------------------------------
 network2003 <- graph_from_data_frame(d=df2003.a, vertices=df2003.n, directed=FALSE)
 centr_degree(network2003, mode = "total")$centralization
@@ -96,7 +95,7 @@ graph.density(network2005)
 edge_density(network2005, loops=FALSE)
 
 assortativity_nominal(network2005, as.factor(V(network2005)$affiliation))
-
+assortativity_nominal(network2005, as.factor(V(network2005)$country))
 
 # Centrality 2006 ---------------------------------------------------------
 network2006 <- graph_from_data_frame(d=df2006.a, vertices=df2006.n, directed=FALSE)
