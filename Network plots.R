@@ -715,7 +715,7 @@ n.2015 <- read_excel(path = network.data, sheet = "2015nodes")
 df2015.a <- a.2015 %>% select(main, coauthor)
 
 duplicated(n.2015$abrev) # Find duplicate
-n.2015 <- n.2015[!duplicated(n.2015$abrev), ] # Remove duplicate automaticaly
+n.2015 <- n.2015[!duplicated(n.2015$abrev), ] # Remove duplicate automatically
 df2015.n <- n.2015 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
@@ -753,28 +753,29 @@ p2015
 network.data <- "data/data2016_2020.xlsx"
 excel_sheets(path = network.data)
 
+
 ###########################################################################
 # 2016 --------------------------------------------------------------------
 ###########################################################################
 
 
 # Upload data from excel
-a.2011 <- read_excel(path = network.data, sheet = "2016authors")
-n.2011 <- read_excel(path = network.data, sheet = "2016nodes")
+a.2016 <- read_excel(path = network.data, sheet = "2016authors")
+n.2016 <- read_excel(path = network.data, sheet = "2016nodes")
 
 # Select columns
-df2011.a <- a.2011 %>% select(main, coauthor)
+df2016.a <- a.2016 %>% select(main, coauthor)
 
-duplicated(n.2011$abrev) # Find duplicate
-n.2011 <- n.2011[-c(52,53), ] # Remove duplicate
-df2011.n <- n.2011 %>% select(abrev, country, affiliation)
+duplicated(n.2016$abrev) # Find duplicate
+n.2016 <- n.2016[!duplicated(n.2016$abrev), ] # Remove duplicate automatically
+df2016.n <- n.2016 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
-network2011 <- graph_from_data_frame(d=df2011.a, vertices=df2011.n, directed=TRUE)
+network2016 <- graph_from_data_frame(d=df2016.a, vertices=df2016.n, directed=TRUE)
 
 # plot
 {set.seed(14)
-  p2011 <- ggraph(network2011,layout = "gem")+
+  p2016 <- ggraph(network2016,layout = "gem")+
     geom_edge_link0(edge_colour = "black")+
     geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
                     show.legend = FALSE)+
@@ -795,7 +796,189 @@ network2011 <- graph_from_data_frame(d=df2011.a, vertices=df2011.n, directed=TRU
           axis.title.y = element_blank())
 }  
 
-p2011
+p2016
 
 
 
+
+###########################################################################
+# 2017 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2017 <- read_excel(path = network.data, sheet = "2017authors")
+n.2017 <- read_excel(path = network.data, sheet = "2017nodes")
+
+# Select columns
+df2017.a <- a.2017 %>% select(main, coauthor)
+
+duplicated(n.2017$abrev) # Find duplicate
+n.2017 <- n.2017[!duplicated(n.2017$abrev), ] # Remove duplicate automatically
+df2017.n <- n.2017 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2017 <- graph_from_data_frame(d=df2017.a, vertices=df2017.n, directed=TRUE)
+
+# plot
+{set.seed(14)
+  p2017 <- ggraph(network2017,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2017") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2017
+
+
+
+###########################################################################
+# 2018 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2018 <- read_excel(path = network.data, sheet = "2018authors")
+n.2018 <- read_excel(path = network.data, sheet = "2018nodes")
+
+# Select columns
+df2018.a <- a.2018 %>% select(main, coauthor)
+
+duplicated(n.2018$abrev) # Find duplicate
+n.2018 <- n.2018[!duplicated(n.2018$abrev), ] # Remove duplicate automatically
+df2018.n <- n.2018 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2018 <- graph_from_data_frame(d=df2018.a, vertices=df2018.n, directed=FALSE)
+
+# plot
+{set.seed(14)
+  p2018 <- ggraph(network2018,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2018") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2018
+
+
+
+###########################################################################
+# 2018 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2019 <- read_excel(path = network.data, sheet = "2019authors")
+n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
+
+# Select columns
+df2019.a <- a.2019 %>% select(main, coauthor)
+
+duplicated(n.2019$abrev) # Find duplicate
+n.2019 <- n.2019[!duplicated(n.2019$abrev), ] # Remove duplicate automatically
+df2019.n <- n.2019 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2019 <- graph_from_data_frame(d=df2019.a, vertices=df2019.n, directed=FALSE)
+
+# plot
+{set.seed(14)
+p2019 <- ggraph(network2019,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2019") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2019
+
+
+
+###########################################################################
+# 2018 --------------------------------------------------------------------
+###########################################################################
+
+
+# Upload data from excel
+a.2020 <- read_excel(path = network.data, sheet = "2020authors")
+n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
+
+# Select columns
+df2020.a <- a.2020 %>% select(main, coauthor)
+
+duplicated(n.2020$abrev) # Find duplicate
+n.2020 <- n.2020[!duplicated(n.2020$abrev), ] # Remove duplicate automatically
+df2020.n <- n.2020 %>% select(abrev, country, affiliation)
+
+## covert in a igraph
+network2020 <- graph_from_data_frame(d=df2020.a, vertices=df2020.n, directed=FALSE)
+
+# plot
+{set.seed(14)
+p2020 <- ggraph(network2020,layout = "gem")+
+    geom_edge_link0(edge_colour = "black")+
+    geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+                    show.legend = FALSE)+
+    #  scale_edge_colour_brewer(palette = "Set1") +
+    scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
+                               "Europe" = "#7fc97f", "Latin America"="#4575b4",
+                               'North America'= "#d73027", "Oceania"="#c994c7"))+
+    scale_shape_manual(values = c(21, 22,23, 24, 25, 7))+
+    
+    labs(title="2020") +
+    theme_bw()+
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())+
+    theme(axis.ticks.x = element_blank(),
+          axis.text.x = element_blank()) +
+    theme(axis.ticks.y = element_blank(),
+          axis.text.y = element_blank()) +
+    theme(axis.title.x = element_blank(),
+          axis.title.y = element_blank())
+}  
+
+p2020
