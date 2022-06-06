@@ -74,7 +74,7 @@ df2001.a <- a.2001 %>% select(main, coauthor)
 
 # remove duplicate
 n.2001 <- n.2001[-c(18, 19), ]
-df2001.n <- n.2001 %>% select(abrev, country, affiliation, affiliation.C)
+df2001.n <- n.2001 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
 network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=TRUE)
