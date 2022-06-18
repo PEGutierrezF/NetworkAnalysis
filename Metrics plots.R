@@ -217,7 +217,7 @@ data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
 data.n.papers                
 data.n.papers$year <-as.POSIXct(data.n.papers$year,"%Y-%m-%d",tz = "UTC")
 
-ggplot(data.n.papers, aes(x = year, y = papers)) + 
+p <- ggplot(data.n.papers, aes(x = year, y = papers)) + 
    geom_bar(stat="identity") +
    
   # Scale
@@ -231,25 +231,40 @@ ggplot(data.n.papers, aes(x = year, y = papers)) +
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-
+p
 
 df <- data.n.papers %>% 
   select(year, authors, authors_LA) %>% 
-tidyr::pivot_longer(cols=c('authors','authors_LA'),
-                    names_to = 'authors', 
-                    values_to= 'value')
+  tidyr::pivot_longer(cols=c('authors','authors_LA'),
+                      names_to = 'coauthors', 
+                      values_to= 'value')
 df
 
-ggplot(data.n.papers, aes(year)) + 
-  geom_line(aes(y = authors, colour = "Total", linetype="solid")) + 
-  geom_line(aes(y = authors_LA, colour = "Latin America", linetype="dashed")) +
+
+ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) + 
+  geom_line(size=1) + geom_point(size = 4) +
   
   theme_bw() +
   # Labels
-  labs(x= 'Year', y= 'Numbers of Authors') +
+  labs(x= 'Year', y= 'Numbers of authors') +
+  #Legend
+  theme(legend.title=element_blank()) +
+  theme(legend.text = element_text(color = "black", size = 12))+  #factor name
+  scale_linetype_manual("",values =c("solid","dotdash"),
+                        breaks=c("authors", "authors_LA"), 
+                        labels=c("Authors","Latin America"))+ 
+  theme(legend.position=c(.18,.85)) +
+
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+ca
+
+Fig <- p / ca
+Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
+
+
+
 
