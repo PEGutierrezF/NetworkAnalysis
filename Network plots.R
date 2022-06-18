@@ -346,7 +346,7 @@ n.2007 <- read_excel(path = network.data, sheet = "2007nodes")
 # Select columns
 df2007.a <- a.2007 %>% select(main, coauthor)
 
-duplicated(df2007.n$abrev) # Find duplicate
+duplicated(n.2007$abrev) # Find duplicate
 n.2007 <- n.2007[-c(5,6), ] # Remove duplicate
 df2007.n <- n.2007 %>% select(abrev, country, affiliation)
 
@@ -435,7 +435,7 @@ n.2009 <- read_excel(path = network.data, sheet = "2009nodes")
 # Select columns
 df2009.a <- a.2009 %>% select(main, coauthor)
 
-duplicated(df2009.n$abrev) # Find duplicate
+duplicated(n.2009$abrev) # Find duplicate
 n.2009 <- n.2009[-c(26), ] # Remove duplicate
 df2009.n <- n.2009 %>% select(abrev, country, affiliation)
 
@@ -982,3 +982,4 @@ p2020 <- ggraph(network2020,layout = "gem")+
 }  
 
 p2020
+
