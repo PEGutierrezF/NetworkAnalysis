@@ -139,7 +139,7 @@ length(unique(a.2019$PubID))
 length(unique(a.2020$PubID))
 }
 
-# Number of authors ---------------------------------------------------------------
+# Total number of authors ---------------------------------------------------------------
 {
   length(unique(n.2000$abrev))
   length(unique(n.2001$abrev))
@@ -225,7 +225,7 @@ p <- ggplot(data.n.papers, aes(x = year, y = papers)) +
   
   theme_bw() +
   # Labels
-  labs(x= 'Year', y= 'Numbers of papers') +
+  labs(x= '', y= 'Numbers of papers') +
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
@@ -249,10 +249,10 @@ ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) +
   labs(x= 'Year', y= 'Numbers of authors') +
   #Legend
   theme(legend.title=element_blank()) +
-  theme(legend.text = element_text(color = "black", size = 12))+  #factor name
+  theme(legend.text = element_text(color = "black", size = 14))+  #factor name
   scale_linetype_manual("",values =c("solid","dotdash"),
                         breaks=c("authors", "authors_LA"), 
-                        labels=c("Authors","Latin America"))+ 
+                        labels=c("Total","Latin America"))+ 
   theme(legend.position=c(.18,.85)) +
 
   #Axis  
