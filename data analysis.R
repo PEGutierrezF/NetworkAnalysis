@@ -3,12 +3,49 @@
 
 
 # ---------------------------------------------
-# Number of countries and authors per paper
+# Data analysis
 # 19 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com
 # ---------------------------------------------
 #  
+
+network.data <- "data/data2000_2005.xlsx"
+excel_sheets(path = network.data)
+
+n.2000 <- read_excel(path = network.data, sheet = "2000nodes")
+n.2001 <- read_excel(path = network.data, sheet = "2001nodes")
+n.2002 <- read_excel(path = network.data, sheet = "2002nodes")
+n.2003 <- read_excel(path = network.data, sheet = "2003nodes")
+n.2004 <- read_excel(path = network.data, sheet = "2004nodes")
+n.2005 <- read_excel(path = network.data, sheet = "2005nodes")
+
+network.data <- "data/data2006_2010.xlsx"
+excel_sheets(path = network.data)
+
+n.2006 <- read_excel(path = network.data, sheet = "2006nodes")
+n.2007 <- read_excel(path = network.data, sheet = "2007nodes")
+n.2008 <- read_excel(path = network.data, sheet = "2008nodes")
+n.2009 <- read_excel(path = network.data, sheet = "2009nodes")
+n.2010 <- read_excel(path = network.data, sheet = "2010nodes")
+
+network.data <- "data/data2011_2015.xlsx"
+excel_sheets(path = network.data)
+
+n.2011 <- read_excel(path = network.data, sheet = "2011nodes")
+n.2012 <- read_excel(path = network.data, sheet = "2012nodes")
+n.2013 <- read_excel(path = network.data, sheet = "2013nodes")
+n.2014 <- read_excel(path = network.data, sheet = "2014nodes")
+n.2015 <- read_excel(path = network.data, sheet = "2015nodes")
+
+network.data <- "data/data2016_2020.xlsx"
+excel_sheets(path = network.data)
+
+n.2016 <- read_excel(path = network.data, sheet = "2016nodes")
+n.2017 <- read_excel(path = network.data, sheet = "2017nodes")
+n.2018 <- read_excel(path = network.data, sheet = "2018nodes")
+n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
+n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
 
 
 df.t <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
@@ -25,7 +62,7 @@ df.f <- df.t %>%
 
 c <- ggplot(df.f, aes(x = year, y = count), )+
   geom_jitter(width=0.1, height = 0.1, size=1.5) +
-  scale_y_continuous(limits=c(0,18), breaks=seq(0,18, by = 4)) +
+  scale_y_continuous(limits=c(0,20), breaks=seq(0,20, by = 4)) +
   geom_smooth(method = "glm", se = T, color="black",
               method.args = list(family = "poisson")) +
   theme_bw() + 
@@ -38,12 +75,12 @@ c <- ggplot(df.f, aes(x = year, y = count), )+
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-
+c
 
 # test previous number
 test <- df.t %>% select(year,country,PubID) %>% 
   filter(year==2015) %>% 
-  filter(PubID==21) 
+  filter(PubID==20) 
 
 length(unique(test$country))
 
@@ -94,3 +131,11 @@ df.t %>%
 df.t %>% 
   group_by(year,country,PubID) %>% 
   summarise(Freq=n())
+
+# Frecuencia, numero de Paises
+df.t %>% 
+  group_by(country) %>% 
+  summarise(Freq=n()) %>% 
+  arrange(desc(Freq)) %>% 
+  adorn_totals('row', fill = NA) %>%
+  print(n = Inf)

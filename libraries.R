@@ -17,13 +17,11 @@ rm(list = ls())
 
 # install.packages(c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
 #                  "ggnetwork","ITNr", "intergraph","patchwork",
-#                  "xts","emmeans", 'quantmod', "ggpubr"))
+#                  "xts","emmeans", 'quantmod', "ggpubr","janitor"))
 
 libraries <- c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
                "ggnetwork","ITNr", "intergraph","patchwork",
-               "xts","emmeans", 'quantmod', "ggpubr")
+               "xts","emmeans", 'quantmod', "ggpubr","janitor")
 lapply(libraries, require, character.only = TRUE)
-
-
 
 
