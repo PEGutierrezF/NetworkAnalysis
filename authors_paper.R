@@ -23,7 +23,13 @@ df.t %>%
             country = n_distinct(country))
 
 
-# Frecuencia
+# Frecuencia, numero de Paises en cada paper
 df.t %>% 
   group_by(year,country,PubID) %>% 
   summarise(Freq=n())
+
+
+df.f <- df.t %>% 
+  group_by(year,PubID) %>% 
+  summarise(count = n_distinct(country))
+
