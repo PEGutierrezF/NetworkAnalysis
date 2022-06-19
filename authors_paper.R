@@ -24,9 +24,9 @@ df.f <- df.t %>%
   summarise(count = n_distinct(country))
 
 ggplot(df.f, aes(x = year, y = count), )+
-  geom_jitter(width=0.1, height = 0.1) +
+  geom_jitter(width=0.1, height = 0.1, size=1.5) +
   scale_y_continuous(limits=c(0,18), breaks=seq(0,18, by = 4)) +
-  geom_smooth(method = "glm", se = F, 
+  geom_smooth(method = "glm", se = T, color="black",
               method.args = list(family = "poisson")) +
   theme_bw() + 
   
@@ -58,9 +58,9 @@ mod3 <- glm(count~year, family=poisson, data=df.f)
     summarise(count.autors = n_distinct(abrev))  
 
   ggplot(df.a, aes(x = year, y = count.autors), )+
-    geom_jitter(width=0.1, height = 0.1)   +
+    geom_jitter(width=0.1, height = 0.1,size=1.5)   +
     scale_y_continuous(limits=c(0,30), breaks=seq(0,30, by = 5)) +
-    geom_smooth(method = "glm", se = F, 
+    geom_smooth(method = "glm", se = T,  color='black',
                 method.args = list(family = "poisson")) +
     
     theme_bw() + 
