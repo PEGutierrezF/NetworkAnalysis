@@ -26,8 +26,8 @@ c.2000 ## node degree of all nodes in the network
 
 edge_density(network2000, loops=FALSE)
 
-assortativity_nominal(network2000, as.factor(V(network2000)$affiliation))
-
+assortativity_nominal(network2000, as.factor(V(network2000)$affiliation)) # by continent
+assortativity_nominal(network2000, as.factor(V(network2000)$country)) # by country
 
 
 # 2001 ---------------------------------------------------------
@@ -38,7 +38,8 @@ centr_degree(network2001, mode = "total")$centralization
 
 edge_density(network2001, loops=FALSE)
 
-assortativity_nominal(network2001, as.factor(V(network2001)$affiliation))
+assortativity_nominal(network2001, as.factor(V(network2001)$affiliation)) # by continent
+assortativity_nominal(network2001, as.factor(V(network2001)$country)) # by country
 
 
 
@@ -50,7 +51,8 @@ centr_degree(network2002, mode = "total")$centralization
 
 edge_density(network2002, loops=FALSE)
 
-assortativity_nominal(network2002, as.factor(V(network2002)$affiliation))
+assortativity_nominal(network2002, as.factor(V(network2002)$affiliation))# by continent
+assortativity_nominal(network2002, as.factor(V(network2002)$country)) # by country
 
 
 # Centrality 2003 ---------------------------------------------------------
@@ -61,7 +63,8 @@ centr_degree(network2003, mode = "total")$centralization
 
 edge_density(network2003, loops=FALSE)
 
-assortativity_nominal(network2003, as.factor(V(network2003)$affiliation))
+assortativity_nominal(network2003, as.factor(V(network2003)$affiliation))# by continent
+assortativity_nominal(network2003, as.factor(V(network2003)$country)) # by country
 
 
 # Centrality 2004 ---------------------------------------------------------
@@ -72,7 +75,8 @@ centr_degree(network2004, mode = "total")$centralization
 
 edge_density(network2004, loops=FALSE)
 
-assortativity_nominal(network2004, as.factor(V(network2004)$affiliation))
+assortativity_nominal(network2004, as.factor(V(network2004)$affiliation)) # by continent
+assortativity_nominal(network2004, as.factor(V(network2004)$country)) # by country
 
 
 # Centrality 2005 ---------------------------------------------------------
@@ -83,8 +87,9 @@ centr_degree(network2005, mode = "total")$centralization
 
 edge_density(network2005, loops=FALSE)
 
-assortativity_nominal(network2005, as.factor(V(network2005)$affiliation))
-assortativity_nominal(network2005, as.factor(V(network2005)$country))
+assortativity_nominal(network2005, as.factor(V(network2005)$affiliation)) # by continent
+assortativity_nominal(network2005, as.factor(V(network2005)$country)) # by country
+
 
 # Centrality 2006 ---------------------------------------------------------
 network2006 <- graph_from_data_frame(d=df2006.a, vertices=df2006.n, directed=FALSE)
@@ -94,7 +99,9 @@ centr_degree(network2006, mode = "total")$centralization
 
 edge_density(network2006, loops=FALSE)
 
-assortativity_nominal(network2006, as.factor(V(network2006)$affiliation))
+assortativity_nominal(network2006, as.factor(V(network2006)$affiliation)) # by continent
+assortativity_nominal(network2006, as.factor(V(network2006)$country)) # by country
+
 
 
 # Centrality 2007 ---------------------------------------------------------
@@ -105,7 +112,8 @@ centr_degree(network2007, mode = "total")$centralization
 
 edge_density(network2007, loops=FALSE)
 
-assortativity_nominal(network2007, as.factor(V(network2007)$affiliation))
+assortativity_nominal(network2007, as.factor(V(network2007)$affiliation)) # by continent
+assortativity_nominal(network2007, as.factor(V(network2007)$country)) # by country
 
 
 
@@ -117,7 +125,8 @@ centr_degree(network2008, mode = "total")$centralization
 
 edge_density(network2008, loops=FALSE)
 
-assortativity_nominal(network2008, as.factor(V(network2008)$affiliation))
+assortativity_nominal(network2008, as.factor(V(network2008)$affiliation)) # by continent
+assortativity_nominal(network2008, as.factor(V(network2008)$country)) # by country
 
 
 
@@ -129,7 +138,8 @@ centr_degree(network2009, mode = "total")$centralization
 
 edge_density(network2009, loops=FALSE)
 
-assortativity_nominal(network2009, as.factor(V(network2009)$affiliation))
+assortativity_nominal(network2009, as.factor(V(network2009)$affiliation)) # by continent
+assortativity_nominal(network2009, as.factor(V(network2009)$country)) # by country
 
 
 
@@ -141,7 +151,8 @@ centr_degree(network2010, mode = "total")$centralization
 
 edge_density(network2010, loops=FALSE)
 
-assortativity_nominal(network2010, as.factor(V(network2010)$affiliation))
+assortativity_nominal(network2010, as.factor(V(network2010)$affiliation)) # by continent
+assortativity_nominal(network2010, as.factor(V(network2010)$country)) # by country
 
 
 
@@ -153,7 +164,8 @@ centr_degree(network2011, mode = "total")$centralization
 
 edge_density(network2011, loops=FALSE)
 
-assortativity_nominal(network2011, as.factor(V(network2011)$affiliation))
+assortativity_nominal(network2011, as.factor(V(network2011)$affiliation)) # by continent
+assortativity_nominal(network2011, as.factor(V(network2011)$country)) # by country
 
 
 
@@ -165,7 +177,8 @@ centr_degree(network2012, mode = "total")$centralization
 
 edge_density(network2012, loops=FALSE)
 
-assortativity_nominal(network2012, as.factor(V(network2012)$affiliation))
+assortativity_nominal(network2012, as.factor(V(network2012)$affiliation)) # by continent
+assortativity_nominal(network2012, as.factor(V(network2012)$country)) # by country
 
 
 # Centrality 2013 ---------------------------------------------------------
@@ -176,7 +189,8 @@ centr_degree(network2013, mode = "total")$centralization
 
 edge_density(network2013, loops=FALSE)
 
-assortativity_nominal(network2013, as.factor(V(network2013)$affiliation))
+assortativity_nominal(network2013, as.factor(V(network2013)$affiliation)) # by continent
+assortativity_nominal(network2013, as.factor(V(network2013)$country)) # by country
 
 
 
@@ -188,7 +202,8 @@ centr_degree(network2014, mode = "total")$centralization
 
 edge_density(network2014, loops=FALSE)
 
-assortativity_nominal(network2014, as.factor(V(network2014)$affiliation))
+assortativity_nominal(network2014, as.factor(V(network2014)$affiliation)) # by continent
+assortativity_nominal(network2014, as.factor(V(network2014)$country)) # by country
 
 
 # Centrality 2015 ---------------------------------------------------------
@@ -199,7 +214,8 @@ centr_degree(network2015, mode = "total")$centralization
 
 edge_density(network2015, loops=FALSE)
 
-assortativity_nominal(network2015, as.factor(V(network2015)$affiliation))
+assortativity_nominal(network2015, as.factor(V(network2015)$affiliation)) # by continent
+assortativity_nominal(network2015, as.factor(V(network2015)$country)) # by country
 
 
 
@@ -211,7 +227,8 @@ centr_degree(network2016, mode = "total")$centralization
 
 edge_density(network2016, loops=FALSE)
 
-assortativity_nominal(network2016, as.factor(V(network2016)$affiliation))
+assortativity_nominal(network2016, as.factor(V(network2016)$affiliation)) # by continent
+assortativity_nominal(network2015, as.factor(V(network2015)$country)) # by country
 
 
 # Centrality 2017 ---------------------------------------------------------
@@ -222,7 +239,8 @@ centr_degree(network2017, mode = "total")$centralization
 
 edge_density(network2017, loops=FALSE)
 
-assortativity_nominal(network2017, as.factor(V(network2017)$affiliation))
+assortativity_nominal(network2017, as.factor(V(network2017)$affiliation)) # by continent
+assortativity_nominal(network2017, as.factor(V(network2017)$country)) # by country
 
 
 
@@ -234,7 +252,8 @@ centr_degree(network2018, mode = "total")$centralization
 
 edge_density(network2018, loops=FALSE)
 
-assortativity_nominal(network2018, as.factor(V(network2018)$affiliation))
+assortativity_nominal(network2018, as.factor(V(network2018)$affiliation)) # by continent
+assortativity_nominal(network2018, as.factor(V(network2018)$country)) # by country
 
 
 # Centrality 2019 ---------------------------------------------------------
@@ -245,7 +264,8 @@ centr_degree(network2019, mode = "total")$centralization
 
 edge_density(network2019, loops=FALSE)
 
-assortativity_nominal(network2019, as.factor(V(network2019)$affiliation))
+assortativity_nominal(network2019, as.factor(V(network2019)$affiliation)) # by continent
+assortativity_nominal(network2019, as.factor(V(network2019)$country)) # by country
 
 
 # Centrality 2020 ---------------------------------------------------------
@@ -256,5 +276,6 @@ centr_degree(network2020, mode = "total")$centralization
 
 edge_density(network2020, loops=FALSE)
 
-assortativity_nominal(network2020, as.factor(V(network2020)$affiliation))
+assortativity_nominal(network2020, as.factor(V(network2020)$affiliation)) # by continent
+assortativity_nominal(network2020, as.factor(V(network2020)$country)) # by country
 

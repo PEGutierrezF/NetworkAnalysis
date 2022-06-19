@@ -69,7 +69,11 @@ https://rpubs.com/smbrook3/unit-2-case-study
 
 
 ## Homophily (or assortativity)
-Values less than 1 indicate stronger subgroup cohesion than would be expected in a random network (i.e., homophily), and values higher than 1 represent higher than expected rates of collaboration (i.e., heterophily).
+When r=1, the network is completely assortative. Menos colaboracion
+When r=0, the network is non-assortative. 
+When r=???1, the network is completely disassortative.  # Mas colaboracion
+
+http://biosoft.kaist.ac.kr/bisl_2018/paperPDF/2018TopologicalMotifsPopulate.pdf
 
 ### We used:
 
