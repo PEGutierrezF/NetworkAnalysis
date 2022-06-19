@@ -982,4 +982,3 @@ p2020 <- ggraph(network2020,layout = "gem")+
 }  
 
 p2020
-

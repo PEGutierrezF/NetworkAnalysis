@@ -49,7 +49,7 @@ c <- ggplot(data, aes(x = year, y = Centralization)) +
   theme_bw() + 
   
   # Labels
-  labs(x= 'Year', y= 'Centralization') +
+  labs(x= '', y= 'Centralization') +
   
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
@@ -75,7 +75,7 @@ df.a$year <-as.POSIXct(df.a$year,"%Y-%m-%d",tz = "UTC")
 
 h <- ggplot(df.a, aes(x=year,y=value, linetype=assor)) + 
   geom_line(size=1) + geom_point(size = 4) +
-
+  
   ylim(-1, 1) +
   geom_hline(yintercept=0, linetype="dashed", color = "gray50", size= 1) + 
   
@@ -136,27 +136,27 @@ d
 
 # Number of papers ---------------------------------------------------------------
 {
-length(unique(a.2000$PubID))
-length(unique(a.2001$PubID))
-length(unique(a.2002$PubID))
-length(unique(a.2003$PubID))
-length(unique(a.2004$PubID))
-length(unique(a.2005$PubID))
-length(unique(a.2006$PubID))
-length(unique(a.2007$PubID))
-length(unique(a.2008$PubID))
-length(unique(a.2009$PubID))
-length(unique(a.2010$PubID))
-length(unique(a.2011$PubID))
-length(unique(a.2012$PubID))
-length(unique(a.2013$PubID))
-length(unique(a.2014$PubID))
-length(unique(a.2015$PubID))
-length(unique(a.2016$PubID))
-length(unique(a.2017$PubID))
-length(unique(a.2018$PubID))
-length(unique(a.2019$PubID))
-length(unique(a.2020$PubID))
+  length(unique(a.2000$PubID))
+  length(unique(a.2001$PubID))
+  length(unique(a.2002$PubID))
+  length(unique(a.2003$PubID))
+  length(unique(a.2004$PubID))
+  length(unique(a.2005$PubID))
+  length(unique(a.2006$PubID))
+  length(unique(a.2007$PubID))
+  length(unique(a.2008$PubID))
+  length(unique(a.2009$PubID))
+  length(unique(a.2010$PubID))
+  length(unique(a.2011$PubID))
+  length(unique(a.2012$PubID))
+  length(unique(a.2013$PubID))
+  length(unique(a.2014$PubID))
+  length(unique(a.2015$PubID))
+  length(unique(a.2016$PubID))
+  length(unique(a.2017$PubID))
+  length(unique(a.2018$PubID))
+  length(unique(a.2019$PubID))
+  length(unique(a.2020$PubID))
 }
 
 # Total number of authors ---------------------------------------------------------------
@@ -211,35 +211,35 @@ length(unique(a.2020$PubID))
 }
 
 data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
-                '2000-01-01', 3,  7,  7,
-                '2001-01-01', 7,  19, 14,
-                '2002-01-01', 3,  8,  4,
-                '2003-01-01', 3,  10, 1,
-                "2004-01-01", 7,  19, 8,
-                "2005-01-01", 4,  7,  6,
-                "2006-01-01", 6,  21, 9,
-                "2007-01-01", 5,  20, 14,
-                "2008-01-01", 6,  16, 14,
-                "2009-01-01", 11, 38, 23,
-                "2010-01-01", 19, 70, 48,
-                "2011-01-01", 15, 54, 41,
-                "2012-01-01", 20, 77, 62,
-                "2013-01-01", 33, 90, 74,
-                "2014-01-01", 54, 159, 131,
-                "2015-01-01", 41, 191, 137,
-                "2016-01-01", 35, 127, 100,
-                "2017-01-01", 47, 179, 140, 
-                "2018-01-01", 46, 207, 141,
-                "2019-01-01", 38, 176, 140,
-                "2020-01-01", 49, 244, 170
+                         '2000-01-01', 3,  7,  7,
+                         '2001-01-01', 7,  19, 14,
+                         '2002-01-01', 3,  8,  4,
+                         '2003-01-01', 3,  10, 1,
+                         "2004-01-01", 7,  19, 8,
+                         "2005-01-01", 4,  7,  6,
+                         "2006-01-01", 6,  21, 9,
+                         "2007-01-01", 5,  20, 14,
+                         "2008-01-01", 6,  16, 14,
+                         "2009-01-01", 11, 38, 23,
+                         "2010-01-01", 19, 70, 48,
+                         "2011-01-01", 15, 54, 41,
+                         "2012-01-01", 20, 77, 62,
+                         "2013-01-01", 33, 90, 74,
+                         "2014-01-01", 54, 159, 131,
+                         "2015-01-01", 41, 191, 137,
+                         "2016-01-01", 35, 127, 100,
+                         "2017-01-01", 47, 179, 140, 
+                         "2018-01-01", 46, 207, 141,
+                         "2019-01-01", 38, 176, 140,
+                         "2020-01-01", 49, 244, 170
 )
 
 data.n.papers                
 data.n.papers$year <-as.POSIXct(data.n.papers$year,"%Y-%m-%d",tz = "UTC")
 
 p <- ggplot(data.n.papers, aes(x = year, y = papers)) + 
-   geom_bar(stat="identity") +
-   
+  geom_bar(stat="identity") +
+  
   # Scale
   ylim(0,60) +
   
@@ -253,6 +253,7 @@ p <- ggplot(data.n.papers, aes(x = year, y = papers)) +
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 p
 
+# Select authors and authors from Latin America
 df <- data.n.papers %>% 
   select(year, authors, authors_LA) %>% 
   tidyr::pivot_longer(cols=c('authors','authors_LA'),
@@ -275,7 +276,7 @@ ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) +
                         breaks=c("authors", "authors_LA"), 
                         labels=c("Total","Latin America"))+ 
   theme(legend.position=c(.18,.85)) +
-
+  
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
@@ -288,8 +289,3 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 
 
 
-mod1 <- df %>% filter(coauthors == "authors")
-summary(glm(value~year, family=poisson, data=mod1))
-
-mod2 <- df %>% filter(coauthors == "authors_LA")
-summary(glm(value~year, family=poisson, data=mod2))
