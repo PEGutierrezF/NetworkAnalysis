@@ -16,7 +16,6 @@
 rm(list = ls())
 
 
-
 data <- tribble(~year, ~Centralization, ~Assortativity, ~Assortativity_country, ~Density, 
                 '2000-01-01', 0.1428571,  NA,        1,          0.1904762,
                 '2001-01-01', 0.1403509,  0.2,       0.5469256,  0.08187135,
@@ -62,25 +61,40 @@ c
 
 
 
-# Homophily ---------------------------------------------------------------
+# Assortativity ---------------------------------------------------------------
 
-data                
-data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
+df.a <- data %>% 
+  select(year, Assortativity, Assortativity_country) %>% 
+  tidyr::pivot_longer(cols=c('Assortativity','Assortativity_country'),
+                      names_to = 'assor', 
+                      values_to= 'value')
+df.a
 
+df.a                
+df.a$year <-as.POSIXct(df.a$year,"%Y-%m-%d",tz = "UTC")
 
-h <- ggplot(data, aes(x = year, y = Assortativity)) +
-  geom_line(size=1.2) +
-  geom_point(shape=15, size=5) +
+h <- ggplot(df.a, aes(x=year,y=value, linetype=assor)) + 
+  geom_line(size=1) + geom_point(size = 4) +
+
   ylim(-1, 1) +
   geom_hline(yintercept=0, linetype="dashed", color = "gray50", size= 1) + 
   
-  annotate("text", x = as.POSIXct(c("2017-02-01")), y = 1, label = "Low collaboration", size=8) +
-  annotate("text", x = as.POSIXct(c("2017-02-01")), y = -1, label = "High collaboration", size=8) +
+  annotate("text", x = as.POSIXct(c("2017-02-01")), y = 0.9, label = "Low collaboration", size=6) +
+  annotate("text", x = as.POSIXct(c("2017-02-01")), y =-0.9, label = "High collaboration", size=6) +
   
   theme_bw() + 
   
   # Labels
   labs(x= 'Year', y= 'Assortativity') +
+  
+  #Legend
+  theme(legend.title=element_blank()) +
+  theme(legend.text = element_text(color = "black", size = 16))+  #factor name
+  scale_linetype_manual("",values =c("solid","dotdash"),
+                        breaks=c("Assortativity", "Assortativity_country"), 
+                        labels=c("Continent","Country"))+ 
+  theme(legend.position=c(0.15,0.25)) +
+  
   
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
@@ -89,7 +103,8 @@ h <- ggplot(data, aes(x = year, y = Assortativity)) +
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 h  
 
-
+Fig.x <- c / h
+Fig.x + ggsave("Figure 2.jpg",width = 200, height = 220, units = "mm")
 
 # Density ---------------------------------------------------------------
 
@@ -116,8 +131,7 @@ d <- ggplot(data, aes(x = year, y = Density)) +
 d
 
 
-Fig.x <- c / h / d
-Fig.x +  ggsave("Figure 2.jpg",width = 100, height = 220, units = "mm")
+
 
 
 # Number of papers ---------------------------------------------------------------
@@ -253,6 +267,7 @@ ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) +
   theme_bw() +
   # Labels
   labs(x= 'Year', y= 'Numbers of authors') +
+  
   #Legend
   theme(legend.title=element_blank()) +
   theme(legend.text = element_text(color = "black", size = 14))+  #factor name
@@ -273,4 +288,8 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 
 
 
+mod1 <- df %>% filter(coauthors == "authors")
+summary(glm(value~year, family=poisson, data=mod1))
 
+mod2 <- df %>% filter(coauthors == "authors_LA")
+summary(glm(value~year, family=poisson, data=mod2))
