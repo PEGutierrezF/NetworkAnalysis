@@ -16,7 +16,7 @@
 rm(list = ls())
 #source_file = read.csv(file.choose(), sep = ";", header = F)
 
-
+{
 network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
@@ -982,3 +982,4 @@ p2020 <- ggraph(network2020,layout = "gem")+
 }  
 
 p2020
+}

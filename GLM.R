@@ -12,18 +12,18 @@
 
 
 
-df <- data.n.papers %>% 
-  select(year, authors, authors_LA) %>% 
-  tidyr::pivot_longer(cols=c('authors','authors_LA'),
-                      names_to = 'coauthors', 
-                      values_to= 'value') 
+df <- data.n.papers %>% # data frame
+  select(year, authors, authors_LA) %>% # select columns
+  tidyr::pivot_longer(cols=c('authors','authors_LA'), # the names of the columns to pivot
+                      names_to = 'coauthors', # the name for the new character column
+                      values_to= 'value') # the name for the new values column
 
 # df$numbers<-1:nrow(df)
   
 df
 
 
-df.b <- df %>% filter(coauthors == "authors")
+df.b <- df %>% filter(coauthors == "authors") # data frame, filter (select) by authors
 mod1 <- glm(value~year, family=poisson, data=df.b)
 summary(mod1)
 
