@@ -3,11 +3,12 @@
 
 
 # ---------------------------------------------
-# Centralization
-# 16 May 2021
+# Centralization and Assortativity
+# 19 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
 # ---------------------------------------------
-#  
+#   
 
 
 

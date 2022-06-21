@@ -10,6 +10,8 @@
 # ---------------------------------------------
 #  
 
+
+
 network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
@@ -96,7 +98,7 @@ df.a <- df.t %>%
 
 a <-   ggplot(df.a, aes(x = year, y = count.autors), )+
   geom_jitter(width=0.1, height = 0.1,size=1.5)   +
-  scale_y_continuous(limits=c(0,30), breaks=seq(0,30, by = 5)) +
+  scale_y_continuous(limits=c(0,33), breaks=seq(0,33, by = 5)) +
   geom_smooth(method = "glm", se = T,  color='black',
               method.args = list(family = "poisson")) +
   
@@ -110,7 +112,7 @@ a <-   ggplot(df.a, aes(x = year, y = count.autors), )+
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-
+a
 
 mod4 <- glm(count.autors~year, family=poisson, data=df.a)
 summary(mod4)
@@ -139,3 +141,6 @@ df.t %>%
   arrange(desc(Freq)) %>% 
   adorn_totals('row', fill = NA) %>%
   print(n = Inf)
+
+unique(df.t$country)
+length(unique(df.t$country))
