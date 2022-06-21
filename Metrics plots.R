@@ -290,3 +290,30 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 
 
 
+# other -------------------------------------------------------------------
+
+
+ggplot(data.n.papers) + 
+  geom_smooth(aes(year,authors),linetype="dotdash", color="black") + 
+  geom_smooth(aes(year,authors_LA),linetype="solid", color="black") +
+  geom_point(aes(year,authors)) +
+  geom_point(aes(year,authors_LA)) +
+  theme_bw() +
+  # Labels
+  labs(x= 'Year', y= 'Numbers of authors') +
+  
+  #Legend
+  theme(legend.title=element_blank()) +
+  theme(legend.text = element_text(color = "black", size = 14))+  #factor name
+  scale_linetype_manual("",values =c("solid","dotdash"),
+                        breaks=c("authors", "authors_LA"), 
+                        labels=c("Total","Latin America"))+ 
+  theme(legend.position=c(.18,.85)) +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+
+
