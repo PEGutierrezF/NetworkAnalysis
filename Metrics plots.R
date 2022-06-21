@@ -293,21 +293,22 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 # other -------------------------------------------------------------------
 
 
-ggplot(data.n.papers) + 
-  geom_smooth(aes(year,authors),linetype="dotdash", color="black") + 
-  geom_smooth(aes(year,authors_LA),linetype="solid", color="black") +
-  geom_point(aes(year,authors)) +
-  geom_point(aes(year,authors_LA)) +
+ggplot(df, aes(x=year, y=value, linetype=coauthors)) + 
+  geom_smooth(se=T, color = "black",show.legend = FALSE, alpha = 0.2) + 
+  geom_smooth(se=F, color = "black") + # remove background 
+  geom_point(size = 2) +
+  
   theme_bw() +
   # Labels
   labs(x= 'Year', y= 'Numbers of authors') +
   
   #Legend
-  theme(legend.title=element_blank()) +
+  theme(legend.title=element_blank()) + 
+  
   theme(legend.text = element_text(color = "black", size = 14))+  #factor name
   scale_linetype_manual("",values =c("solid","dotdash"),
                         breaks=c("authors", "authors_LA"), 
-                        labels=c("Total","Latin America"))+ 
+                        labels=c("Total","Latin America")) + 
   theme(legend.position=c(.18,.85)) +
   
   #Axis  
@@ -315,5 +316,4 @@ ggplot(data.n.papers) +
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-
 
