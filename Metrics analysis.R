@@ -3,7 +3,7 @@
 
 
 # ---------------------------------------------
-# Metrics analysis: Centrality, 
+# Metrics analysis: Centrality, Assortativity & Link Density
 # 08 May 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com

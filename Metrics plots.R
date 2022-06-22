@@ -3,7 +3,7 @@
 
 
 # ---------------------------------------------
-# Centralization and Assortativity
+# Plots: Centralization, Assortativity & Link Density
 # 19 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com
@@ -293,7 +293,7 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 # other -------------------------------------------------------------------
 
 
-ggplot(df, aes(x=year, y=value, linetype=coauthors)) + 
+s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) + 
   geom_smooth(se=T, color = "black",show.legend = FALSE, alpha = 0.2) + 
   geom_smooth(se=F, color = "black") + # remove background 
   geom_point(size = 2) +
@@ -301,6 +301,7 @@ ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
   theme_bw() +
   # Labels
   labs(x= 'Year', y= 'Numbers of authors') +
+  scale_y_continuous(limits=c(0,250), breaks=seq(0,250, by = 50)) +
   
   #Legend
   theme(legend.title=element_blank()) + 
@@ -316,4 +317,8 @@ ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+s
 
+
+Fig.4 <- p / s
+Fig.4 +  ggsave("Figure 4.jpg",width = 200, height = 220, units = "mm")
