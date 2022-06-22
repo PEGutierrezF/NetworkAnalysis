@@ -72,6 +72,7 @@ n.2001 <- read_excel(path = network.data, sheet = "2001nodes")
 # Select columns
 df2001.a <- a.2001 %>% select(main, coauthor)
 
+duplicated(n.2001$abrev) # Find duplicate
 # remove duplicate
 n.2001 <- n.2001[-c(18, 19), ]
 df2001.n <- n.2001 %>% select(abrev, country, affiliation)
