@@ -144,3 +144,4 @@ df.t %>%
 
 unique(df.t$country)
 length(unique(df.t$country))
+
