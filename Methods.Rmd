@@ -71,7 +71,7 @@ https://rpubs.com/smbrook3/unit-2-case-study
 ## Homophily (or assortativity)
 When r=1, the network is completely assortative. Menos colaboracion
 When r=0, the network is non-assortative. 
-When r=???1, the network is completely disassortative.  # Mas colaboracion
+When r=-1, the network is completely disassortative.  # Mas colaboracion
 
 http://biosoft.kaist.ac.kr/bisl_2018/paperPDF/2018TopologicalMotifsPopulate.pdf
 

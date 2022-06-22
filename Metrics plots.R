@@ -294,7 +294,7 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 
 
 s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) + 
-  geom_smooth(se=T, color = "black",show.legend = FALSE, alpha = 0.2) + 
+  geom_smooth(se=T, color = "black",show.legend = FALSE, alpha = 0.3) + 
   geom_smooth(se=F, color = "black") + # remove background 
   geom_point(size = 2) +
   
