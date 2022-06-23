@@ -58,7 +58,8 @@ fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) +
   theme_bw() +
   # Labels
   labs(x= 'Year', y= 'Origin of first author') +
-  scale_y_continuous(limits=c(0,50), breaks=seq(0,50, by = 10)) +
+  scale_y_continuous(limits=c(0,50), breaks=seq(0,50, by = 10),
+                     oob=rescale_none) +
   
   #Legend
   theme(legend.title=element_blank()) + 
@@ -75,4 +76,4 @@ fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) +
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-  
+fa  

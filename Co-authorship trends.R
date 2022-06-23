@@ -301,8 +301,8 @@ s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
   theme_bw() +
   # Labels
   labs(x= 'Year', y= 'Numbers of authors') +
-  scale_y_continuous(limits=c(0,250), breaks=seq(0,250, by = 50)) +
-  
+  scale_y_continuous(limits=c(0,250), breaks=seq(0,250, by = 50), 
+                     oob=rescale_none) +
   #Legend
   theme(legend.title=element_blank()) + 
   
