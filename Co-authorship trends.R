@@ -118,7 +118,7 @@ n.2011n <- rbind(n.2011, add.2011)
   length(unique(n.2020$abrev))
 }
 
-# Number of authors from ---------------------------------------------------------------
+# Number of authors by continent ---------------------------------------------------------------
 {
   n.2000 %>% distinct(abrev, .keep_all = TRUE) %>% count(affiliation)
   n.2001n %>% distinct(abrev, .keep_all = TRUE) %>% count(affiliation)# I added new row
@@ -144,28 +144,95 @@ n.2011n <- rbind(n.2011, add.2011)
   
 }
 
+
+# Latin American as first Authors -----------------------------------------
+
+n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2000.L) %>% count(affiliation)
+
+n.2001.L <- n.2001n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2001.L) %>% count(affiliation)
+
+n.2002.L <- n.2002n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2002.L) %>% count(affiliation)
+
+n.2003.L <- n.2003n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2003.L) %>% count(affiliation)
+
+n.2004.L <- n.2004n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2004.L) %>% count(affiliation)
+
+n.2005.L <- n.2005n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2005.L) %>% count(affiliation)
+
+n.2006.L <- n.2006n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2006.L) %>% count(affiliation)
+
+n.2007.L <- n.2007 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2007.L) %>% count(affiliation)
+
+n.2008.L <- n.2008n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2008.L) %>% count(affiliation)
+
+n.2009.L <- n.2009 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2009.L) %>% count(affiliation)
+
+n.2010.L <- n.2010n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2010.L) %>% count(affiliation)
+
+n.2011.L <- n.2011n %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2011.L) %>% count(affiliation)
+
+n.2012.L <- n.2012 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2012.L) %>% count(affiliation)
+
+n.2013.L <- n.2013 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2013.L) %>% count(affiliation)
+
+n.2014.L <- n.2014 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2014.L) %>% count(affiliation)
+
+n.2015.L <- n.2015 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2015.L) %>% count(affiliation)
+
+n.2016.L <- n.2016 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2016.L) %>% count(affiliation)
+
+n.2017.L <- n.2017 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2017.L) %>% count(affiliation)
+
+n.2018.L <- n.2018 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2018.L) %>% count(affiliation)
+
+n.2019.L <- n.2019 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2019.L) %>% count(affiliation)
+
+n.2020.L <- n.2020 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2020.L) %>% count(affiliation)
+
 data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
-                         '2000-01-01', 3,  7,  7,
-                         '2001-01-01', 8,  20, 15,
-                         '2002-01-01', 4,  9,  5,
-                         '2003-01-01', 5,  12, 2,
-                         "2004-01-01", 9,  21, 8,
-                         "2005-01-01", 5,  8,  6,
-                         "2006-01-01", 8,  23, 9,
-                         "2007-01-01", 5,  20, 14,
-                         "2008-01-01", 7,  17, 14,
-                         "2009-01-01", 11, 38, 23,
-                         "2010-01-01", 20, 71, 49,
-                         "2011-01-01", 16, 55, 42,
-                         "2012-01-01", 20, 77, 62,
-                         "2013-01-01", 33, 90, 74,
-                         "2014-01-01", 54, 159, 131,
-                         "2015-01-01", 41, 191, 137,
-                         "2016-01-01", 35, 127, 100,
-                         "2017-01-01", 47, 179, 140, 
-                         "2018-01-01", 46, 207, 141,
-                         "2019-01-01", 38, 176, 140,
-                         "2020-01-01", 49, 244, 170
+                         ~First_authors_Eur, ~First_authors_LA, ~First_authors_NA, 
+                         '2000-01-01', 3,  7,  7,    0, 3, 0,
+                         '2001-01-01', 8,  20, 15,   2, 5, 1,
+                         '2002-01-01', 4,  9,  5,    3, 1, 0,
+                         '2003-01-01', 5,  12, 2,    2, 1, 2,
+                         "2004-01-01", 9,  21, 8,    3, 3, 2, # check
+                         "2005-01-01", 5,  8,  6,    1, 4, 0,
+                         "2006-01-01", 8,  23, 9,    2, 2, 4,
+                         "2007-01-01", 5,  20, 14,   2, 2, 1,
+                         "2008-01-01", 7,  17, 14,   3, 4, 0,
+                         "2009-01-01", 11, 38, 23,   1, 7, 3,
+                         "2010-01-01", 20, 71, 49,   3, 16, 1,
+                         "2011-01-01", 16, 55, 42,   2, 12, 2,
+                         "2012-01-01", 20, 77, 62,   1, 18, 1, 
+                         "2013-01-01", 33, 90, 74,   1, 28, 4,
+                         "2014-01-01", 54, 159, 131, 6, 46, 2,
+                         "2015-01-01", 41, 191, 137, 6, 33, 2,
+                         "2016-01-01", 35, 127, 100, 4, 29, 2,
+                         "2017-01-01", 47, 179, 140, 3, 38, 6,
+                         "2018-01-01", 46, 207, 141, 8, 34, 4,
+                         "2019-01-01", 38, 176, 140, 4, 33, 1,
+                         "2020-01-01", 49, 244, 170, 2, 40, 7,
 )
 
 data.n.papers                
@@ -228,7 +295,7 @@ Fig +  ggsave("Figure 1.jpg",width = 200, height = 220, units = "mm")
 
 s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) + 
   geom_smooth(se=T, color = "black",show.legend = FALSE, alpha = 0.3) + 
-  # geom_smooth(se=F, color = "black") + # remove background 
+  geom_smooth(se=F, color = "black") + # remove background 
   geom_point(size = 2) +
   
   theme_bw() +
@@ -253,5 +320,7 @@ s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
 s
 
 
-Fig.4 <- p / s
-Fig.4 +  ggsave("Figure 4.jpg",width = 200, height = 220, units = "mm")
+Fig.4 <- p / s / fa
+Fig.4 +  ggsave("Figure 4.jpg",width = 200, height = 325, units = "mm")
+
+
