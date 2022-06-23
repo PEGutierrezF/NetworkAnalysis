@@ -907,6 +907,7 @@ n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
 df2019.a <- a.2019 %>% select(main, coauthor)
 
 duplicated(n.2019$abrev) # Find duplicate
+sum(duplicated(n.2019$abrev))
 n.2019 <- n.2019[!duplicated(n.2019$abrev), ] # Remove duplicate automatically
 df2019.n <- n.2019 %>% select(abrev, country, affiliation)
 
@@ -953,6 +954,7 @@ n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
 df2020.a <- a.2020 %>% select(main, coauthor)
 
 duplicated(n.2020$abrev) # Find duplicate
+sum(duplicated(n.2020$abrev))
 n.2020 <- n.2020[!duplicated(n.2020$abrev), ] # Remove duplicate automatically
 df2020.n <- n.2020 %>% select(abrev, country, affiliation)
 

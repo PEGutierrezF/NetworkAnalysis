@@ -16,7 +16,7 @@ data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
                          '2001-01-01', 8,  20, 15,   2, 5, 1,
                          '2002-01-01', 4,  9,  5,    3, 1, 0,
                          '2003-01-01', 5,  12, 2,    2, 1, 2,
-                         "2004-01-01", 9,  21, 8,    3, 3, 2, # check
+                         "2004-01-01", 9,  21, 8,    4, 3, 2, 
                          "2005-01-01", 5,  8,  6,    1, 4, 0,
                          "2006-01-01", 8,  23, 9,    2, 2, 4,
                          "2007-01-01", 5,  20, 14,   2, 2, 1,
@@ -57,7 +57,7 @@ fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) +
 
   theme_bw() +
   # Labels
-  labs(x= 'Year', y= 'Origin of first authors') +
+  labs(x= 'Year', y= 'Origin of first author') +
   scale_y_continuous(limits=c(0,50), breaks=seq(0,50, by = 10)) +
   
   #Legend

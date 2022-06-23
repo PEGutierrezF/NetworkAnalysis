@@ -49,8 +49,8 @@ n.2018 <- read_excel(path = network.data, sheet = "2018nodes")
 n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
 n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
 
-network.data <- "data/data2000_2020.xlsx"
-excel_sheets(path = network.data)
+network.data <- "data/data2000_2020.xlsx" # add single author paper
+excel_sheets(path = network.data) # add single author paper
 
 n.2000_20 <- read_excel(path = network.data, sheet = "2000-20nodes")
 

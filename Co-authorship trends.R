@@ -76,8 +76,8 @@ n.2002n <- rbind(n.2002, add.2002)
 add.2003 <- n.2000_20 %>% filter(year==2003)
 n.2003n <- rbind(n.2003, add.2003)
 
-add.2004 <- n.2000_20 %>% filter(year==2004)
-n.2004n <- rbind(n.2004, add.2004)
+add.2004 <- n.2000_20 %>% filter(year==2004) %>% print(n = Inf)
+n.2004n <- rbind(n.2004, add.2004) %>% print(n = Inf)
 
 add.2005 <- n.2000_20 %>% filter(year==2005)
 n.2005n <- rbind(n.2005, add.2005)
@@ -159,10 +159,10 @@ as.data.frame(n.2002.L) %>% count(affiliation)
 n.2003.L <- n.2003n %>% group_by(PubID) %>% filter(row_number()==1) 
 as.data.frame(n.2003.L) %>% count(affiliation)
 
-n.2004.L <- n.2004n %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2004.L <- n.2004n %>% group_by(PubID) %>% filter(row_number()==1) %>% print(n = Inf)
 as.data.frame(n.2004.L) %>% count(affiliation)
 
-n.2005.L <- n.2005n %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2005.L <- n.2005n %>% group_by(PubID) %>% filter(row_number()==1) %>% print(n = Inf)
 as.data.frame(n.2005.L) %>% count(affiliation)
 
 n.2006.L <- n.2006n %>% group_by(PubID) %>% filter(row_number()==1) 
@@ -216,7 +216,7 @@ data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
                          '2001-01-01', 8,  20, 15,   2, 5, 1,
                          '2002-01-01', 4,  9,  5,    3, 1, 0,
                          '2003-01-01', 5,  12, 2,    2, 1, 2,
-                         "2004-01-01", 9,  21, 8,    3, 3, 2, # check
+                         "2004-01-01", 9,  21, 8,    4, 3, 2,
                          "2005-01-01", 5,  8,  6,    1, 4, 0,
                          "2006-01-01", 8,  23, 9,    2, 2, 4,
                          "2007-01-01", 5,  20, 14,   2, 2, 1,
@@ -321,6 +321,6 @@ s
 
 
 Fig.4 <- p / s / fa
-Fig.4 +  ggsave("Figure 4.jpg",width = 200, height = 325, units = "mm")
+Fig.4 +  ggsave("Figure 4.jpg",width = 200, height = 300, units = "mm")
 
 
