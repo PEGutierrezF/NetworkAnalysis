@@ -250,7 +250,8 @@ p <- ggplot(data.n.papers, aes(x = year, y = papers)) +
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
-  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.x=element_blank()) +
+  # theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 p
 
@@ -268,7 +269,7 @@ ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) +
   
   theme_bw() +
   # Labels
-  labs(x= 'Year', y= 'Numbers of authors') +
+  labs(x= '', y= 'Numbers of authors') +
   
   #Legend
   theme(legend.title=element_blank()) +
@@ -281,7 +282,8 @@ ca <- ggplot(df, aes(x=year,y=value, linetype=coauthors)) +
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
-  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.x=element_blank()) +
+  #theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 ca
 
@@ -300,7 +302,7 @@ s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
   
   theme_bw() +
   # Labels
-  labs(x= 'Year', y= 'Numbers of authors') +
+  labs(x= '', y= 'Numbers of authors') +
   scale_y_continuous(limits=c(0,250), breaks=seq(0,250, by = 50), 
                      oob=rescale_none) +
   #Legend
@@ -315,12 +317,13 @@ s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
-  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.x=element_blank()) +
+  #theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 s
 
 
 Fig.4 <- p / s / fa
-Fig.4 +  ggsave("Figure 4.jpg",width = 225, height = 300, units = "mm")
+Fig.4 +  ggsave("Figure 4.jpg",width = 250, height = 350, units = "mm")
 
 
