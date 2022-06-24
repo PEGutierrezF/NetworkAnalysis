@@ -149,3 +149,9 @@ df.t %>%
 unique(df.t$country)
 length(unique(df.t$country))
 
+
+# Total papers in our survey
+df.total <- df.t %>% group_by(year,PubID) %>% filter(row_number()==1) 
+as.data.frame(df.total) %>% 
+  count() 
+
