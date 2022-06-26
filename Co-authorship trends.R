@@ -67,6 +67,7 @@ a.2011n <- a.2011 %>% add_row(main="ARC",
 
 
 # Total number of authors ---------------------------------------------------------------
+# Excluding duplicate authors (i.e., authors who publish 2 or more papers) in each year
 
 # Add row: single author paper
 add.2001 <- n.2000_20 %>% filter(year==2001)
@@ -121,6 +122,7 @@ n.2011n <- rbind(n.2011, add.2011)
 }
 
 # Number of authors by continent ---------------------------------------------------------------
+
 {
   n.2000 %>% distinct(abrev, .keep_all = TRUE) %>% count(affiliation)
   n.2001n %>% distinct(abrev, .keep_all = TRUE) %>% count(affiliation)# I added new row
