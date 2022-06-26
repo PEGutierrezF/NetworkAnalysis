@@ -10,6 +10,8 @@
 # ---------------------------------------------
 # 
 
+
+
 data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
                          ~First_authors_Eur, ~First_authors_LA, ~First_authors_NA, 
                          '2000-01-01', 3,  7,  7,    0, 3, 0,
@@ -77,3 +79,13 @@ fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) +
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 fa  
+
+
+df.aLatam <- df %>% filter(coauthors == "First_authors_LA") # data frame, filter (select) by authors
+mod1 <- glm(value~year, family=poisson, data=df.b)
+summary(mod1)
+
+m1pred <- predict(mod1, type = "response")
+
+plot(value~ year, df.b)
+lines(df.b$year, m1pred, col = "blue", lwd = 2)

@@ -10,6 +10,8 @@
 # ---------------------------------------------
 #  
 
+
+
 # Add row: single author paper
 a.2001n <- a.2001 %>% add_row(main="URV", 
                               coauthor="URV", PubID=14,year=2001)
