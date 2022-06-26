@@ -81,11 +81,11 @@ fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) +
 fa  
 
 
-df.aLatam <- df %>% filter(coauthors == "First_authors_LA") # data frame, filter (select) by authors
-mod1 <- glm(value~year, family=poisson, data=df.b)
+df.aLatam <- data.n.papers %>% select("year","First_authors_LA") # data frame, filter (select) by authors
+mod5 <- glm(First_authors_LA~year, family=poisson, data=df.aLatam)
 summary(mod1)
 
-m1pred <- predict(mod1, type = "response")
+m1pred <- predict(mod5, type = "response")
 
-plot(value~ year, df.b)
-lines(df.b$year, m1pred, col = "blue", lwd = 2)
+plot(First_authors_LA~ year, df.aLatam)
+lines(df.aLatam$year, m1pred, col = "blue", lwd = 2)
