@@ -149,10 +149,12 @@ n.2011n <- rbind(n.2011, add.2011)
 
 # Latin American as first Authors -----------------------------------------
 
-n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1 | row_number()==n()) 
 as.data.frame(n.2000.L) %>% count(affiliation)
 
-n.2001.L <- n.2001n %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2001.f <- n.2001n %>% group_by(PubID) %>% filter(row_number()==1)
+as.data.frame(n.2001.f) %>% count(affiliation)
+n.2001.L <- n.2001n %>% group_by(PubID) %>% filter(row_number()==n()) 
 as.data.frame(n.2001.L) %>% count(affiliation)
 
 n.2002.L <- n.2002n %>% group_by(PubID) %>% filter(row_number()==1) 
@@ -203,13 +205,19 @@ as.data.frame(n.2016.L) %>% count(affiliation)
 n.2017.L <- n.2017 %>% group_by(PubID) %>% filter(row_number()==1) 
 as.data.frame(n.2017.L) %>% count(affiliation)
 
-n.2018.L <- n.2018 %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2018.f <- n.2018 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2018.f) %>% count(affiliation)
+n.2018.L <- n.2018 %>% group_by(PubID) %>% filter(row_number()==n()) 
 as.data.frame(n.2018.L) %>% count(affiliation)
 
-n.2019.L <- n.2019 %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2019.f <- n.2019 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2019.f) %>% count(affiliation)
+n.2019.L <- n.2019 %>% group_by(PubID) %>% filter(row_number()==n()) 
 as.data.frame(n.2019.L) %>% count(affiliation)
 
-n.2020.L <- n.2020 %>% group_by(PubID) %>% filter(row_number()==1) 
+n.2020.f <- n.2020 %>% group_by(PubID) %>% filter(row_number()==1) 
+as.data.frame(n.2020.f) %>% count(affiliation)
+n.2020.L <- n.2020 %>% group_by(PubID) %>% filter(row_number()==n()) 
 as.data.frame(n.2020.L) %>% count(affiliation)
 
 data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
