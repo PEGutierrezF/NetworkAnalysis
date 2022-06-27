@@ -12,6 +12,9 @@
 
 
 
+# Analysis include duplicated authors and countries
+
+
 network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
@@ -61,7 +64,8 @@ df.t <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
 
 
 # -------------------------------------------------------------------------
-# Frecuencia, numero de Paises en cada paper
+# Frequency, Numbers of countries per paper
+
 df.f <- df.t %>% 
   group_by(year,PubID) %>% 
   summarise(count = n_distinct(country))
@@ -86,7 +90,7 @@ c
 # test previous number
 test <- df.t %>% select(year,country,PubID) %>% 
   filter(year==2000) %>% 
-  filter(PubID==20) 
+  filter(PubID==7) 
 
 length(unique(test$country))
 
