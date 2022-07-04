@@ -22,7 +22,8 @@ rm(list = ls())
 libraries <- c("ggplot2","igraph", "dplyr", "ggraph","readxl", 
                "ggnetwork","ITNr", "intergraph","patchwork",
                "xts","emmeans", 'quantmod', "ggpubr","janitor",
-               'scales')
+               'scales', 'ggalluvial')
+
 lapply(libraries, require, character.only = TRUE)
 
 

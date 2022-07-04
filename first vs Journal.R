@@ -46,7 +46,7 @@ a
 
 last.auth.LA <- df.journals %>% 
   group_by(PubID) %>% 
-  mutate(last= filter(row_number()==n())) 
+  filter(row_number()==n())
 
 b <- ggplot(last.auth.LA, aes(axis1 = affiliation, axis2 = Jour_continent)) +
   geom_alluvium(aes(fill = Jour_continent)) +
