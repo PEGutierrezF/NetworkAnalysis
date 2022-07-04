@@ -83,7 +83,7 @@ fa
 
 df.aLatam <- data.n.papers %>% select("year","First_authors_LA") # data frame, filter (select) by authors
 mod5 <- glm(First_authors_LA~year, family=poisson, data=df.aLatam)
-summary(mod1)
+summary(mod5)
 
 m1pred <- predict(mod5, type = "response")
 
