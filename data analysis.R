@@ -142,6 +142,7 @@ df.t %>%
   group_by(year,country,PubID) %>% 
   summarise(Freq=n())
 
+
 # Frecuencia, numero de Paises
 df.t %>% 
   group_by(country) %>% 

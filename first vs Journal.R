@@ -19,8 +19,9 @@ n.2001 <- read_excel(path = network.data, sheet = "2001nodes")
 n.2002 <- read_excel(path = network.data, sheet = "2002nodes")
 n.2003 <- read_excel(path = network.data, sheet = "2003nodes")
 n.2004 <- read_excel(path = network.data, sheet = "2004nodes")
+n.2005 <- read_excel(path = network.data, sheet = "2005nodes")
 
-df.journals <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004)
+df.journals <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005)
 
 
 
