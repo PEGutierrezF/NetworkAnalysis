@@ -42,9 +42,6 @@ ggplot(latam.maps, aes(x = long, y = lat)) +
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 
 
-# 3 -----------------------------------------------------------------------
-
-
 
 # Authors per Country -----------------------------------------------------
 
@@ -111,8 +108,13 @@ dt.country <- df.t %>%
   filter(row_number()==1) %>% 
   print(n = Inf)
 
+# Total per country
 as.data.frame(dt.country) %>% 
   count(country_study)
+
+# Total papers
+as.data.frame(dt.country) %>% 
+  count() 
 
 
 countries <- c('Argentina', 'Bolivia', 'Belize', 'Brazil',  
