@@ -33,7 +33,13 @@ ggplot(latam.maps, aes(x = long, y = lat)) +
   geom_text(aes(label = region), data = country.paper,  size = 3, hjust = 0.5)+
   scale_fill_viridis_d()+
   theme_void()+
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 
 
 # 3 -----------------------------------------------------------------------
@@ -84,7 +90,14 @@ a <- ggplot(., aes(long, lat, group = group))+
   geom_polygon(aes(fill = papers ), color = "white")+
   scale_fill_viridis_c(name='# Authors', option = "C") +
   coord_equal() +
-  theme_bw()
+  theme_bw() +
+  
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+
 a
 
 
@@ -103,7 +116,7 @@ as.data.frame(dt.country) %>%
 countries <- c('Argentina', 'Bolivia', 'Belize', 'Brazil',  
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominica',
            'Ecuador', 'El Salvador', 'French Guiana', 'Guatemala', 'Guyana', 
-           'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
+            'Haiti','Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
            'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 'Suriname', 
            'Trinidad and Tobago', 'Uruguay', 'Venezuela')
 
@@ -118,12 +131,13 @@ country.papers <- tribble(~region, ~papers,
                     'Costa Rica', 32,
                     'Chile', 8,
                     'Cuba', 2,
-                    'Dominica',1,
+                    'Dominica', 1,
                     'Ecuador', 43,
                     'El Salvador', 0,
                     'French Guiana',   2,
                     'Guatemala', 2,
                     'Guyana', 0,
+                    'Haiti',0,
                     'Honduras', 1,
                     'Jamaica', 0,
                     'Mexico', 17,
@@ -143,7 +157,13 @@ b <- ggplot(df.country, aes(long, lat, group = group))+
   geom_polygon(aes(fill = papers ), color = "white")+
   scale_fill_viridis_c(name='# Papers', option = "C") +
   coord_equal() +
-  theme_bw()
+  theme_bw() +
+  #Axis  
+  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
+
 b
 
 a + b
