@@ -19,33 +19,9 @@ ggplot(data = americas, aes(x = long, y = lat, group = group)) +
   theme_bw() 
 
 
-# 2 -----------------------------------------------------------------------
-
-# Retrieve the states map data and merge with crime data
-latam <- c()
-
-# Retrievethe map data
-latam.maps <- map_data("world", region = latam)
-
-
-ggplot(latam.maps, aes(x = long, y = lat)) +
-  geom_polygon(aes(group = group, fill = region))+
-  geom_text(aes(label = region), data = country.paper,  size = 3, hjust = 0.5)+
-  scale_fill_viridis_d()+
-  theme_void()+
-  theme(legend.position = "none") +
-  
-  #Axis  
-  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
-  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
-  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
-  theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
-
-
 
 # Authors per Country -----------------------------------------------------
 
-# Retrieve the states map data and merge with crime data
 latam <- c('Argentina', 'Brazil', 'Belize', 'Bolivia',
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominican Republic',
            'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Haiti',
@@ -159,8 +135,9 @@ country.papers <- tribble(~region, ~papers,
 
 df.country <- left_join(countries.maps, country.papers, by="region")
 
+
 b <- ggplot(df.country, aes(long, lat, group = group))+
-  geom_polygon(aes(fill = papers ), color = "white")+
+  geom_polygon(aes(fill = papers ), color = "white") +
   scale_fill_viridis_c(name='# Papers', option = "C") +
   coord_equal() +
   theme_bw() +
