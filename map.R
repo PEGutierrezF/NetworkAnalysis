@@ -85,8 +85,9 @@ n.papers <- tribble(~region, ~papers,
 
 . <- left_join(latam.maps1, n.papers, by="region")
 
+
 a <- ggplot(., aes(long, lat, group = group))+
-  geom_polygon(aes(fill = papers ), color = "white")+
+  geom_polygon(aes(fill = papers ), color = "white") +
   scale_fill_viridis_c(name='# Authors', option = "C") +
   coord_equal() +
   theme_bw() +
@@ -171,4 +172,7 @@ b <- ggplot(df.country, aes(long, lat, group = group))+
 
 b
 
-a + b
+Fig.5 <- a + b
+Fig.5
+
+Fig.5 +  ggsave("Figure 5.jpg",width = 600, height = 350, units = "mm")
