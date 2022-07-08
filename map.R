@@ -1,7 +1,7 @@
 
 
 
-library(ggplot2)
+
 world <- map_data("world")
 
 world <- map_data("world")
@@ -59,14 +59,26 @@ n.papers <- tribble(~region, ~papers,
                     'Uruguay', 1,
                     'Venezuela', 8)
 
-. <- left_join(latam.maps1, n.papers, by="region")
+latam.map2 <- left_join(latam.maps1, n.papers, by="region")
+
+dff <- latam.map2 %>%
+  group_by(region) %>%
+  summarize(long = mean(long, na.rm = T), 
+            lat = mean(lat, na.rm = T), 
+            group = group)
 
 
-a <- ggplot(., aes(long, lat, group = group))+
+a <- ggplot(latam.map2, aes(long, lat, group = group))+
   geom_polygon(aes(fill = papers ), color = "white") +
   scale_fill_viridis_c(name='# Authors', option = "C") +
+  
+ # geom_text(data = dff, aes(long, lat, label = region,
+  #                                          group = group),
+   #                         size = 3, fontface = "bold") +
   coord_equal() +
   theme_bw() +
+  
+  geom_hline(yintercept = 0, linetype = "dashed") +
   
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
