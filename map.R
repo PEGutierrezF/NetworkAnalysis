@@ -2,6 +2,14 @@
 
 
 
+# ---------------------------------------------
+# Alluvial plots Authors vs Origin of the Journal
+# 08 Jul 2022
+# Pablo E. Gutiérrez-Fonseca
+# pabloe.gutierrezfonseca@gmail.com
+# ---------------------------------------------
+#  
+
 world <- map_data("world")
 
 world <- map_data("world")

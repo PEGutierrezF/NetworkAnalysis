@@ -11,6 +11,12 @@
 
 
 
+
+# cleans global environment
+rm(list = ls())
+
+
+
 network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
