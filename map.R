@@ -30,7 +30,7 @@ ggplot(data = americas, aes(x = long, y = lat, group = group)) +
 
 # Authors per Country -----------------------------------------------------
 
-latam <- c('Argentina', 'Brazil', 'Belize', 'Bolivia',
+latam <- c('Argentina', 'Brazil', 'Belize', 'Bolivia',  
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominican Republic',
            'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Haiti',
            'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
@@ -80,21 +80,21 @@ a <- ggplot(latam.map2, aes(long, lat, group = group))+
   geom_polygon(aes(fill = papers ), color = "white") +
   scale_fill_viridis_c(name='# Authors', option = "C") +
   
- # geom_text(data = dff, aes(long, lat, label = region,
-  #                                          group = group),
-   #                         size = 3, fontface = "bold") +
+#  geom_text(data = dff, aes(long, lat, label = region,
+ #                                          group = group),
+  #                        size = 3, fontface = "bold") +
   coord_equal() +
   theme_bw() +
   
-  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed", color='gray70') +
   
   #Legend
   theme(legend.title=element_text(size=18)) +
   theme(legend.text=element_text(size=16)) +
   
   #Axis  
-  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
-  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.title.x = element_text(size = 18, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 18, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 
@@ -118,7 +118,7 @@ as.data.frame(dt.country) %>%
   count() 
 
 
-countries <- c('Argentina', 'Bolivia', 'Belize', 'Brazil',  
+countries <- c('Argentina', 'Bolivia', 'Belize', 'Brazil', "Caribe",  
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominican Republic', 'Dominica',
            'Ecuador', 'El Salvador', 'French Guiana', 'Guatemala', 'Guyana', 
             'Haiti','Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
@@ -132,6 +132,7 @@ country.papers <- tribble(~region, ~papers,
                     'Bolivia', 8,
                     'Belize', 0,
                     'Brazil', 242,
+                    "Caribe", 0,
                     'Colombia', 41,
                     'Costa Rica', 35,
                     'Chile', 9,
@@ -166,15 +167,15 @@ b <- ggplot(df.country, aes(long, lat, group = group))+
   coord_equal() +
   theme_bw() +
   
-  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_hline(yintercept = 0, linetype = "dashed", color='gray70') +
   
   #Legend
   theme(legend.title=element_text(size=18)) +
   theme(legend.text=element_text(size=16)) +
   
   #Axis  
-  theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
-  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.title.x = element_text(size = 18, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 18, angle = 90)) + # axis y
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 
