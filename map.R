@@ -10,40 +10,33 @@
 # ---------------------------------------------
 #  
 
-world <- map_data("world")
 
-world <- map_data("world")
-americas <- subset(world, region %in% c("Brazil","Mexico", "Colombia", "Argentina",
-                                        "Peru","Venezuela","Chile","Guatemala","Ecuador", "Bolivia", "Cuba",
-                                        "Honduras", "Paraguay", "Nicaragua","El Salvador", "Costa Rica", "Panama",
-                                        "Uruguay",  "Jamaica",  "Trinidad and Tobago", "Guyana", "Suriname", "Belize",
-                                        "Barbados", "Saint Lucia", "Grenada", "Saint Vincent and the Grenadines", 
-                                        "Antigua and Barbuda", "Saint Kitts and Nevis"))
 
-ggplot(data = americas, aes(x = long, y = lat, group = group)) + 
-  geom_polygon(fill = "white", color = "black") +
-  geom_path(color="black") +
-  coord_equal() +
-  theme_bw() 
+# cleans global environment
+rm(list = ls())
 
 
 
 # Authors per Country -----------------------------------------------------
 
-latam <- c('Argentina', 'Brazil', 'Belize', 'Bolivia',  
+latam <- c('Argentina','Aruba', 'Brazil', 'Belize', 'Bolivia','Bonaire, Saint Eustatius and Saba',  
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominican Republic',
-           'Ecuador', 'El Salvador', 'Guatemala', 'Guyana', 'Haiti',
-           'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
-           'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 'Suriname', 
-           'Trinidad and Tobago', 'Uruguay', 'Venezuela')
+           'Ecuador', 'El Salvador', 'Guadeloupe', 'Guatemala', 'Grenada', 'Guyana', 
+           'Haiti', 'Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
+           'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 
+           'Saint Lucia' , 'Saint Kitts and Nevis', 'Saint-Martin', 'Saint-Barthélemy',
+           'Saint Vincent and the Grenadines', 'Suriname', 
+           'Trinidad and Tobago', 'Uruguay', 'Venezuela','Virgin Islands, U.S.')
 
 latam.maps1 <- map_data("world", region = latam)
 
 n.papers <- tribble(~region, ~papers,
                     'Argentina', 114,
+                    'Aruba', 0,
                     'Brazil', 961,
                     'Belize', 0,
                     'Bolivia', 13,
+                    'Bonaire, Saint Eustatius and Saba', 0,
                     'Colombia', 115,
                     'Costa Rica', 49,
                     'Chile', 32,
@@ -51,7 +44,9 @@ n.papers <- tribble(~region, ~papers,
                     'Dominican Republic', 0,
                     'Ecuador', 89,
                     'El Salvador', 0,
+                    'Guyana', 0,
                     'Guatemala', 2,
+                    'Grenada', 0,
                     'Guyana', 0,
                     'Haiti', 0,
                     'Honduras', 0,
@@ -62,10 +57,16 @@ n.papers <- tribble(~region, ~papers,
                     'Paraguay', 0,
                     'Peru', 6,
                     'Puerto Rico', 16,
+                    'Saint Lucia' , 0,
+                    'Saint Kitts and Nevis', 0, 
+                    'Saint-Martin', 0,
+                    'Saint-Barthélemy', 0,
+                    'Saint Vincent and the Grenadines', 0,
                     'Suriname', 0,
                     'Trinidad and Tobago', 0,
                     'Uruguay', 1,
-                    'Venezuela', 8)
+                    'Venezuela', 8,
+                    'Virgin Islands, U.S.', 0)
 
 latam.map2 <- left_join(latam.maps1, n.papers, by="region")
 
@@ -118,20 +119,24 @@ as.data.frame(dt.country) %>%
   count() 
 
 
-countries <- c('Argentina', 'Bolivia', 'Belize', 'Brazil', "Caribe",  
+countries <- c('Argentina', 'Aruba', 'Belize', 'Brazil', 'Bolivia', 'Bonaire, Saint Eustatius and Saba',  
            'Colombia', 'Costa Rica', 'Chile', 'Cuba', 'Dominican Republic', 'Dominica',
-           'Ecuador', 'El Salvador', 'French Guiana', 'Guatemala', 'Guyana', 
+           'Ecuador', 'El Salvador', 'French Guiana', 'Guadeloupe', 'Guatemala', 'Grenada', 'Guyana', 
             'Haiti','Honduras', 'Jamaica', 'Mexico', 'Nicaragua', 
-           'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 'Suriname', 
-           'Trinidad and Tobago', 'Uruguay', 'Venezuela')
+           'Panama', 'Paraguay', 'Peru', 'Puerto Rico', 
+           'Saint Lucia' , 'Saint Kitts and Nevis', 'Saint-Martin', 'Saint-Barthélemy',
+           'Saint Vincent and the Grenadines', 'Suriname', 
+           'Trinidad and Tobago', 'Uruguay', 'Venezuela','Virgin Islands, U.S.')
 
 countries.maps <- map_data("world", region = countries)
 
 country.papers <- tribble(~region, ~papers,
                     'Argentina', 33,
-                    'Bolivia', 8,
+                    'Aruba', 0,
                     'Belize', 0,
                     'Brazil', 242,
+                    'Bolivia', 8,
+                    'Bonaire, Saint Eustatius and Saba', 0,
                     "Caribe", 0,
                     'Colombia', 41,
                     'Costa Rica', 35,
@@ -142,7 +147,9 @@ country.papers <- tribble(~region, ~papers,
                     'Ecuador', 44,
                     'El Salvador', 0,
                     'French Guiana', 3,
-                    'Guatemala', 3,
+                    'Guyana', 0,
+                    'Guatemala', 2,
+                    'Grenada', 0,
                     'Guyana', 0,
                     'Haiti',0,
                     'Honduras', 2,
@@ -153,10 +160,16 @@ country.papers <- tribble(~region, ~papers,
                     'Paraguay', 1,
                     'Peru', 8,
                     'Puerto Rico', 8,
+                    'Saint Lucia' , 0,
+                    'Saint Kitts and Nevis', 0, 
+                    'Saint-Martin', 0,
+                    'Saint-Barthélemy', 0,
+                    'Saint Vincent and the Grenadines', 0,
                     'Suriname', 0,
                     'Trinidad and Tobago', 2,
                     'Uruguay', 0,
-                    'Venezuela', 7)
+                    'Venezuela', 7,
+                    'Virgin Islands, U.S.', 0)
 
 df.country <- left_join(countries.maps, country.papers, by="region")
 
@@ -185,3 +198,24 @@ Fig.5 <- a + b
 Fig.5
 
 Fig.5 +  ggsave("Figure 5.jpg",width = 600, height = 350, units = "mm")
+
+
+# Other -------------------------------------------------------------------
+
+world <- map_data("world")
+
+world <- map_data("world")
+americas <- subset(world, region %in% c("Brazil","Mexico", "Colombia", "Argentina",
+                                        "Peru","Venezuela","Chile","Guatemala","Ecuador", "Bolivia", "Cuba",
+                                        "Honduras", "Paraguay", "Nicaragua","El Salvador", "Costa Rica", "Panama",
+                                        "Uruguay",  "Jamaica",  "Trinidad and Tobago", "Guyana", "Suriname", "Belize",
+                                        "Barbados", "Saint Lucia", "Grenada", "Saint Vincent and the Grenadines", 
+                                        "Antigua and Barbuda", "Saint Kitts and Nevis"))
+
+ggplot(data = americas, aes(x = long, y = lat, group = group)) + 
+  geom_polygon(fill = "white", color = "black") +
+  geom_path(color="black") +
+  coord_equal() +
+  theme_bw() 
+
+
