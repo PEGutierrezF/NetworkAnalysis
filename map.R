@@ -69,7 +69,7 @@ n.papers <- tribble(~region, ~papers,
 
 latam.map2 <- left_join(latam.maps1, n.papers, by="region")
 
-dff <- latam.map2 %>%
+dff <- latam.map2 %>%  # add country name
   group_by(region) %>%
   summarize(long = mean(long, na.rm = T), 
             lat = mean(lat, na.rm = T), 
@@ -87,6 +87,10 @@ a <- ggplot(latam.map2, aes(long, lat, group = group))+
   theme_bw() +
   
   geom_hline(yintercept = 0, linetype = "dashed") +
+  
+  #Legend
+  theme(legend.title=element_text(size=18)) +
+  theme(legend.text=element_text(size=16)) +
   
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
@@ -161,6 +165,13 @@ b <- ggplot(df.country, aes(long, lat, group = group))+
   scale_fill_viridis_c(name='# Papers', option = "C") +
   coord_equal() +
   theme_bw() +
+  
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  
+  #Legend
+  theme(legend.title=element_text(size=18)) +
+  theme(legend.text=element_text(size=16)) +
+  
   #Axis  
   theme(axis.title.x = element_text(size = 16, angle = 0)) + # axis x
   theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
