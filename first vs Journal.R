@@ -91,21 +91,24 @@ a <- ggplot(first.auth.LA, aes(axis1 = affiliation, axis2 = Jour_continent)) +
 a
 
 
-last.auth.LA <- df.journals %>% 
-  group_by(PubID) %>% 
-  filter(row_number()==n())
 
-b <- ggplot(last.auth.LA, aes(axis1 = affiliation, axis2 = Jour_continent)) +
-  geom_alluvium(aes(fill = Jour_continent)) +
-  scale_x_discrete(limits = c("Origin of Last Author", "Origin of the Journal"))+
-  geom_stratum(width = 1/3) +
+
+df <- first.auth.LA %>% 
+  group_by(affiliation, Jour_continent) %>%   # grouping
+  summarise(Freq = n())
+
+
+ggplot(data=df, 
+       aes(y = Freq, axis1 = affiliation, axis2 = Jour_continent)) +
+  geom_alluvium(aes(fill = affiliation), aes.bind=TRUE, width = 1/12) +
+  geom_stratum(width = 1/4, fill = "white", color = "black") +
   geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
-  
+  scale_x_discrete(limits = c("Origin of First Author", 
+                              "Origin of the Journal"),
+                   expand = c(.05, .05)) +
+  scale_fill_manual(values=c("#d95f0e", "#c51b8a", 
+                             "#045a8d", "#de2d26", "#31a354")) +
+  labs(y = "Papers") +
   theme_bw() +
-  theme(legend.position = "none", panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(), axis.text.y = element_blank(), 
-        axis.text.x = element_text(size = 16, color='black', face = "bold")) +
-  theme(legend.position = "none")
-b
-
-
+  theme(legend.position = "none") 
+  
