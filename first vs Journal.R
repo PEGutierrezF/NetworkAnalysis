@@ -115,12 +115,12 @@ flow <- ggplot(data=df, aes(y = Freq, axis1 = affiliation,
   theme(legend.position = "none") +
   
   theme(axis.title.x = element_text(size = 12, angle = 0)) + # axis x
-  theme(axis.title.y = element_text(size = 14, angle = 90)) + # axis y
-  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.title.y = element_text(size = 16, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=16, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=12, vjust=0.5, color="black"))   #subaxis y
 
 flow   
 
-flow +  ggsave("Figure 6.jpg",width = 250, height = 350, 
+flow +  ggsave("Figure 6.jpg",width = 250, height = 250, 
                units = "mm")
 
