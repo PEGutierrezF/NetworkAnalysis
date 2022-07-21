@@ -51,8 +51,8 @@ excel_sheets(path = network.data)
 n.2016 <- read_excel(path = network.data, sheet = "2016nodes")
 n.2017 <- read_excel(path = network.data, sheet = "2017nodes")
 n.2018 <- read_excel(path = network.data, sheet = "2018nodes")
-#n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
-#n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
+n.2019 <- read_excel(path = network.data, sheet = "2019nodes")
+n.2020 <- read_excel(path = network.data, sheet = "2020nodes")
 
 network.data <- "data/data2000_2020.xlsx" # add single author paper
 excel_sheets(path = network.data) # add single author paper
@@ -62,7 +62,7 @@ n.2000_20 <- read_excel(path = network.data, sheet = "2000-20nodes")
 df.journals <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
               n.2006, n.2007, n.2008, n.2009, n.2010, n.2011,
               n.2012, n.2013, n.2014, n.2015, n.2016, n.2017,
-              n.2018, n.2000_20)
+              n.2018, n.2019, n.2020, n.2000_20)
 
 
 # Latin American as first Authors -----------------------------------------
