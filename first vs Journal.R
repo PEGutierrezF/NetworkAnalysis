@@ -98,17 +98,29 @@ df <- first.auth.LA %>%
   summarise(Freq = n())
 
 
-ggplot(data=df, 
-       aes(y = Freq, axis1 = affiliation, axis2 = Jour_continent)) +
-  geom_alluvium(aes(fill = affiliation), aes.bind=TRUE, width = 1/12) +
+flow <- ggplot(data=df, aes(y = Freq, axis1 = affiliation, 
+                            axis2 = Jour_continent)) +
+  geom_alluvium(aes(fill = Jour_continent), aes.bind=TRUE, 
+                width = 1/12, curve_type = "sigmoid") +
   geom_stratum(width = 1/4, fill = "white", color = "black") +
-  geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  geom_text(stat = "stratum", aes(label = after_stat(stratum)),
+            size=5) +
   scale_x_discrete(limits = c("Origin of First Author", 
                               "Origin of the Journal"),
                    expand = c(.05, .05)) +
   scale_fill_manual(values=c("#d95f0e", "#c51b8a", 
                              "#045a8d", "#de2d26", "#31a354")) +
-  labs(y = "Papers") +
+  labs(y = "Freq") +
   theme_bw() +
-  theme(legend.position = "none") 
+  theme(legend.position = "none") +
   
+  theme(axis.title.x = element_text(size = 12, angle = 0)) + # axis x
+  theme(axis.title.y = element_text(size = 14, angle = 90)) + # axis y
+  theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
+  theme(axis.text.y=element_text(angle=0, size=12, vjust=0.5, color="black"))   #subaxis y
+
+flow   
+
+flow +  ggsave("Figure 6.jpg",width = 250, height = 350, 
+               units = "mm")
+

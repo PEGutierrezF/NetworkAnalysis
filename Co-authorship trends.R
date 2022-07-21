@@ -341,6 +341,7 @@ s
 
 
 Fig.4 <- p / s / fa
-Fig.4 +  ggsave("Figure 4.jpg",width = 250, height = 350, units = "mm")
+Fig.4 +  ggsave("Figure 4.jpg", width = 250, height = 350, 
+                units = "mm")
 
 
