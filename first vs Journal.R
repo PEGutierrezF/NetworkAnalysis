@@ -71,11 +71,17 @@ first.auth.LA <- df.journals %>%
   group_by(PubID) %>% 
   filter(row_number()==1) 
 
+first.auth.LA$affiliation <- factor(first.auth.LA$affiliation, 
+                                    levels = c("Latin America", "Europe", "North America"))
+
 a <- ggplot(first.auth.LA, aes(axis1 = affiliation, axis2 = Jour_continent)) +
   geom_alluvium(aes(fill = Jour_continent)) +
   scale_x_discrete(limits = c("Origin of First Author", "Origin of the Journal"))+
-  geom_stratum(width = 1/3) +
+
+  geom_stratum() +
   geom_text(stat = "stratum", aes(label = after_stat(stratum))) +
+  scale_fill_manual(values=c("#d95f0e", "#c51b8a", 
+                             "#045a8d", "#de2d26", "#31a354"))+
   
   theme_bw() +
   theme(legend.position = "none", panel.grid.major = element_blank(), 
