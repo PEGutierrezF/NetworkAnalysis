@@ -97,6 +97,9 @@ df <- first.auth.LA %>%
   group_by(affiliation, Jour_continent) %>%   # grouping
   summarise(Freq = n())
 
+first.auth.LA$affiliation <- factor(first.auth.LA$affiliation, 
+                                    levels = c("Latin America", 
+                                               "Europe", "North America"))
 
 flow <- ggplot(data=df, aes(y = Freq, axis1 = affiliation, 
                             axis2 = Jour_continent)) +
@@ -108,8 +111,9 @@ flow <- ggplot(data=df, aes(y = Freq, axis1 = affiliation,
   scale_x_discrete(limits = c("Origin of First Author", 
                               "Origin of the Journal"),
                    expand = c(.05, .05)) +
-  scale_fill_manual(values=c("#d95f0e", "#c51b8a", 
-                             "#045a8d", "#de2d26", "#31a354")) +
+  scale_fill_viridis_d(option="I")+
+#  scale_fill_manual(values=c("#d95f0e", "#c51b8a", 
+#                             "#045a8d", "#de2d26", "#31a354")) +
   labs(y = "Freq") +
   theme_bw() +
   theme(legend.position = "none") +
@@ -123,4 +127,5 @@ flow
 
 flow +  ggsave("Figure 6.jpg",width = 250, height = 250, 
                units = "mm")
+
 
