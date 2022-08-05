@@ -42,17 +42,17 @@ data.n.papers$year <-as.POSIXct(data.n.papers$year,"%Y-%m-%d",tz = "UTC")
 
 
 # Select authors and authors from Latin America
-df.firstaut <- data.n.papers %>% 
+df.first.author <- data.n.papers %>% 
   select(year, First_authors_Eur, First_authors_LA,
          First_authors_NA) %>% 
   tidyr::pivot_longer(cols=c('First_authors_Eur','First_authors_LA',
                              'First_authors_NA'),
                       names_to = 'firstauthors', 
                       values_to= 'value')
-df.firstaut
+df.first.author
 
 
-fa <- ggplot(df.firstaut, aes(x=year, y=value, linetype=firstauthors)) + 
+fa <- ggplot(df.first.author, aes(x=year, y=value, linetype=firstauthors)) + 
   geom_smooth(se=T, color = "black", show.legend = F, alpha = 0.3) + 
    geom_smooth(se=F, color = "black") + # remove background 
   geom_point(size = 2) +

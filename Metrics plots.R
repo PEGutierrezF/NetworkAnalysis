@@ -12,7 +12,6 @@
 
 
 
-
 # cleans global environment
 rm(list = ls())
 

@@ -14,7 +14,7 @@
 
 # cleans global environment
 rm(list = ls())
-#source_file = read.csv(file.choose(), sep = ";", header = F)
+
 
 {
 network.data <- "data/data2000_2005.xlsx"
