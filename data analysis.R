@@ -19,6 +19,7 @@ rm(list = ls())
 # Analysis include duplicated authors and countries
 # Analysis GLM for Figure 3
 
+
 network.data <- "data/data2000_2005.xlsx"
 excel_sheets(path = network.data)
 
