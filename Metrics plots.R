@@ -57,8 +57,9 @@ c <- ggplot(data, aes(x = year, y = Centralization)) +
   theme(axis.text.x=element_text(angle=0, size=14, vjust=0.5, color="black")) + #subaxis x
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 c
-
-
+min(data$Centralization)
+max(data$Centralization)
+summary(lm(data$Centralization~data$year))
 
 
 # Assortativity ---------------------------------------------------------------
