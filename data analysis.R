@@ -67,6 +67,8 @@ df.t <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
               n.2012, n.2013, n.2014, n.2015, n.2016, n.2017,
               n.2018, n.2019, n.2020, n.2000_20)
 
+# write.csv(df.t, file = "df_total.csv")
+
 
 # -------------------------------------------------------------------------
 # Frequency, Numbers of countries per paper
@@ -133,6 +135,7 @@ summary(mod4)
 Fig3 <- c / a
 Fig3 +  ggsave("Figure 3.jpg",width = 200, height = 220, units = "mm")
 
+
 # Extra -------------------------------------------------------------------
 
 df.t %>% 
@@ -156,12 +159,26 @@ df.t %>%
   adorn_totals('row', fill = NA) %>%
   print(n = Inf)
 
+
+# Number or authors (df.t$abrev) or countries (df.t$country)
 unique(df.t$abrev)
 length(unique(df.t$abrev))
+df.t %>% distinct(abrev) # same as length(unique()) 
 
 
 # Total papers in our survey
 df.total <- df.t %>% group_by(year,PubID) %>% filter(row_number()==1) 
 as.data.frame(df.total) %>% 
   count() 
+
+# Unique per Author and Country
+df <- unique(df.t[c("abrev", "country")])
+df.country <- table(df$country)/nrow(df)*100
+
+
+tab2 <- df.country %>% 
+  as.data.frame() %>% 
+  arrange(desc(Freq))
+tab2
+
 
