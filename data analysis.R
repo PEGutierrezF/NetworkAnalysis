@@ -156,8 +156,8 @@ df.t %>%
   adorn_totals('row', fill = NA) %>%
   print(n = Inf)
 
-unique(df.t$country)
-length(unique(df.t$country))
+unique(df.t$abrev)
+length(unique(df.t$abrev))
 
 
 # Total papers in our survey
