@@ -172,12 +172,14 @@ as.data.frame(df.total) %>%
   count() 
 
 
-# Unique per Author and Country
+# Author affiliation per Country
 df <- unique(df.t[c("abrev", "country")])
 #write.csv(df, file = "authors_per_country.csv")
 df$abrev[duplicated(df$abrev)]
 
 
+# Percentage of countries represented in the data set.
+# Author affiliation. Include author that change affiliation. 
 df.country <- table(df$country)/nrow(df)*100
 
 perct_country <- df.country %>% 
