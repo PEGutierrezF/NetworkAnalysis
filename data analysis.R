@@ -148,7 +148,7 @@ df.t %>%
 # Frecuencia, numero de Paises en cada paper
 df.t %>% 
   group_by(year,country,PubID) %>% 
-  summarise(Freq=n())
+  summarise(Freq=n()) 
 
 
 # Frecuencia, numero de Paises
@@ -171,14 +171,20 @@ df.total <- df.t %>% group_by(year,PubID) %>% filter(row_number()==1)
 as.data.frame(df.total) %>% 
   count() 
 
+
 # Unique per Author and Country
 df <- unique(df.t[c("abrev", "country")])
+#write.csv(df, file = "authors_per_country.csv")
+df$abrev[duplicated(df$abrev)]
+
+
 df.country <- table(df$country)/nrow(df)*100
 
-
-tab2 <- df.country %>% 
+perct_country <- df.country %>% 
   as.data.frame() %>% 
   arrange(desc(Freq))
-tab2
+perct_country
+
+
 
 
