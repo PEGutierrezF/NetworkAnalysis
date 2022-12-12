@@ -178,6 +178,8 @@ df <- unique(df.t[c("abrev", "country")])
 df$abrev[duplicated(df$abrev)]
 
 
+
+
 # Percentage of countries represented in the data set.
 # Author affiliation. Include author that change affiliation. 
 df.country <- table(df$country)/nrow(df)*100
