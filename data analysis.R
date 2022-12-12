@@ -67,7 +67,7 @@ df.t <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
               n.2012, n.2013, n.2014, n.2015, n.2016, n.2017,
               n.2018, n.2019, n.2020, n.2000_20)
 
-# write.csv(df.t, file = "df_total.csv")
+write.csv(df.t, file = "df_total.csv")
 
 
 # -------------------------------------------------------------------------
@@ -174,7 +174,7 @@ as.data.frame(df.total) %>%
 
 # Author affiliation per Country
 df <- unique(df.t[c("abrev", "country")])
-#write.csv(df, file = "authors_per_country.csv")
+write.csv(df, file = "authors_per_country.csv")
 
 
 
@@ -190,12 +190,10 @@ df[df$abrev == 'TD', c('abrev','country')]
 
 
 dup <- df[duplicated(df$abrev),] %>% 
-  print(n = Inf)
+  print(n = Inf) 
+
 duptable <- table(dup$abrev) 
 duptable[order(duptable)] 
-
-
-
 
 
 # Percentage of countries represented in the data set.
