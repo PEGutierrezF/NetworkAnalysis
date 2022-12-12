@@ -175,7 +175,25 @@ as.data.frame(df.total) %>%
 # Author affiliation per Country
 df <- unique(df.t[c("abrev", "country")])
 #write.csv(df, file = "authors_per_country.csv")
+
+
+
+# Duplicate due to changes in affiliation of authors
 df$abrev[duplicated(df$abrev)]
+
+df[df$abrev == 'LH', c('abrev','country')]
+df[df$abrev == 'LB', c('abrev','country')]
+df[df$abrev == 'JC', c('abrev','country')]
+df[df$abrev == 'ASR', c('abrev','country')]
+df[df$abrev == 'VF', c('abrev','country')]
+df[df$abrev == 'TD', c('abrev','country')]
+
+
+dup <- df[duplicated(df$abrev),] %>% 
+  print(n = Inf)
+duptable <- table(dup$abrev) 
+duptable[order(duptable)] 
+
 
 
 
