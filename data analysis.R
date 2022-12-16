@@ -162,7 +162,7 @@ df.t %>%
 
 # Number or authors (df.t$abrev) or countries (df.t$country)
 unique(df.t$abrev)
-length(unique(df.t$abrev))
+length(unique(df.t$abrev)) # REAL NUMBER OF UNIQUE AUTHORS
 df.t %>% distinct(abrev) # same as length(unique()) 
 
 
