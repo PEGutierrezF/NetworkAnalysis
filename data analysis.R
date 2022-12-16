@@ -133,7 +133,7 @@ mod4 <- glm(count.autors~year, family=poisson, data=df.a)
 summary(mod4)
 
 Fig3 <- c / a
-Fig3 +  ggsave("Figure 3.jpg",width = 200, height = 220, units = "mm")
+# Fig3 +  ggsave("Figure 3.jpg",width = 200, height = 220, units = "mm")
 
 
 # Extra -------------------------------------------------------------------
@@ -173,8 +173,10 @@ as.data.frame(df.total) %>%
 
 
 # Author affiliation per Country
+# Include authors with double or triple affiliation
 df <- unique(df.t[c("abrev", "country")])
-write.csv(df, file = "authors_per_country.csv")
+df
+# write.csv(df, file = "authors_per_country.csv")
 
 
 
@@ -183,10 +185,6 @@ df$abrev[duplicated(df$abrev)]
 
 df[df$abrev == 'LH', c('abrev','country')]
 df[df$abrev == 'LB', c('abrev','country')]
-df[df$abrev == 'JC', c('abrev','country')]
-df[df$abrev == 'ASR', c('abrev','country')]
-df[df$abrev == 'VF', c('abrev','country')]
-df[df$abrev == 'TD', c('abrev','country')]
 
 
 dup <- df[duplicated(df$abrev),] %>% 
