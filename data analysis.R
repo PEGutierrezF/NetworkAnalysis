@@ -183,7 +183,7 @@ df
 # Duplicate due to changes in affiliation of authors
 df$abrev[duplicated(df$abrev)]
 
-df[df$abrev == 'LH', c('abrev','country')]
+df[df$abrev == 'CARACULM', c('abrev','country')]
 df[df$abrev == 'LB', c('abrev','country')]
 
 
@@ -191,7 +191,7 @@ dup <- df[duplicated(df$abrev),] %>%
   print(n = Inf) 
 
 duptable <- table(dup$abrev) 
-duptable[order(duptable)] 
+duptable[order(duptable)] # deben haber 21 Dec, 17 2022
 
 
 # Percentage of countries represented in the data set.
