@@ -184,7 +184,7 @@ df
 df$abrev[duplicated(df$abrev)]
 
 df[df$abrev == 'CARACULM', c('abrev','country')]
-df[df$abrev == 'LB', c('abrev','country')]
+df[df$abrev == 'PEGF', c('abrev','country')]
 
 
 dup <- df[duplicated(df$abrev),] %>% 
