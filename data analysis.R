@@ -67,8 +67,8 @@ df.t <- rbind(n.2000, n.2001, n.2002, n.2003, n.2004, n.2005,
               n.2012, n.2013, n.2014, n.2015, n.2016, n.2017,
               n.2018, n.2019, n.2020, n.2000_20)
 
-write.csv(df.t, file = "df_total.csv")
-
+# write.csv(df.t, file = "df_total.csv")
+ write_xlsx(df.t,"df_total.xlsx")
 
 # -------------------------------------------------------------------------
 # Frequency, Numbers of countries per paper
