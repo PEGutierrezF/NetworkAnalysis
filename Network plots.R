@@ -536,7 +536,7 @@ n.2011 <- read_excel(path = network.data, sheet = "2011nodes")
 df2011.a <- a.2011 %>% select(main, coauthor)
 
 duplicated(n.2011$abrev) # Find duplicate
-n.2011 <- n.2011[-c(52,53), ] # Remove duplicate
+n.2011 <- n.2011[!duplicated(n.2011$abrev), ] # Remove duplicate automaticaly
 df2011.n <- n.2011 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
@@ -625,8 +625,7 @@ n.2013 <- read_excel(path = network.data, sheet = "2013nodes")
 df2013.a <- a.2013 %>% select(main, coauthor)
 
 duplicated(n.2013$abrev) # Find duplicate
-n.2013 <- n.2013[-c(29,30,31,32,34,36,39,65,67, # Remove duplicate
-                    93,94,95,96,97,99,106,107), ]
+n.2013 <- n.2013[!duplicated(n.2013$abrev), ] # Remove duplicate automaticaly
 df2013.n <- n.2013 %>% select(abrev, country, affiliation)
 
 ## covert in a igraph
