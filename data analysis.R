@@ -132,8 +132,9 @@ a
 mod4 <- glm(count.autors~year, family=poisson, data=df.a)
 summary(mod4)
 
-Fig3 <- c / a
-# Fig3 +  ggsave("Figure 3.jpg",width = 200, height = 220, units = "mm")
+Fig3 <- a / c
+Fig3
+#Fig3 +  ggsave("Figure 3.jpg",width = 200, height = 220, units = "mm")
 
 
 # Extra -------------------------------------------------------------------
