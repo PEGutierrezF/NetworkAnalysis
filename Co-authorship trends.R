@@ -49,7 +49,8 @@ a.2011n <- a.2011 %>% add_row(main="ADORC",
                               coauthor="ADORC", PubID=38,year=2011)
 
 # Number of papers ---------------------------------------------------------------
-# First column of the table: data.n.papers
+# Results of this indicate the First column of the table: 
+#             data.n.papers (in the script: First author analysis)
 
 {
   length(unique(a.2000$PubID))
@@ -78,7 +79,8 @@ a.2011n <- a.2011 %>% add_row(main="ADORC",
 
 # Total number of authors ---------------------------------------------------------------
 # Excluding duplicate authors (i.e., authors who publish 2 or more papers) in each year
-# Second column of the table: data.n.papers
+# Second column of the table: data.n.papers 
+# data: n.2020_20 is in the script: First author analysis
 
 # Add row: single author paper
 add.2001 <- n.2000_20 %>% filter(year==2001)
