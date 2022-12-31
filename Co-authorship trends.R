@@ -84,7 +84,7 @@ a.2011n <- a.2011 %>% add_row(main="ADORC",
 
 # Add row: single author paper
 add.2001 <- n.2000_20 %>% filter(year==2001)
-n.2001n <- rbind(n.2001, add.2001)
+n.2001n <- rbind(n.2001, add.2001)%>% print(n = Inf)
 
 add.2002 <- n.2000_20 %>% filter(year==2002)
 n.2002n <- rbind(n.2002, add.2002)
@@ -166,13 +166,13 @@ n.2011n <- rbind(n.2011, add.2011)
 # Latin American as first Authors -----------------------------------------
 # 4,5 and 6 column of the table: data.n.papers
 
-n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1 | row_number()==n()) 
+n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1) 
 as.data.frame(n.2000.L) %>% count(affiliation)
 
 n.2001.f <- n.2001n %>% group_by(PubID) %>% filter(row_number()==1)
 as.data.frame(n.2001.f) %>% count(affiliation)
-n.2001.L <- n.2001n %>% group_by(PubID) %>% filter(row_number()==n()) 
-as.data.frame(n.2001.L) %>% count(affiliation)
+#n.2001.L <- n.2001n %>% group_by(PubID) %>% filter(row_number()==n()) 
+#as.data.frame(n.2001.L) %>% count(affiliation)
 
 n.2002.L <- n.2002n %>% group_by(PubID) %>% filter(row_number()==1) 
 as.data.frame(n.2002.L) %>% count(affiliation)
