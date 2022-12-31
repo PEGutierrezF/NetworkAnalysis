@@ -24,29 +24,29 @@ rm(list = ls())
 a.2001n <- a.2001 %>% add_row(main="URV", 
                               coauthor="URV", PubID=14,year=2001)
 
-a.2002n <- a.2002 %>% add_row(main="TG", 
-                              coauthor="TG", PubID=15,year=2002)
+a.2002n <- a.2002 %>% add_row(main="TOMGOLD", 
+                              coauthor="TOMGOLD", PubID=15,year=2002)
 
-a.2003n <- a.2003 %>% add_row(main=c("BSS","ZB"), 
-                              coauthor=c("BSS","ZB"), 
+a.2003n <- a.2003 %>% add_row(main=c("BSS","ZAIDBAR"), 
+                              coauthor=c("BSS","ZAIDBAR"), 
                               PubID=c(13,14),year=c(2003, 2003))
 
-a.2004n <- a.2004 %>% add_row(main=c("BSS","TG"), 
-                              coauthor=c("BSS","TG"), 
+a.2004n <- a.2004 %>% add_row(main=c("BSS","TOMGOLD"), 
+                              coauthor=c("BSS","TOMGOLD"), 
                               PubID=c(13,14),year=c(2004, 2004))
 
-a.2005n <- a.2005 %>% add_row(main="DJ", 
-                              coauthor="DJ", PubID=21,year=2005)
+a.2005n <- a.2005 %>% add_row(main="DENJD", 
+                              coauthor="DENJD", PubID=21,year=2005)
 
-a.2006n <- a.2006 %>% add_row(main=c("KMW","APC"), 
-                              coauthor=c("KMW","APC"), 
+a.2006n <- a.2006 %>% add_row(main=c("KARLMWANT","ALAPCOV"), 
+                              coauthor=c("KARLMWANT","ALAPCOV"), 
                               PubID=c(22,23),year=c(2006, 2006))
-a.2008n <- a.2008 %>% add_row(main="DJ", 
-                              coauthor="DJ", PubID=32,year=2008)
+a.2008n <- a.2008 %>% add_row(main="DENJD", 
+                              coauthor="DENJD", PubID=32,year=2008)
 a.2010n <- a.2010 %>% add_row(main="LMM", 
                               coauthor="LMM", PubID=46,year=2010)
-a.2011n <- a.2011 %>% add_row(main="ARC", 
-                              coauthor="ARC", PubID=38,year=2011)
+a.2011n <- a.2011 %>% add_row(main="ADORC", 
+                              coauthor="ADORC", PubID=38,year=2011)
 
 # Number of papers ---------------------------------------------------------------
 # First column of the table: data.n.papers
@@ -348,7 +348,7 @@ s <- ggplot(df, aes(x=year, y=value, linetype=coauthors)) +
 s
 
 
-Fig.4 <- p / s / fa
+Fig.4 <- p / s / fa + plot_annotation(tag_levels = 'A')
 Fig.4 +  ggsave("Figure 4.jpg", width = 250, height = 350, 
                 units = "mm")
 

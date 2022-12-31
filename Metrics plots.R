@@ -4,6 +4,7 @@
 
 # ---------------------------------------------
 # Plots: Centralization, Assortativity & Link Density
+# + Figure 2
 # 19 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com

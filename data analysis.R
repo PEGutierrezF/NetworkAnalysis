@@ -3,7 +3,7 @@
 
 
 # ---------------------------------------------
-# Data analysis and summary
+# Data analysis and summary + Figure 3
 # 19 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com
