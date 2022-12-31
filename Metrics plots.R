@@ -104,8 +104,8 @@ h <- ggplot(df.a, aes(x=year,y=value, linetype=assor)) +
   theme(axis.text.y=element_text(angle=0, size=14, vjust=0.5, color="black"))  #subaxis y
 h  
 
-Fig.x <- c / h
-Fig.x + ggsave("Figure 2.jpg",width = 200, height = 220, units = "mm")
+Fig.2 <- c / h + plot_annotation(tag_levels = 'A')
+Fig.2 + ggsave("Figure 2.jpg",width = 200, height = 220, units = "mm")
 
 # Density ---------------------------------------------------------------
 
