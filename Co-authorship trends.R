@@ -77,6 +77,10 @@ a.2011n <- a.2011 %>% add_row(main="ADORC",
 }
 
 
+
+
+
+
 # Total number of authors ---------------------------------------------------------------
 # Excluding duplicate authors (i.e., authors who publish 2 or more papers) in each year
 # Second column of the table: data.n.papers 
@@ -134,6 +138,10 @@ n.2011n <- rbind(n.2011, add.2011)
   length(unique(n.2020$abrev))
 }
 
+
+
+
+
 # Number of authors by continent ---------------------------------------------------------------
 # Third column of the table: data.n.papers
 
@@ -163,8 +171,40 @@ n.2011n <- rbind(n.2011, add.2011)
 }
 
 
+
+
+
+# Number of countries ---------------------------------------------------------------
+# Results of this indicate the fourth column column of the table: 
+#             data.n.papers (in the script: First author analysis)
+{
+  length(unique(n.2000$country))
+  length(unique(n.2001n$country)) # I added new row
+  length(unique(n.2002n$country)) # I added new row
+  length(unique(n.2003n$country)) # I added new row
+  length(unique(n.2004n$country)) # I added new row
+  length(unique(n.2005n$country)) # I added new row
+  length(unique(n.2006n$country)) # I added new row
+  length(unique(n.2007$country))
+  length(unique(n.2008n$country)) # I added new row
+  length(unique(n.2009$country))
+  length(unique(n.2010n$country)) # I added new row
+  length(unique(n.2011n$country)) # I added new row
+  length(unique(n.2012$country))
+  length(unique(n.2013$country))
+  length(unique(n.2014$country))
+  length(unique(n.2015$country))
+  length(unique(n.2016$country))
+  length(unique(n.2017$country))
+  length(unique(n.2018$country))
+  length(unique(n.2019$country))
+  length(unique(n.2020$country))
+}
+
+
+
 # Latin American as first Authors -----------------------------------------
-# 4,5 and 6 column of the table: data.n.papers
+# 5,6 and 7 column of the table: data.n.papers
 
 n.2000.L <- n.2000 %>% group_by(PubID) %>% filter(row_number()==1) 
 as.data.frame(n.2000.L) %>% count(affiliation)
@@ -237,30 +277,31 @@ as.data.frame(n.2020.f) %>% count(affiliation)
 n.2020.L <- n.2020 %>% group_by(PubID) %>% filter(row_number()==n()) 
 as.data.frame(n.2020.L) %>% count(affiliation)
 
-# Same table as is the script Firts Author analysis  
-data.n.papers <- tribble(~year, ~papers, ~authors, ~authors_LA,
+# Same table as is the script First Author analysis  
+
+data.n.papers <- tribble(~year, ~papers, ~total_authors, ~authors_LA, ~country,
                          ~First_authors_Eur, ~First_authors_LA, ~First_authors_NA, 
-                         '2000-01-01', 3,  7,  7,    0, 3, 0,
-                         '2001-01-01', 8,  20, 15,   2, 5, 1,
-                         '2002-01-01', 4,  9,  5,    3, 1, 0,
-                         '2003-01-01', 5,  12, 2,    2, 1, 2,
-                         "2004-01-01", 9,  21, 8,    4, 3, 2, 
-                         "2005-01-01", 5,  8,  6,    1, 4, 0,
-                         "2006-01-01", 8,  22, 9,    2, 2, 4,
-                         "2007-01-01", 5,  20, 14,   2, 2, 1,
-                         "2008-01-01", 7,  17, 14,   3, 4, 0,
-                         "2009-01-01", 11, 38, 23,   1, 7, 3,
-                         "2010-01-01", 20, 71, 49,   3, 16, 1,
-                         "2011-01-01", 16, 54, 42,   2, 12, 2,
-                         "2012-01-01", 20, 77, 62,   1, 18, 1, 
-                         "2013-01-01", 33, 92, 76,   1, 28, 4,
-                         "2014-01-01", 54, 160, 132, 6, 46, 2,
-                         "2015-01-01", 41, 193, 138, 6, 33, 2,
-                         "2016-01-01", 35, 130, 101, 4, 29, 2,
-                         "2017-01-01", 47, 179, 140, 3, 38, 6,
-                         "2018-01-01", 46, 206, 141, 8, 34, 4,
-                         "2019-01-01", 38, 176, 140, 4, 33, 1,
-                         "2020-01-01", 49, 244, 170, 2, 40, 7,
+                         '2000-01-01', 3,  7,  7,    3,    0, 3, 0,
+                         '2001-01-01', 8,  20, 15,   8,    2, 5, 1,
+                         '2002-01-01', 4,  9,  5,    3,    3, 1, 0,
+                         '2003-01-01', 5,  12, 2,    5,    2, 1, 2,
+                         "2004-01-01", 9,  21, 8,    6,    4, 3, 2, 
+                         "2005-01-01", 5,  8,  6,    4,    1, 4, 0,
+                         "2006-01-01", 8,  22, 9,    6,    2, 2, 4,
+                         "2007-01-01", 5,  20, 14,   9,    2, 2, 1,
+                         "2008-01-01", 7,  17, 14,   6,    3, 4, 0,
+                         "2009-01-01", 11, 38, 23,   6,    1, 7, 3,
+                         "2010-01-01", 20, 71, 49,   14,   3, 16, 1,
+                         "2011-01-01", 16, 54, 42,   11,   2, 12, 2,
+                         "2012-01-01", 20, 77, 62,   10,   1, 18, 1, 
+                         "2013-01-01", 33, 92, 76,   8,    1, 28, 4,
+                         "2014-01-01", 54, 160, 132, 20,   6, 46, 2,
+                         "2015-01-01", 41, 193, 138, 28,   6, 33, 2,
+                         "2016-01-01", 35, 130, 101, 18,   4, 29, 2,
+                         "2017-01-01", 47, 179, 140, 17,   3, 38, 6,
+                         "2018-01-01", 46, 206, 141, 21,   8, 34, 4,
+                         "2019-01-01", 38, 176, 140, 20,   4, 33, 1,
+                         "2020-01-01", 49, 244, 170, 21,   2, 40, 7,
 )
 
 data.n.papers                
