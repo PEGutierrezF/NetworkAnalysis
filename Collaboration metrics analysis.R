@@ -17,7 +17,10 @@ rm(list = ls())
 
 
 # 2000 ---------------------------------------------------------
+# Create the graph
 network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=FALSE) # covert in a igraph
+
+# Calculate centrality degree
 centr_degree(network2000, mode = "total")$centralization
 
 c.2000 <-  degree(network2000, v = V(network2000), mode = c("all"))
