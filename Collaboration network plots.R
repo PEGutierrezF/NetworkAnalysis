@@ -25,13 +25,14 @@ excel_sheets(path = network.data)
 # 2000 --------------------------------------------------------------------
 ###########################################################################
 
-a.2000 <- read_excel(path = network.data, sheet = "2000authors")
+e.2000 <- read_excel(path = network.data, sheet = "2000authors")
 n.2000 <- read_excel(path = network.data, sheet = "2000nodes")
 
-df2000a <- a.2000 %>% select(main, coauthor)
-df2000b <- n.2000 %>% select(abrev, country, continent)
+df2000.edges <- e.2000 %>% select(main, coauthor)
+df2001.vertices <- n.2000 %>% select(abrev, country, continent)
 
-network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=F) # covert in a igraph
+network2000 <- graph_from_data_frame(d=df2000.edges, 
+                                     vertices=df2001.vertices, directed=F) # covert in a igraph
 
 {
 set.seed(14)

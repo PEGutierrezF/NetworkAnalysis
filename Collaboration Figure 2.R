@@ -17,14 +17,14 @@
 rm(list = ls())
 
 # Combine results into a data frame
-results <- data.frame(
+data <- data.frame(
   Year = c(2000, 2001, 2002),
   Centralization = c(centr_2000, centr_2001, centr_2002),
   Density = c(densyti_2000, densyti_2001, densyti_2002),
   Assortativity_Continent = c(a_2000cont, a_2001cont, a_2002cont),
   Assortativity_Country =  c(a_2000count, a_2001count, a_2002count))
 
-results
+data
 
 data <- tribble(~year, ~Centralization, ~Assortativity, ~Assortativity_country, ~Density, 
                 '2000-01-01', 0.2679739,  0.752381,        0.7877551,          0.08496732,
@@ -52,12 +52,13 @@ data
 data$year <-as.POSIXct(data$year,"%Y-%m-%d",tz = "UTC")
 
 
-c <- ggplot(data, aes(x = year, y = Centralization)) +
+c <- ggplot(data, aes(x = Year, y = Centralization)) +
   geom_line(size=1.2) +
   geom_point(size=5) +
   
   theme_bw() + 
-  
+  scale_x_continuous(breaks = seq(min(data$Year), max(data$Year), by = 1)) +
+
   # Labels
   labs(x= '', y= 'Centralization') +
   
@@ -69,7 +70,6 @@ c <- ggplot(data, aes(x = year, y = Centralization)) +
 c
 min(data$Centralization)
 max(data$Centralization)
-summary(lm(data$Centralization~data$year))
 
 
 # Assortativity ---------------------------------------------------------------
