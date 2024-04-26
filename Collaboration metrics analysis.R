@@ -21,44 +21,42 @@ rm(list = ls())
 network2000 <- graph_from_data_frame(d=df2000a, vertices=df2000b, directed=FALSE) # covert in a igraph
 
 # Calculate centrality degree
-centr_degree(network2000, mode = "total")$centralization
+centr_2000 <- centr_degree(network2000, mode = "total")$centralization
 
-c.2000 <-  degree(network2000, v = V(network2000), mode = c("all"))
-c.2000 ## node degree of all nodes in the network 
+densyti_2000 <- edge_density(network2000, loops=FALSE)
 
 # Node degree of all nodes in the network
 c_2000 <- degree(network2000, v = V(network2000), mode = c("all"))
-c_2000
 
 # Assortativity by continent
-assortativity_nominal(network2000, as.factor(V(network2000)$affiliation)) 
+a_2000cont <- assortativity_nominal(network2000, as.factor(V(network2000)$continent)) 
 # Assortativity by country
-assortativity_nominal(network2000, as.factor(V(network2000)$country))
+a_2000count <- assortativity_nominal(network2000, as.factor(V(network2000)$country))
 
 
 # 2001 ---------------------------------------------------------
 network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=FALSE)
-centr_degree(network2001, mode = "total")$centralization
+centr_2001 <-centr_degree(network2001, mode = "total")$centralization
 
 #degree(network2001, v = V(network2001), mode = c("all"))
 
-edge_density(network2001, loops=FALSE)
+densyti_2001 <-edge_density(network2001, loops=FALSE)
 
-assortativity_nominal(network2001, as.factor(V(network2001)$affiliation)) # by continent
-assortativity_nominal(network2001, as.factor(V(network2001)$country)) # by country
+a_2001cont <- assortativity_nominal(network2001, as.factor(V(network2001)$continent)) # by continent
+a_2001count <- assortativity_nominal(network2001, as.factor(V(network2001)$country)) # by country
 
 
 
 # 2002 ---------------------------------------------------------
 network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=FALSE)
-centr_degree(network2002, mode = "total")$centralization
+centr_2002 <-centr_degree(network2002, mode = "total")$centralization
 
-# degree(network2002, v = V(network2002), mode = c("all"))
+#degree(network2001, v = V(network2001), mode = c("all"))
 
-edge_density(network2002, loops=FALSE)
+densyti_2002 <-edge_density(network2002, loops=FALSE)
 
-assortativity_nominal(network2002, as.factor(V(network2002)$affiliation))# by continent
-assortativity_nominal(network2002, as.factor(V(network2002)$country)) # by country
+a_2002cont <- assortativity_nominal(network2002, as.factor(V(network2002)$continent)) # by continent
+a_2002count <- assortativity_nominal(network2002, as.factor(V(network2002)$country)) # by country
 
 
 # Centrality 2003 ---------------------------------------------------------

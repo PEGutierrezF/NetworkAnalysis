@@ -16,9 +16,18 @@
 # cleans global environment
 rm(list = ls())
 
+# Combine results into a data frame
+results <- data.frame(
+  Year = c(2000, 2001, 2002),
+  Centralization = c(centr_2000, centr_2001, centr_2002),
+  Density = c(densyti_2000, densyti_2001, densyti_2002),
+  Assortativity_Continent = c(a_2000cont, a_2001cont, a_2002cont),
+  Assortativity_Country =  c(a_2000count, a_2001count, a_2002count))
+
+results
 
 data <- tribble(~year, ~Centralization, ~Assortativity, ~Assortativity_country, ~Density, 
-                '2000-01-01', 0.1428571,  NA,        1,          0.1904762,
+                '2000-01-01', 0.2679739,  0.752381,        0.7877551,          0.08496732,
                 '2001-01-01', 0.1403509,  0.2,       0.5469256,  0.08187135,
                 '2002-01-01', 0.3571429,  1,         1,          0.2142857, 
                 '2003-01-01', 0.2888889,  0.7142857, 0.7777778,  0.1555556,
