@@ -35,7 +35,7 @@ a_2000count <- assortativity_nominal(network2000, as.factor(V(network2000)$count
 
 
 # 2001 ---------------------------------------------------------
-network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=FALSE)
+network2001 <- graph_from_data_frame(d=df2001.edges, vertices=df2001.vertices, directed=FALSE)
 centr_2001 <-centr_degree(network2001, mode = "total")$centralization
 
 #degree(network2001, v = V(network2001), mode = c("all"))

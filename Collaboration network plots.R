@@ -66,25 +66,25 @@ p2000
 ###########################################################################
 
 # Upload data from excel
-a.2001 <- read_excel(path = network.data, sheet = "2001authors")
+e.2001 <- read_excel(path = network.data, sheet = "2001authors")
 n.2001 <- read_excel(path = network.data, sheet = "2001nodes")
 
-# Select columns
-df2001.a <- a.2001 %>% select(main, coauthor)
+df2001.edges <- e.2001 %>% select(main, coauthor)
 
 duplicated(n.2001$abrev) # Find duplicate
-# remove duplicate
-n.2001 <- n.2001[-c(18, 19), ]
-df2001.n <- n.2001 %>% select(abrev, country, affiliation)
+n.2001 <- n.2001[!duplicated(n.2001$abrev), ] # Remove duplicate automatically
+df2001.vertices <- n.2001 %>% select(abrev, country, continent)
+
 
 ## covert in a igraph
-network2001 <- graph_from_data_frame(d=df2001.a, vertices=df2001.n, directed=TRUE)
+network2001 <- graph_from_data_frame(d=df2001.edges, vertices=df2001.vertices, directed=TRUE)
+plot(network2001)
 
 # plot
 {set.seed(14)
 p2001 <- ggraph(network2001,layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+  geom_node_point(aes(fill = continent, shape=continent),size = 3,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
@@ -120,7 +120,7 @@ df2002.a <- a.2002 %>% select(main, coauthor)
 
 # remove duplicate
 df2002.n <- n.2002[c(-8), ]
-df2002.n <- df2002.n %>% select(abrev, country, affiliation)
+df2002.n <- df2002.n %>% select(abrev, country, continent)
 
 ## covert in a igraph
 network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRUE)
@@ -129,7 +129,7 @@ network2002 <- graph_from_data_frame(d=df2002.a, vertices=df2002.n, directed=TRU
 {set.seed(14)
 p2002 <- ggraph(network2002, layout = "gem")+
   geom_edge_link0(edge_colour = "black")+
-  geom_node_point(aes(fill = affiliation, shape=affiliation),size = 3,
+  geom_node_point(aes(fill = continent, shape=continent),size = 3,
                   show.legend = FALSE)+
   #  scale_edge_colour_brewer(palette = "Set1") +
   scale_fill_manual(values=c("Africa" = "#fc8d59","Asia" = "#ffff99",
