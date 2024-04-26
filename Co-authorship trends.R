@@ -3,7 +3,7 @@
 
 
 # ---------------------------------------------
-# Co-authorship trends + Figure 3
+# Co-authorship trends + Figure 1
 # 22 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com

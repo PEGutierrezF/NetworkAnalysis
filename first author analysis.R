@@ -3,7 +3,7 @@
 
 
 # ---------------------------------------------
-# First author analysis
+# First author analysis + Figure 1
 # 22 Jun 2022
 # Pablo E. Gutiérrez-Fonseca
 # pabloe.gutierrezfonseca@gmail.com

@@ -26,5 +26,6 @@ libraries <- c("ggplot2","igraph", "dplyr", "ggraph","readxl",
 
 lapply(libraries, require, character.only = TRUE)
 
-
+install.packages('ggraph')
+library(ggraph)
 

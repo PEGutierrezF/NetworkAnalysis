@@ -104,7 +104,7 @@ a
 
 
 # Number of Countries -----------------------------------------------------
-
+# df.t dataframe is in data analysis.R document
 dt.country <- df.t %>% 
   group_by(year,PubID) %>% 
   filter(row_number()==1) %>% 
